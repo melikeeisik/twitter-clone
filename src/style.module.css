@@ -1,0 +1,57 @@
+.homePage{
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+}
+.posts{
+    width: 50px;
+    background-color: red;
+    width: calc(100% - 400px);
+    margin-left: 400px; 
+}
+.menuBar{
+    height: 100vh;
+    width: 400px;
+    position: fixed;
+    left: 0px;
+    border-right: 1px solid #3e3d3d;
+    display: flex;
+    justify-content:end;
+}
+.menuBar ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.menuBar ul li {
+    width: 250px;
+    padding: 0px;
+    padding: 14px 0px;
+}
+.menuBar ul li svg{
+    font-size: 22px;
+}
+.menuBar ul li span{
+    font-size: 21px;
+    letter-spacing: 0.2px;
+    margin-left: 15px;
+}
+.mobileSend{
+    display: none;
+}
+.webSend{
+    width: 90%;
+    height: 50px;
+    border-radius: 30px;
+    background-color: rgb(29, 155, 240);
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    font-size: 16px;
+    color: #fff;
+    transition: all 300ms ease-in-out;
+    border: 1px solid  rgb(29, 155, 240); ;
+}
+.webSend:hover{
+    filter: brightness(85%);
+    cursor: pointer;
+}
