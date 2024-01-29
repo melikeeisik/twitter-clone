@@ -2,7 +2,7 @@ import React from 'react'
 import style from "../style.module.css"
 import { useFormik } from 'formik'
 import {db} from "../firebase";
-import {addDoc, collection} from "@firebase/firestore"
+import {addDoc, collection,getDocs } from "@firebase/firestore"
 function SignUp() {
   const users = collection(db, "users")
   const {handleChange, handleSubmit, values} = useFormik({
@@ -12,7 +12,18 @@ function SignUp() {
       userNick: "",
       userPassword:""
     },onSubmit: values => {
-      addDoc(users, values)
+      const fectUser = async () =>{
+        await getDocs(collection(db, "users"))
+        .then((querySnapshot) => {
+          const user = querySnapshot.getDocs.map((doc) =>(
+            {...doc.data(), id:doc.id}))
+        } )
+      }
+      if(fectUser){
+        console.log("var")
+      }else{
+        addDoc(users, values)
+      }
     }
   })
   return (
