@@ -1,5 +1,8 @@
 import React from 'react'
 import style from "../style.module.css"
+import {  Link } from 'react-router-dom';
+import Profile from './Profile';
+import Home from './Home';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons'
@@ -13,8 +16,9 @@ function Menu() {
         <div >
             <ul>
                 <li>
-                    <FontAwesomeIcon style={{fontSize:30}} icon="fa-brands fa-x-twitter" />
-                    
+                    <Link to="/home">
+                        <FontAwesomeIcon style={{fontSize:30}} icon="fa-brands fa-x-twitter" />
+                    </Link>
                 </li>
                 <li>
                     <FontAwesomeIcon icon="fa-solid fa-house" />
@@ -33,8 +37,10 @@ function Menu() {
                     <span>Mesajlar</span>
                 </li>
                 <li>
-                    <FontAwesomeIcon icon="fa-regular fa-user" />
-                    <span>Profil</span>
+                    <Link to="/profile"> 
+                        <FontAwesomeIcon icon="fa-regular fa-user" />
+                        <span>Profil</span>
+                    </Link> 
                 </li>
                 <li>
                     <div className={style.mobileSend}>
