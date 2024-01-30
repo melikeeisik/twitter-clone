@@ -156,7 +156,7 @@
     width: 450px;
     height: 60px;
     padding:0px 10px;
-    margin: 10px 0px;
+    margin: 15px 0px;
     color: #fff;
     font-size: 17px;
     outline: none;
@@ -183,6 +183,7 @@
     position: absolute;
     top: 30px;
     left: 10px;
+    padding-top: 6px;
     z-index: 1;
     transition: 0.2s ease all;
 }
@@ -191,6 +192,7 @@
     font-size: 15px;
     color: #1d9bf0;
 }
+
 .homePage{
     display: flex;
     flex-direction: row;

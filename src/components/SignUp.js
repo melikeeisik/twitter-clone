@@ -1,55 +1,53 @@
 import React from 'react'
 import style from "../style.module.css"
+import validationsSignup from './validationSignup';
 import { useFormik } from 'formik'
 import {db} from "../firebase";
 import {addDoc, collection,getDocs } from "@firebase/firestore"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faX } from '@fortawesome/free-solid-svg-icons';
-library.add(faX)
+
 
 function SignUp() {
   const users = collection(db, "users")
-  const {handleChange, handleSubmit, values} = useFormik({
+  const {handleChange, handleSubmit, values, handleBlur, errors, touched} = useFormik({
     initialValues:{
       userName:"",
       userSurname:"",
       userNick: "",
       userPassword:""
-    },onSubmit: values => {
-      const fectUser = async () =>{
+    },onSubmit: async(values) => {
         await getDocs(collection(db, "users"))
         .then((querySnapshot) => {
-          const user = querySnapshot.getDocs.map((doc) =>(
-            {...doc.data(), id:doc.id}))
+          const userList = querySnapshot.docs.map((doc) =>
+            ({...doc.data(), id:doc.id})
+          )
+          const findUser = userList.find(user => user.userNick == values.userNick)
+          if(findUser){
+            console.log("var")
+          }else{
+            addDoc(users, values)
+          }
         } )
-      }
-      if(fectUser){
-        console.log("var")
-      }else{
-        addDoc(users, values)
-      }
-    }
+    },validationSchema:validationsSignup,
   })
   return (
     <div className={style.signupForm}>
       <h1>Hesabını oluştur</h1>
       <form onSubmit={handleSubmit}>
         <div className={style.inputBox}>
-          <input  type='text' name="userName" value={values.userName}  onChange={handleChange} />
-          <span>İsim</span>
+          <input  type='text' name="userName" onBlur={handleBlur} value={values.userName}  onChange={handleChange} />
+          <span style={{top:values.userName ? "10px": "", fontSize:values.userName ? "15px" : ""}} >İsim</span>
         </div>
         <div className={style.inputBox}>
           <input  type='text' name="userSurname" value={values.userSurname}  onChange={handleChange}/>       
-          <span>Soyisim</span>
+          <span style={{top:values.userSurname ? "10px": "", fontSize:values.userSurname? "15px" : ""}}>Soyisim</span>
         </div>
         <div className={style.inputBox}>
           <input  type='text' name="userNick" value={values.userNick}  onChange={handleChange}/>
-          <span>Kullanıcı Adı</span>
+          <span style={{top:values.userNick ? "10px": "", fontSize:values.userNick? "15px" : ""}}>Kullanıcı Adı</span>
         </div>
         <div className={style.inputBox}>
           <input type='password' name="userPassword" value={values.userPassword}  onChange={handleChange}/>
-          <span>Parola</span>
+          <span style={{top:values.userPassword ? "10px": "", fontSize:values.userPassword ? "15px" : ""}}>Parola</span>
         </div>
         <button>Kaydol</button>
       </form>
