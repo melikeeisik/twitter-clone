@@ -3,11 +3,13 @@ import style from "../style.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faXTwitter, faApple} from '@fortawesome/free-brands-svg-icons'
+import { faX } from '@fortawesome/free-solid-svg-icons'
 import SignUp from './SignUp'
-library.add(faXTwitter, faApple)
+library.add(faXTwitter, faApple,faX)
 
 function Register() {
     const [openForm, setOpenForm] = useState(false) 
+
   return (
     <div style={{backgroundColor:openForm?"rgba(91, 112, 131, 0.4)" : ""}} className={style.registerPage}>
       <div style={{display:openForm ? "block" : "none" , opacity:""}} className={style.form}>
