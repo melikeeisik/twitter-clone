@@ -8,20 +8,26 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faHouse,faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faBell, faEnvelope, faUser} from '@fortawesome/free-regular-svg-icons'
+import { useNavigate } from 'react-router-dom';
 import { useUserInfo } from '../context/UserInfoContext'
 
 library.add(faXTwitter,faHouse,faMagnifyingGlass,faBell,faEnvelope, faUser, faPlus)
 
 function Menu() {
-    const {userInfo} = useUserInfo()
+    const {userInfo, removeUserInfo} = useUserInfo()
     const [logoutDisable, setLogoutDisable] = useState(false)
-
-    const handleClick = () =>{
+    const navigate = useNavigate()
+    const handleLogOutContainer = () =>{
         if(logoutDisable){
             setLogoutDisable(false)
         }else{
             setLogoutDisable(true)
         }
+    }
+
+    const handleLogOut = () =>{
+        removeUserInfo(userInfo)
+        navigate("/")
     }
 
   return (
@@ -66,11 +72,11 @@ function Menu() {
                     </li>
                 </ul>
             </div>
-            <div style={{display:logoutDisable ? "flex": "none"}} className={style.logoutContainer}>
+            <div onClick={handleLogOut} style={{display:logoutDisable ? "flex": "none"}} className={style.logoutContainer}>
                 <span>@{userInfo.userNick} hesabından çıkış yap</span>
                 <div className={style.arrowDown}></div>
             </div>
-            <div onClick={handleClick}  className={style.profileContainer}>
+            <div onClick={handleLogOutContainer}  className={style.profileContainer}>
                 <div className={style.profileImgContainer}>
                     <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`}/>
                 </div>

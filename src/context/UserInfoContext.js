@@ -16,7 +16,11 @@ export const UserInfoProvider = ({children}) =>{
         localStorage.setItem("user", JSON.stringify(newUser));
     };
 
-    const values = {userInfo,updateUserInfo} 
+    const removeUserInfo = (deleteUser) => {
+        localStorage.removeItem("user", JSON.stringify(deleteUser));
+    };
+
+    const values = {userInfo,updateUserInfo,removeUserInfo} 
 
 
     return(
