@@ -3,14 +3,16 @@ import style from "../style.module.css"
 import validationsLogin from './validationsLogin';
 import { useFormik } from 'formik'
 import {db} from "../firebase";
-import {addDoc, collection,getDocs } from "@firebase/firestore"
+import {collection,getDocs } from "@firebase/firestore"
 import { useNavigate } from 'react-router-dom';
+import { useUserInfo } from '../context/UserInfoContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faXTwitter, faApple} from '@fortawesome/free-brands-svg-icons'
 library.add( faXTwitter,faApple)
 
 function Login() {
+    const {updateUserInfo} = useUserInfo()
     const [formError, setFormError] = useState(false)
     const navigate = useNavigate()
   const {handleChange, handleSubmit, values, handleBlur, errors, touched} = useFormik({
@@ -28,6 +30,7 @@ function Login() {
             if(findUser.userPassword != values.userPassword){
                 setFormError(true)
             }else{
+                updateUserInfo(findUser)
                 navigate("/home")
             }
         }else{

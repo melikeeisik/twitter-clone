@@ -311,3 +311,25 @@
     filter: brightness(85%);
     cursor: pointer;
 }
+.profileContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.profileImgContainer{
+    width: 45px;
+    height: 45px;
+}
+.profileImgContainer img{
+    width: 100%;
+    object-fit: contain;
+}
+.profileNameContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.profileNameContainer span{
+    font-size: 15px !important;
+    margin-bottom: 5px;
+}

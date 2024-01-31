@@ -53,8 +53,15 @@ function Menu() {
                         <button className={style.webSend}>Gönder</button>
                     </div>
                 </li>
-                <li>
-                    {userInfo.userName}
+                <li className={style.profileContainer}>
+                    <div className={style.profileImgContainer}>
+                        <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`}/>
+                    </div>
+                    <div className={style.profileNameContainer}>
+                        <span style={{display:"flex", fontWeight:"700"}}>{userInfo.userName} {userInfo.userSurname}</span>
+                        <span style={{color:"#5c5b5b"}}>@{userInfo.userNick}</span>
+                    </div>
+                    
                 </li>
             </ul>
       </div>
