@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import style from "../style.module.css"
 import validationsSignup from './validationSignup';
 import { useFormik } from 'formik'
@@ -7,6 +7,7 @@ import {addDoc, collection,getDocs } from "@firebase/firestore"
 
 
 function SignUp() {
+  const [formError, setFormError] = useState(false)
   const users = collection(db, "users")
   const {handleChange, handleSubmit, values, handleBlur, errors, touched} = useFormik({
     initialValues:{
@@ -23,6 +24,7 @@ function SignUp() {
           const findUser = userList.find(user => user.userNick == values.userNick)
           if(findUser){
             console.log("var")
+            setFormError(true)
           }else{
             addDoc(users, values)
           }
@@ -53,6 +55,9 @@ function SignUp() {
           {
              touched.userNick && errors.userNick && <div >{errors.userNick}</div>
           }
+             {
+                formError && <div>Bu kullanıcı adı kullanılmakta. Başka kullanıcı adı deneyiniz</div>
+            }
         </div>
         <div className={style.inputBox}>
           <input style={{border: (touched.userPassword && errors.userPassword) ? "1px solid #f4212e" : "" }} type='password' name="userPassword" onBlur={handleBlur} value={values.userPassword}  onChange={handleChange}/>

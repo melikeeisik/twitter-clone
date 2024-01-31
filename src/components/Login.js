@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from "../style.module.css"
 import validationsLogin from './validationsLogin';
 import { useFormik } from 'formik'
@@ -11,6 +11,7 @@ import { faXTwitter, faApple} from '@fortawesome/free-brands-svg-icons'
 library.add( faXTwitter,faApple)
 
 function Login() {
+    const [formError, setFormError] = useState(false)
     const navigate = useNavigate()
   const {handleChange, handleSubmit, values, handleBlur, errors, touched} = useFormik({
     initialValues:{
@@ -24,8 +25,13 @@ function Login() {
           )
           const findUser = userList.find(user => user.userNick == values.userNick)
           if(findUser){
-            console.log("doru");
-            navigate("/home")
+            if(findUser.userPassword != values.userPassword){
+                setFormError(true)
+            }else{
+                navigate("/home")
+            }
+        }else{
+            setFormError(true)
         }
         } )
     },validationSchema:validationsLogin,
@@ -59,8 +65,11 @@ function Login() {
           {
              touched.userPassword && errors.userPassword && <div >{errors.userPassword}</div>
           }
+           {
+                formError && <div>Kullanıcı adınız veya şifreniz hatalı</div>
+            }
         </div>
-        <button className={style.loginBtn}>Giriş yap</button>
+        <button style={{filter:(errors.userNick || errors.userPassword) ? "brightness(85%)" :""}} disabled={(errors.userNick || errors.userPassword) ? true : false} className={style.loginBtn}>Giriş yap</button>
       </form>
     </div>
   )
