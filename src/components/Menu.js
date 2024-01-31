@@ -8,9 +8,12 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faHouse,faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faBell, faEnvelope, faUser} from '@fortawesome/free-regular-svg-icons'
+import { useUserInfo } from '../context/UserInfoContext'
+
 library.add(faXTwitter,faHouse,faMagnifyingGlass,faBell,faEnvelope, faUser, faPlus)
 
 function Menu() {
+    const {user} = useUserInfo()
   return (
     <div className={style.menuBar}>
         <div >
@@ -51,7 +54,7 @@ function Menu() {
                     </div>
                 </li>
                 <li>
-                    profile
+                    {user.userName}
                 </li>
             </ul>
       </div>

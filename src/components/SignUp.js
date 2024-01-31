@@ -4,10 +4,11 @@ import validationsSignup from './validationSignup';
 import { useFormik } from 'formik'
 import {db} from "../firebase";
 import {addDoc, collection,getDocs } from "@firebase/firestore"
-
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
   const [formError, setFormError] = useState(false)
+  const navigate = useNavigate()
   const users = collection(db, "users")
   const {handleChange, handleSubmit, values, handleBlur, errors, touched} = useFormik({
     initialValues:{
@@ -27,6 +28,8 @@ function SignUp() {
             setFormError(true)
           }else{
             addDoc(users, values)
+            navigate("/home")
+            localStorage.setItem("user", JSON.stringify(values))
           }
         } )
     },validationSchema:validationsSignup,
