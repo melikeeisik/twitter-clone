@@ -5,18 +5,24 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faXTwitter, faApple} from '@fortawesome/free-brands-svg-icons'
 import { faX } from '@fortawesome/free-solid-svg-icons'
 import SignUp from './SignUp'
+import Login from './Login'
 library.add(faXTwitter, faApple,faX)
 
 function Register() {
     const [openForm, setOpenForm] = useState(false) 
-
+    const [formName, setFormName] = useState("")
   return (
     <div style={{backgroundColor:openForm?"rgba(91, 112, 131, 0.4)" : ""}} className={style.registerPage}>
       <div style={{display:openForm ? "block" : "none" , opacity:""}} className={style.form}>
-        <div onClick={() =>setOpenForm(false)} className={style.closeForm}>
+        <div onClick={() =>{setOpenForm(false);setFormName("")}} className={style.closeForm}>
           <FontAwesomeIcon icon="fa-solid fa-x" />
         </div>
-        <SignUp/>
+        {
+          formName=="signup" && <SignUp/>
+        }
+        {
+          formName =="login" && <Login/>
+        }
       </div>
       <div style={{opacity:openForm? "60%" : ""}} className={style.logo}>
         <FontAwesomeIcon icon="fa-brands fa-x-twitter" />
@@ -42,12 +48,12 @@ function Register() {
             <div className={style.seperateText}>veya</div>
             <div className={style.seperateLine}></div>
         </div>
-        <button style={{opacity:openForm? "60%" : ""}} onClick={() => {setOpenForm(true); console.log("hesap")}} className={style.createAccountBtn}>
+        <button style={{opacity:openForm? "60%" : ""}} onClick={() => {setOpenForm(true); setFormName("signup")}} className={style.createAccountBtn}>
             <span>Hesap oluştur</span>
         </button>
         <div style={{opacity:openForm? "60%" : ""}}>
             <span >Zaten bir hesabın var mı?</span>
-            <button className={style.loginBtn}>
+            <button  onClick={() => {setOpenForm(true);setFormName("login")}}  className={style.loginBtn}>
                 <span>Giriş yap</span>
             </button>
         </div>

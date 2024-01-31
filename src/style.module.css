@@ -149,7 +149,7 @@
     display: flex;
     flex-direction: column;
 }
-.inputBox input{
+.signupForm .inputBox input{
     background-color: #000;
     border: 1px solid #3e3d3d;
     border-radius: 5px;
@@ -176,6 +176,52 @@
 .signupForm button:hover{
     cursor: pointer;
 }
+.loginForm{
+    display: flex;
+    background-color:#000 ;
+    flex-direction: column;
+    border-radius: 5%;
+    padding: 45px 60px; 
+}
+.loginBtnCntn{
+    margin-bottom: 20px;
+    height: 40px;
+}
+.loginForm .inputBox input{
+    background-color: #000;
+    border: 1px solid #3e3d3d;
+    border-radius: 5px;
+    width: 330px;
+    height: 50px;
+    padding:0px 10px;
+    margin: 15px 0px;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+}
+.loginForm  .loginBtn{
+    margin-top: 40px;
+    width: 350px;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 700;
+}
+.loginForm .logo{
+    position: absolute;
+    font-size: 35px;
+    top: -70px;
+    left: 262px;
+}
+.loginForm .inputBox span{
+    position: absolute;
+    top: 23px;
+    left: 10px;
+    z-index: 1;
+    transition: 0.2s ease all;
+}
 .inputBox{
     position: relative;
     color:  #797777;
@@ -193,7 +239,7 @@
 .inputBox div{
     position: absolute;
     bottom: -5px;
-    color: rgb(244, 33, 46);
+    color: #f4212e;
     font-weight: 200;
     font-size: 13px;
     left: 10px;

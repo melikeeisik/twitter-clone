@@ -1,17 +1,19 @@
 import React from 'react'
 import style from "../style.module.css"
-import validationsSignup from './validationSignup';
+import validationsLogin from './validationsLogin';
 import { useFormik } from 'formik'
 import {db} from "../firebase";
 import {addDoc, collection,getDocs } from "@firebase/firestore"
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faXTwitter, faApple} from '@fortawesome/free-brands-svg-icons'
+library.add( faXTwitter,faApple)
 
-
-function SignUp() {
-  const users = collection(db, "users")
+function Login() {
+    const navigate = useNavigate()
   const {handleChange, handleSubmit, values, handleBlur, errors, touched} = useFormik({
     initialValues:{
-      userName:"",
-      userSurname:"",
       userNick: "",
       userPassword:""
     },onSubmit: async(values) => {
@@ -22,31 +24,28 @@ function SignUp() {
           )
           const findUser = userList.find(user => user.userNick == values.userNick)
           if(findUser){
-            console.log("var")
-          }else{
-            addDoc(users, values)
-          }
+            console.log("doru");
+            navigate("/home")
+        }
         } )
-    },validationSchema:validationsSignup,
+    },validationSchema:validationsLogin,
   })
   return (
-    <div className={style.signupForm}>
-      <h1>Hesabını oluştur</h1>
+    <div className={style.loginForm}>
+        <div className={style.logo}>
+            <FontAwesomeIcon icon="fa-brands fa-x-twitter" />
+        </div>
+      <h1>X'e giriş yap</h1>
+      <button  className={`${style.registerBtn} ${style.loginBtnCntn}`}>
+            <img style={{height:"22px", objectFit:"cover"}} src='assets/images/google.png' />
+            <span>Google ile giriş yap</span>
+        </button>
+        <button  className={`${style.registerBtn} ${style.loginBtnCntn}`}>
+            <FontAwesomeIcon style={{fontSize:"22px"}} icon="fa-brands fa-apple" />
+            <span style={{fontWeight:700}}>Apple ile giriş yap</span>
+        </button>
       <form onSubmit={handleSubmit}>
-        <div className={style.inputBox}>
-          <input style={{border: (touched.userName && errors.userName) ? "1px solid #f4212e" : "" }}  type='text' name="userName" onBlur={handleBlur} value={values.userName}  onChange={handleChange}  />
-          <span style={{top:values.userName ? "10px": "", fontSize:values.userName ? "15px" : ""}} >İsim</span>
-          {
-             touched.userName && errors.userName && <div >{errors.userName}</div>
-          }
-        </div>
-        <div className={style.inputBox}>
-          <input style={{border: (touched.userSurname && errors.userSurname) ? "1px solid #f4212e" : "" }}  type='text' name="userSurname" onBlur={handleBlur} value={values.userSurname}  onChange={handleChange}/>       
-          <span style={{top:values.userSurname ? "10px": "", fontSize:values.userSurname? "15px" : ""}}>Soyisim</span>
-          {
-             touched.userSurname && errors.userSurname && <div >{errors.userSurname}</div>
-          }
-        </div>
+       
         <div className={style.inputBox}>
           <input style={{border: (touched.userNick && errors.userNick) ? "1px solid #f4212e" : "" }} type='text' name="userNick" onBlur={handleBlur} value={values.userNick}  onChange={handleChange}/>
           <span style={{top:values.userNick ? "10px": "", fontSize:values.userNick? "15px" : ""}}>Kullanıcı Adı</span>
@@ -61,10 +60,10 @@ function SignUp() {
              touched.userPassword && errors.userPassword && <div >{errors.userPassword}</div>
           }
         </div>
-        <button style={{filter:(errors.userName || errors.userPassword || errors.userNick || errors.userPassword) ? "brightness(85%)" :""}} disabled={(errors.userName || errors.userPassword || errors.userNick || errors.userPassword) ? true : false}>Kaydol</button>
+        <button className={style.loginBtn}>Giriş yap</button>
       </form>
     </div>
   )
 }
 
-export default SignUp
+export default Login
