@@ -1,19 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from "../style.module.css"
+import Post from './Post'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGear, faPhotoFilm, faListUl, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { faFaceSmile, faCalendarDays } from '@fortawesome/free-regular-svg-icons'
 import { useUserInfo } from '../context/UserInfoContext'
-import {addDoc, collection } from "@firebase/firestore"
-import {db} from "../firebase";
+import { usePosts } from '../context/PostsContext'
 library.add(faGear,faPhotoFilm,faListUl,faFaceSmile,faCalendarDays,faLocationDot)
 
 function Posts() {
-  const posts = collection(db, "posts")
   const {userInfo} = useUserInfo()
+  const {allPosts, addPosts} = usePosts()
   const [sendPost, setSendPost] = useState("")
-
   const handleSendPost = () =>{
     const postInfo = {
       userName:userInfo.userName,
@@ -21,7 +20,7 @@ function Posts() {
       userNick:userInfo.userNick,
       userPost: sendPost,
     }
-    addDoc(posts, postInfo)
+    addPosts(postInfo)
   }
 
   return (
@@ -49,7 +48,11 @@ function Posts() {
             <button  onClick={handleSendPost} className={style.send}>Gönder</button>
           </div>
           <div className={style.postsList}>
-
+            <ul>
+              {
+              }
+              <Post/>
+            </ul>
           </div>
         </div>
     </div>
