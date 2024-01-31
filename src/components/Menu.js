@@ -13,7 +13,7 @@ import { useUserInfo } from '../context/UserInfoContext'
 library.add(faXTwitter,faHouse,faMagnifyingGlass,faBell,faEnvelope, faUser, faPlus)
 
 function Menu() {
-    const {user} = useUserInfo()
+    const {userInfo} = useUserInfo()
   return (
     <div className={style.menuBar}>
         <div >
@@ -54,7 +54,7 @@ function Menu() {
                     </div>
                 </li>
                 <li>
-                    {user.userName}
+                    {userInfo.userName}
                 </li>
             </ul>
       </div>

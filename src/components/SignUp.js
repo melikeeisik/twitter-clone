@@ -5,8 +5,9 @@ import { useFormik } from 'formik'
 import {db} from "../firebase";
 import {addDoc, collection,getDocs } from "@firebase/firestore"
 import { useNavigate } from 'react-router-dom';
-
+import { useUserInfo } from '../context/UserInfoContext';
 function SignUp() {
+  const {updateUserInfo} = useUserInfo() 
   const [formError, setFormError] = useState(false)
   const navigate = useNavigate()
   const users = collection(db, "users")
@@ -28,8 +29,8 @@ function SignUp() {
             setFormError(true)
           }else{
             addDoc(users, values)
+            updateUserInfo(values)
             navigate("/home")
-            localStorage.setItem("user", JSON.stringify(values))
           }
         } )
     },validationSchema:validationsSignup,
