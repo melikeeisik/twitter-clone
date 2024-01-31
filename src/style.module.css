@@ -255,11 +255,16 @@
     flex-direction: row;
     color: #fff;
 }
+.postAndAgendaPart{
+    display: flex;
+    flex-direction: grid;
+    grid-template-columns: 1fr 1fr;
+    width: calc(100% - 400px);
+    margin-left: 400px; 
+}
 .posts{
     width: 50px;
     background-color: red;
-    width: calc(100% - 400px);
-    margin-left: 400px; 
 }
 .menuBar{
     height: 100vh;
@@ -315,6 +320,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 20px;
+    border-radius: 30px;
+    width: 90%;
+    padding: 10px;
+    transition: all 300ms ease-in-out;
+}
+.profileContainer:hover{
+    background-color: #2b2a2a;
+    cursor: pointer;
 }
 .profileImgContainer{
     width: 45px;
@@ -331,5 +345,40 @@
 }
 .profileNameContainer span{
     font-size: 15px !important;
-    margin-bottom: 5px;
+    margin-left: 10px;
 }
+.logoutContainer{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow:1px 1px 20px  #888888;
+    background-color: #000;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 100px;
+    width:300px;
+    height: 100px;
+    left: 120px;
+    transition: all 300ms ease-in-out;
+}
+.logoutContainer span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+    width: 100%;
+    transition: all 300ms ease-in-out;
+}
+.logoutContainer span:hover{
+    cursor: pointer;
+    background-color:#2b2a2a;
+}
+.arrowDown {
+    position: absolute;
+    bottom: -8px;
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #000;
+  }

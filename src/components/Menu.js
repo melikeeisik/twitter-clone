@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from "../style.module.css"
 import {  Link } from 'react-router-dom';
 import Profile from './Profile';
@@ -14,56 +14,72 @@ library.add(faXTwitter,faHouse,faMagnifyingGlass,faBell,faEnvelope, faUser, faPl
 
 function Menu() {
     const {userInfo} = useUserInfo()
+    const [logoutDisable, setLogoutDisable] = useState(false)
+
+    const handleClick = () =>{
+        if(logoutDisable){
+            setLogoutDisable(false)
+        }else{
+            setLogoutDisable(true)
+        }
+    }
+
   return (
     <div className={style.menuBar}>
-        <div >
-            <ul>
-                <li>
-                    <Link to="/home">
-                        <FontAwesomeIcon style={{fontSize:30}} icon="fa-brands fa-x-twitter" />
-                    </Link>
-                </li>
-                <li>
-                    <FontAwesomeIcon icon="fa-solid fa-house" />
-                    <span>Anasayfa</span>
-                </li>
-                <li>
-                    <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
-                    <span>Keşfet</span>
-                </li>
-                <li>
-                    <FontAwesomeIcon icon="fa-regular fa-bell" />
-                    <span>Bildirimler</span>
-                </li>
-                <li>
-                    <FontAwesomeIcon icon="fa-regular fa-envelope" />
-                    <span>Mesajlar</span>
-                </li>
-                <li>
-                    <Link to="/profile"> 
-                        <FontAwesomeIcon icon="fa-regular fa-user" />
-                        <span>Profil</span>
-                    </Link> 
-                </li>
-                <li>
-                    <div className={style.mobileSend}>
-                        <FontAwesomeIcon icon="fa-solid fa-plus" />
-                    </div>
-                    <div >
-                        <button className={style.webSend}>Gönder</button>
-                    </div>
-                </li>
-                <li className={style.profileContainer}>
-                    <div className={style.profileImgContainer}>
-                        <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`}/>
-                    </div>
-                    <div className={style.profileNameContainer}>
-                        <span style={{display:"flex", fontWeight:"700"}}>{userInfo.userName} {userInfo.userSurname}</span>
-                        <span style={{color:"#5c5b5b"}}>@{userInfo.userNick}</span>
-                    </div>
-                    
-                </li>
-            </ul>
+        <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between"}} >
+            <div>
+                <ul>
+                    <li>
+                        <Link to="/home">
+                            <FontAwesomeIcon style={{fontSize:30}} icon="fa-brands fa-x-twitter" />
+                        </Link>
+                    </li>
+                    <li>
+                        <FontAwesomeIcon icon="fa-solid fa-house" />
+                        <span>Anasayfa</span>
+                    </li>
+                    <li>
+                        <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
+                        <span>Keşfet</span>
+                    </li>
+                    <li>
+                        <FontAwesomeIcon icon="fa-regular fa-bell" />
+                        <span>Bildirimler</span>
+                    </li>
+                    <li>
+                        <FontAwesomeIcon icon="fa-regular fa-envelope" />
+                        <span>Mesajlar</span>
+                    </li>
+                    <li>
+                        <Link to="/profile"> 
+                            <FontAwesomeIcon icon="fa-regular fa-user" />
+                            <span>Profil</span>
+                        </Link> 
+                    </li>
+                    <li>
+                        <div className={style.mobileSend}>
+                            <FontAwesomeIcon icon="fa-solid fa-plus" />
+                        </div>
+                        <div >
+                            <button className={style.webSend}>Gönder</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div style={{display:logoutDisable ? "flex": "none"}} className={style.logoutContainer}>
+                <span>@{userInfo.userNick} hesabından çıkış yap</span>
+                <div className={style.arrowDown}></div>
+            </div>
+            <div onClick={handleClick}  className={style.profileContainer}>
+                <div className={style.profileImgContainer}>
+                    <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`}/>
+                </div>
+                <div className={style.profileNameContainer}>
+                    <span style={{display:"flex", fontWeight:"700"}}>{userInfo.userName} {userInfo.userSurname}</span>
+                    <span style={{color:"#5c5b5b"}}>@{userInfo.userNick}</span>
+                </div>
+                
+            </div>
       </div>
     </div>
   )
