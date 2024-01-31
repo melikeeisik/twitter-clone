@@ -1,13 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from "../style.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGear, faPhotoFilm, faListUl, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { faFaceSmile, faCalendarDays } from '@fortawesome/free-regular-svg-icons'
 import { useUserInfo } from '../context/UserInfoContext'
+import {addDoc, collection } from "@firebase/firestore"
+import {db} from "../firebase";
 library.add(faGear,faPhotoFilm,faListUl,faFaceSmile,faCalendarDays,faLocationDot)
+
 function Posts() {
+  const posts = collection(db, "posts")
   const {userInfo} = useUserInfo()
+  const [sendPost, setSendPost] = useState("")
+
+  const handleSendPost = () =>{
+    const postInfo = {
+      userName:userInfo.userName,
+      userSurname: userInfo.userSurname,
+      userNick:userInfo.userNick,
+      userPost: sendPost,
+    }
+    addDoc(posts, postInfo)
+  }
+
   return (
     <div className={style.posts}>
         <div className={style.postsHeader}>
@@ -20,7 +36,7 @@ function Posts() {
             <div className={style.profileImgContainer}>
                 <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`}/>
             </div>
-            <textarea placeholder='Neler oluyor?'></textarea>
+            <textarea name='sendPost' value={sendPost} onChange={(e) => setSendPost(e.target.value)} placeholder='Neler oluyor?'></textarea>
             <div className={style.categories}>
               <ul>
                 <li><FontAwesomeIcon icon="fa-solid fa-photo-film" /></li>
@@ -30,7 +46,7 @@ function Posts() {
                 <li><FontAwesomeIcon icon="fa-solid fa-location-dot" /></li>
               </ul>
             </div>
-            <button className={style.send}>Gönder</button>
+            <button  onClick={handleSendPost} className={style.send}>Gönder</button>
           </div>
           <div className={style.postsList}>
 

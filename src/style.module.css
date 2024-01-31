@@ -407,7 +407,7 @@
 .createPost textarea{
     background-color: #000;
     border: none;
-    width: 80%;
+    width: 85%;
     height: 60px;
     border-bottom: 1px solid #3e3d3d ;
     color: #fff;
@@ -415,6 +415,8 @@
     right: 15px;
     padding: 20px 0px;
     resize: none;
+    font-size: 17px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 .createPost textarea:focus{
     outline: none;
@@ -442,6 +444,7 @@
     list-style: none;
     display: flex;
     flex-direction: row;
+    padding-inline-start: 10px;
 }
 .createPost .categories ul li{
     padding-right:20px;
