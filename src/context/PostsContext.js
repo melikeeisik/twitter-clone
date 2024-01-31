@@ -14,6 +14,7 @@ export const PostsProvider = ({children}) =>{
               .then((querySnapshot)=>{               
                   const newData = querySnapshot.docs
                       .map((doc) => ({...doc.data(), id:doc.id }));
+                      console.log(newData)
                       setAllPosts(newData)
               })
         }
@@ -23,6 +24,7 @@ export const PostsProvider = ({children}) =>{
     const addPosts = (newData) => {
         const posts = collection(db, "posts")
         addDoc(posts, newData)
+        setAllPosts([...allPosts, newData])
         
     };
 

@@ -13,6 +13,7 @@ function Posts() {
   const {userInfo} = useUserInfo()
   const {allPosts, addPosts} = usePosts()
   const [sendPost, setSendPost] = useState("")
+  
   const handleSendPost = () =>{
     const postInfo = {
       userName:userInfo.userName,
@@ -21,6 +22,7 @@ function Posts() {
       userPost: sendPost,
     }
     addPosts(postInfo)
+    setSendPost("")
   }
 
   return (
@@ -48,11 +50,13 @@ function Posts() {
             <button  onClick={handleSendPost} className={style.send}>Gönder</button>
           </div>
           <div className={style.postsList}>
-            <ul>
               {
+                allPosts.map((post, index)=>{
+                  return(
+                    <Post key={index} post={post}/>
+                  )
+                })
               }
-              <Post/>
-            </ul>
           </div>
         </div>
     </div>
