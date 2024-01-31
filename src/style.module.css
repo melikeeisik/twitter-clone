@@ -257,14 +257,9 @@
 }
 .postAndAgendaPart{
     display: flex;
-    flex-direction: grid;
-    grid-template-columns: 1fr 1fr;
     width: calc(100% - 400px);
+    flex-direction: row;
     margin-left: 400px; 
-}
-.posts{
-    width: 50px;
-    background-color: red;
 }
 .menuBar{
     height: 100vh;
@@ -381,4 +376,21 @@
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 10px solid #000;
-  }
+}
+.posts{
+    width: 568px;
+}
+.postsHeader{
+    width: 538px;
+    position: fixed;
+    z-index: 999;
+    top: 0px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.1fr ;
+    border-bottom: 1px solid #3e3d3d;
+    padding: 15px;
+}
+.postsHeader span{
+    text-align: center;
+    font-weight: 700;
+}
