@@ -2,39 +2,36 @@ import React, {useState} from 'react'
 import style from "../../../style.module.css"
 import validationsSignup from './validationSignup';
 import { useFormik } from 'formik'
-import {db} from "../../../firebase";
-import {addDoc, collection,getDocs } from "@firebase/firestore"
 import { useNavigate } from 'react-router-dom';
 import { useUserInfo } from '../../../context/UserInfoContext';
+import { useUsers } from '../../../context/UsersContext';
 function SignUp() {
   const {updateUserInfo} = useUserInfo() 
+  const {userList,addUsers} = useUsers()
   const [formError, setFormError] = useState(false)
   const navigate = useNavigate()
-  const users = collection(db, "users")
   const {handleChange, handleSubmit, values, handleBlur, errors, touched} = useFormik({
     initialValues:{
       userName:"",
       userSurname:"",
       userNick: "",
       userPassword:""
-    },onSubmit: async(values) => {
-        await getDocs(collection(db, "users"))
-        .then((querySnapshot) => {
-          const userList = querySnapshot.docs.map((doc) =>
-            ({...doc.data(), id:doc.id})
-          )
-          const findUser = userList.find(user => user.userNick == values.userNick)
-          if(findUser){
-            console.log("var")
-            setFormError(true)
-          }else{
-            addDoc(users, values)
-            updateUserInfo(values)
-            navigate("/home")
-          }
-        } )
+    },onSubmit: values =>{
+      const findUser = userList.find(user => user.userNick == values.userNick)
+      if(findUser){
+        console.log("var")
+        setFormError(true)
+      }else{
+        console.log("hayır")
+        updateUserInfo(values)
+        addUsers(values)
+        navigate("/home")
+      }
     },validationSchema:validationsSignup,
   })
+
+  console.log(userList)
+
   return (
     <div className={style.signupForm}>
       <h1>Hesabını oluştur</h1>

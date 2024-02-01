@@ -33,6 +33,20 @@ function Agenda() {
           </ul>
         </div>
       </div>
+      <div className={style.followPeople}>
+        <span>Kimi takip etmeli</span>
+        <div className={style.peopleList}>
+          <ul>
+            <li>
+              <div className={style.peopleimg}></div>
+              <div className={style.peopleName}></div>
+              <div>
+                <button className={style.peopleFollowBtn}></button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   )
 }

@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { UserInfoProvider } from './context/UserInfoContext';
 import { PostsProvider } from './context/PostsContext';
+import { UsersProvider } from './context/UsersContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <UserInfoProvider>
       <PostsProvider>
-        <App />
+        <UsersProvider>        
+          <App />
+        </UsersProvider>
       </PostsProvider>
     </UserInfoProvider>
   </React.StrictMode>

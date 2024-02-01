@@ -588,7 +588,7 @@
     padding: 10px 0px;
     display: flex;
     flex-direction: column;
-    transition: all 300ms ease-in-out;
+    transition: all 300ms esa;
 }
 .agendaList ul li:hover{
     background-color:  rgb(37, 37, 37);
@@ -601,4 +601,14 @@
 .agendaName{
     font-size: 16px !important;
 }
-
+.followPeople{
+    background-color: #1a1b1e;
+    padding: 10px 0px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+.followPeople span{
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0px 20px;
+}
