@@ -256,10 +256,10 @@
     color: #fff;
 }
 .postAndAgendaPart{
-    display: flex;
+    display: grid;
     width: calc(100% - 400px);
-    flex-direction: row;
     margin-left: 400px; 
+    grid-template-columns: 1.5fr 1fr;
 }
 .menuBar{
     height: 100vh;
@@ -378,10 +378,10 @@
     border-top: 10px solid #000;
 }
 .posts{
-    width: 600px;
+    width: 100%;
 }
 .postsHeader{
-    width: 570px;
+    width: 650px;
     position: fixed;
     z-index: 999;
     top: 0px;
@@ -404,7 +404,7 @@
     position: relative;
     width: 100%;
     height: 150px;
-    border-bottom: 2px solid #3e3d3d ;
+    border-bottom: 2px solid #3e3d3d;
 }
 .createPost textarea{
     background-color: #000;
@@ -435,7 +435,6 @@
 }
 .agendaPage{
     height: 100vh;
-    border-left: 1px solid #3e3d3d;
 }
 .createPost .categories{
     position: absolute;
@@ -446,7 +445,7 @@
     list-style: none;
     display: flex;
     flex-direction: row;
-    padding-inline-start: 10px;
+    padding-inline-start: 20px;
 }
 .createPost .categories ul li{
     padding-right:20px;
@@ -498,18 +497,37 @@
     margin-top: 10px;
     padding-right: 5px;
 }
-.userPostBox{
+.postContainer{
     margin-left: 50px;
     margin-right: 20px;
+}
+.userPostBox{
     margin-top: 10px;
     padding-bottom: 10px;
     max-height: 500px; 
     overflow: auto; 
-
-
 }
 .userPostBox p{
     white-space: normal; 
     margin-block-start: 0px;
     margin-block-end: 0px;
+}
+.reaction{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    color: rgb(92, 91, 91);
+}
+.reactionOne{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.reactionTwo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; 
+    margin-left: 70px;
 }
