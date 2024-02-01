@@ -433,9 +433,6 @@
     left: 15px;
     top: 15px;
 }
-.agendaPage{
-    height: 100vh;
-}
 .createPost .categories{
     position: absolute;
     bottom: 0px;
@@ -530,4 +527,40 @@
     justify-content: space-between;
     align-items: center; 
     margin-left: 70px;
+}
+.agendaPage{
+    height: 100%;
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.searchBox{
+    position: fixed;
+    top: 5px
+}
+.searchBox div{
+    position: absolute;
+    top: 11px;
+    left: 20px;
+    color:  rgb(92, 91, 91);
+}
+.searchBox input{
+    background-color: #23252a;
+    border: 1px solid #23252a;
+    outline: none;
+    border: none;
+    padding: 15px 60px ;
+    border-radius: 30px;
+    color: #fff;
+}
+.searchBox input:focus{
+    border: 1px solid #1d9bf0;
+    outline: none;
+}
+.searchBox input:focus+ div{
+    color: #1d9bf0;
+}
+.searchBox input::placeholder{
+    font-size: 15px;
 }
