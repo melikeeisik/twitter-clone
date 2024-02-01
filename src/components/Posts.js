@@ -13,7 +13,8 @@ function Posts() {
   const {userInfo} = useUserInfo()
   const {allPosts, addPosts} = usePosts()
   const [sendPost, setSendPost] = useState("")
-  
+  const [btnDisabled, setBtnDisabled] = useState(true)
+
   const handleSendPost = () =>{
     const postInfo = {
       userName:userInfo.userName,
@@ -23,6 +24,7 @@ function Posts() {
     }
     addPosts(postInfo)
     setSendPost("")
+    setBtnDisabled(true)
   }
 
   return (
@@ -37,7 +39,7 @@ function Posts() {
             <div className={style.profileImgContainer}>
                 <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`}/>
             </div>
-            <textarea name='sendPost' value={sendPost} onChange={(e) => setSendPost(e.target.value)} placeholder='Neler oluyor?'></textarea>
+            <textarea name='sendPost' value={sendPost} onChange={(e) => {setSendPost(e.target.value); setBtnDisabled(false)}} placeholder='Neler oluyor?'></textarea>
             <div className={style.categories}>
               <ul>
                 <li><FontAwesomeIcon icon="fa-solid fa-photo-film" /></li>
@@ -47,7 +49,7 @@ function Posts() {
                 <li><FontAwesomeIcon icon="fa-solid fa-location-dot" /></li>
               </ul>
             </div>
-            <button  onClick={handleSendPost} className={style.send}>Gönder</button>
+            <button style={{filter: btnDisabled ? "brightness(55%)" : ""}} disabled={btnDisabled} onClick={handleSendPost} className={style.send}>Gönder</button>
           </div>
           <div className={style.postsList}>
               {
