@@ -3,9 +3,12 @@ import style from  "../../../style.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { useUsers } from '../../../context/UsersContext'
 library.add(faMagnifyingGlass)
 
 function Agenda() {
+  const {userList} = useUsers()
+
   return (
     <div className={style.agendaPage}>
       <div className={style.searchBox}>
@@ -37,13 +40,24 @@ function Agenda() {
         <span>Kimi takip etmeli</span>
         <div className={style.peopleList}>
           <ul>
-            <li>
-              <div className={style.peopleimg}></div>
-              <div className={style.peopleName}></div>
+          {userList.slice(0, 3).map((user, index) => (
+            <li key={index}>
+              <div className={style.peopleInfo}>
+                <div className={style.peopleimg}>
+                  <img src={`https://api.multiavatar.com/${user.userNick}.png`} alt={`Avatar for ${user.userNick}`} />
+                </div>
+                <div className={style.peopleName}>
+                  <span style={{ fontWeight: 600, fontSize: 16 }}>{user.userName} {user.userSurname}</span>
+                  <span style={{ fontWeight: 400, fontSize: 14, color: "#666565" }}>@{user.userNick}</span>
+                </div>
+              </div>
               <div>
-                <button className={style.peopleFollowBtn}></button>
+                <button className={style.peopleFollowBtn}>
+                  Takip et
+                </button>
               </div>
             </li>
+          ))}
           </ul>
         </div>
       </div>

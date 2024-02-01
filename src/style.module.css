@@ -381,7 +381,7 @@
     width: 100%;
 }
 .postsHeader{
-    width: 650px;
+    width: 640px;
     position: fixed;
     z-index: 999;
     top: 0px;
@@ -466,11 +466,11 @@
 .postBox{
     display: flex;
     flex-direction: column;
-    padding: 10px;
     border-bottom: 1px solid #3e3d3d;
     width: 100%;
 }
 .userInfoBox{
+    padding: 10px;
     display: flex;
 }
 .userProfile{
@@ -497,12 +497,13 @@
 .postContainer{
     margin-left: 50px;
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 .userPostBox{
-    margin-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
     max-height: 500px; 
     overflow: auto; 
+
 }
 .userPostBox p{
     white-space: normal; 
@@ -534,15 +535,19 @@
     display: flex;
     flex-direction: column;
     align-self: center;
+    position: fixed;
+    right: 75px;
+    top: 0px;
+    border-left: 1px solid #3e3d3d;
 }
 .searchBox{
-    position: fixed;
-    top: 5px
+    background-color: #000;
+    padding: 5px;
 }
 .searchBox div{
     position: absolute;
-    top: 11px;
-    left: 20px;
+    top: 27px;
+    left: 55px;
     color:  rgb(92, 91, 91);
 }
 .searchBox input{
@@ -550,7 +555,8 @@
     border: 1px solid #23252a;
     outline: none;
     border: none;
-    padding: 15px 60px ;
+    padding: 15px 5px ;
+    text-indent: 50px;
     border-radius: 30px;
     color: #fff;
     width: 100%;
@@ -566,8 +572,7 @@
     font-size: 15px;
 }
 .agendaContainer{
-    height: calc(100%-60);
-    margin-top: 70px;
+    margin-top: 20px;
     background-color: #1a1b1e;
     padding: 10px 0px;
     border-radius: 20px;
@@ -590,13 +595,14 @@
     flex-direction: column;
     transition: all 300ms esa;
 }
+
 .agendaList ul li:hover{
     background-color:  rgb(37, 37, 37);
 }
 .agendaCategory{
     font-size: 13px !important;
     font-weight: 400 !important;
-    color:  rgb(102, 101, 101);
+    color:  #666565;
 }
 .agendaName{
     font-size: 16px !important;
@@ -611,4 +617,40 @@
     font-size: 20px;
     font-weight: 700;
     padding: 0px 20px;
+}
+.peopleList ul{
+    list-style: none;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    padding-inline-start: 0px;
+}
+.peopleList ul li{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+.peopleInfo{
+    display: flex;
+    flex-direction: row;
+}
+.peopleimg{
+    width: 40px;
+    height: 40px;
+}
+.peopleimg img{
+    height: 100%;
+    object-fit: contain;
+}
+.peopleName{
+    display: flex;
+    flex-direction: column;
+}
+.peopleFollowBtn{
+    padding: 8px 25px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    font-weight: 700
 }
