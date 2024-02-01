@@ -553,6 +553,7 @@
     padding: 15px 60px ;
     border-radius: 30px;
     color: #fff;
+    width: 100%;
 }
 .searchBox input:focus{
     border: 1px solid #1d9bf0;
@@ -564,3 +565,40 @@
 .searchBox input::placeholder{
     font-size: 15px;
 }
+.agendaContainer{
+    height: calc(100%-60);
+    margin-top: 70px;
+    background-color: #1a1b1e;
+    padding: 10px 0px;
+    border-radius: 20px;
+}
+.agendaContainer span{
+    font-size: 20px;
+    font-weight: 700;
+    padding: 0px 20px;
+}
+.agendaList ul{
+    list-style: none;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    padding-inline-start: 0px;
+    margin-top: 20px;
+}
+.agendaList ul li {
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    transition: all 300ms ease-in-out;
+}
+.agendaList ul li:hover{
+    background-color:  rgb(37, 37, 37);
+}
+.agendaCategory{
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color:  rgb(102, 101, 101);
+}
+.agendaName{
+    font-size: 16px !important;
+}
+

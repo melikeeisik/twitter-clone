@@ -14,6 +14,25 @@ function Agenda() {
           <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
         </div>
       </div>
+      <div className={style.agendaContainer}>
+        <span>İlgini çekebilecek gündemler</span>
+        <div className={style.agendaList}>
+          <ul>
+            <li>
+              <span className={style.agendaCategory}>Türkiye tarihinde gündemde</span>
+              <span className={style.agendaName}>#ösym</span>
+            </li>
+            <li>
+              <span className={style.agendaCategory}>Türkiye tarihinde gündemde</span>
+              <span className={style.agendaName}>#kpss</span>
+            </li>
+            <li>
+              <span className={style.agendaCategory}>Türkiye tarihinde gündemde</span>
+              <span className={style.agendaName}>#deprem</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   )
 }
