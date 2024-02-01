@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import style from "../style.module.css"
+import style from "../../../style.module.css"
 import validationsLogin from './validationsLogin';
 import { useFormik } from 'formik'
-import {db} from "../firebase";
+import {db} from "../../../firebase";
 import {collection,getDocs } from "@firebase/firestore"
 import { useNavigate } from 'react-router-dom';
-import { useUserInfo } from '../context/UserInfoContext';
+import { useUserInfo } from '../../../context/UserInfoContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faXTwitter, faApple} from '@fortawesome/free-brands-svg-icons'

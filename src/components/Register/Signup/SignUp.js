@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
-import style from "../style.module.css"
+import style from "../../../style.module.css"
 import validationsSignup from './validationSignup';
 import { useFormik } from 'formik'
-import {db} from "../firebase";
+import {db} from "../../../firebase";
 import {addDoc, collection,getDocs } from "@firebase/firestore"
 import { useNavigate } from 'react-router-dom';
-import { useUserInfo } from '../context/UserInfoContext';
+import { useUserInfo } from '../../../context/UserInfoContext';
 function SignUp() {
   const {updateUserInfo} = useUserInfo() 
   const [formError, setFormError] = useState(false)

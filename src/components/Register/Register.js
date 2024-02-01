@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import style from "../style.module.css"
+import style from "../../style.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faXTwitter, faApple} from '@fortawesome/free-brands-svg-icons'
 import { faX } from '@fortawesome/free-solid-svg-icons'
-import SignUp from './SignUp'
-import Login from './Login'
+import SignUp from './Signup/SignUp'
+import Login from './Login/Login'
 library.add(faXTwitter, faApple,faX)
 
 function Register() {

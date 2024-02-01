@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import style from "../style.module.css"
+import style from "../../../style.module.css"
 import Post from './Post'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGear, faPhotoFilm, faListUl, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 import { faFaceSmile, faCalendarDays } from '@fortawesome/free-regular-svg-icons'
-import { useUserInfo } from '../context/UserInfoContext'
-import { usePosts } from '../context/PostsContext'
+import { useUserInfo } from '../../../context/UserInfoContext'
+import { usePosts } from '../../../context/PostsContext'
 library.add(faGear,faPhotoFilm,faListUl,faFaceSmile,faCalendarDays,faLocationDot)
 
 function Posts() {

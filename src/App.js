@@ -1,10 +1,10 @@
 import './App.css';
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Profile from './components/Profile';
-import Register from './components/Register';
-import SignUp from './components/SignUp';
-import Login from './components/Login';
+import Profile from './components/Profile/Profile';
+import Register from './components/Register/Register';
+import SignUp from './components/Register/Signup/SignUp';
+import Login from './components/Register/Login/Login';
 function App() {
   return (
     <div >

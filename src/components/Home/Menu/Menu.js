@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import style from "../style.module.css"
+import style from "../../../style.module.css"
 import {  Link } from 'react-router-dom';
-import Profile from './Profile';
-import Home from './Home';
+import Profile from "../../Profile/Profile"
+import Home from '../../Home/Home';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faHouse,faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faBell, faEnvelope, faUser} from '@fortawesome/free-regular-svg-icons'
 import { useNavigate } from 'react-router-dom';
-import { useUserInfo } from '../context/UserInfoContext'
+import { useUserInfo } from '../../../context/UserInfoContext'
 
 library.add(faXTwitter,faHouse,faMagnifyingGlass,faBell,faEnvelope, faUser, faPlus)
 

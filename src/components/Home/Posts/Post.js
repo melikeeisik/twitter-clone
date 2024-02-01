@@ -1,5 +1,5 @@
 import React from 'react'
-import style from "../style.module.css"
+import style from "../../../style.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faRetweet, faChartSimple, faArrowUpFromBracket} from '@fortawesome/free-solid-svg-icons'

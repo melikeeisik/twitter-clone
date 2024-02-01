@@ -1,8 +1,8 @@
 import React from 'react'
-import style from "../style.module.css"
-import Menu from './Menu'
-import Posts from './Posts'
-import Agenda from './Agenda'
+import style from "../../style.module.css"
+import Menu from './Menu/Menu'
+import Posts from './Posts/Posts'
+import Agenda from './Agenda/Agenda'
 function Home() {
   return (
     <div className={style.homePage}>
