@@ -12,13 +12,13 @@ function Post({ post}) {
 
     useEffect(() => {
         const fetchImageURL = async () => {
-          if (post.userPost && post.userPost.slice(0, 6) === "images") {
+          if (post.userPost.postImg ) {
             const storage = getStorage();
-            const storageRef = ref(storage, post.userPost);
-    
+            const storageRef = ref(storage, post.userPost.postImg);
             try {
               const url = await getDownloadURL(storageRef);
               setDownloadURL(url);
+              console.log(url)
             } catch (error) {
               console.error('Error getting download URL:', error);
             }
@@ -26,7 +26,7 @@ function Post({ post}) {
         };
     
         fetchImageURL();
-      }, [post.userPost]);
+      }, [post.userPost.postImg]);
 
   return (
     <div className={style.postBox}>
@@ -43,10 +43,16 @@ function Post({ post}) {
         <div className={style.postContainer}>
             <div >
                 {
-                    (post.userPost.slice(0,6)!="images" &&  <div className={style.userPostBox}><p>{post.userPost}</p></div> )
+                    (!post.userPost.postImg  &&  <div className={style.userPostBox}><p>{post.userPost}</p></div> )
                 }
                 {
-                    (post.userPost.slice(0,6)=="images" &&  <img style={{width:"100%",objectFit:"contain", overflow:"auto"}} src={downloadURL}/>)
+                    (post.userPost.postImg && 
+                    <div >
+                        <p>{post.userPost.postText}</p>
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                            <img style={{ border:"1px solid #3e3d3d", width:"100%" ,height: "300px", objectFit: 'cover', overflow: 'auto', borderRadius:"20px" }} src={downloadURL} alt="Post" />
+                    </div>
+                    </div> )
                 }
             </div>
             <div className={style.reaction}>

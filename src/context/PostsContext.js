@@ -16,7 +16,6 @@ export const PostsProvider = ({children}) =>{
               .then((querySnapshot)=>{               
                   const newData = querySnapshot.docs
                       .map((doc) => ({...doc.data(), id:doc.id }));
-                      console.log(newData)
                       setAllPosts(newData)
               })
         }
@@ -30,8 +29,8 @@ export const PostsProvider = ({children}) =>{
     };
     
     const addImgPosts = async (newData, user) => {
-        const storageRef = ref(storage, `images/${newData.name }`);
-        await uploadBytes(storageRef, newData).then(() =>{
+        const storageRef = ref(storage, `images/${newData.postImg.name }`);
+        await uploadBytes(storageRef, newData.postImg).then(() =>{
             console.log("yes")
         });
 
@@ -39,7 +38,11 @@ export const PostsProvider = ({children}) =>{
             userName:user.userName,
             userSurname: user.userSurname,
             userNick:user.userNick,
-            userPost: `images/${newData.name }`,
+            userPost:{
+                postText: newData.postText,
+                postImg:`images/${newData.postImg.name }`,
+            }
+          
         }
         addDoc(posts, postInfo);
         setAllPosts([...allPosts, postInfo])

@@ -29,7 +29,11 @@ function Posts() {
 
   const handleSendPost = () =>{
     if(isImage){
-      addImgPosts(imgPost, userInfo)
+      const postDetail = {
+        postImg:imgPost,
+        postText:sendPost
+      }
+      addImgPosts(postDetail, userInfo)
     }else{
       const postInfo = {
         userName:userInfo.userName,
