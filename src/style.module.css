@@ -446,7 +446,11 @@
 }
 .createPost .categories ul li{
     padding-right:20px;
+}
+.createPost .categories ul li button{
     color: #1d9bf0;
+    background-color: transparent;
+    border: none;
 }
 .createPost .send{
     position: absolute;
@@ -474,13 +478,11 @@
     display: flex;
 }
 .userProfile{
-    position: relative;
     width: 40px;
     height: 40px;
 }
 .userProfile img{
-    position: absolute;
-    top: 10px;
+    margin-top: 5px;
     height: 100%;
     object-fit: contain;
 }
@@ -500,7 +502,7 @@
     margin-bottom: 20px;
 }
 .userPostBox{
-    padding: 10px;
+    padding:0px 10px;
     max-height: 500px; 
     overflow: auto; 
 
@@ -509,6 +511,7 @@
     white-space: normal; 
     margin-block-start: 0px;
     margin-block-end: 0px;
+    
 }
 .reaction{
     margin-top: 20px;

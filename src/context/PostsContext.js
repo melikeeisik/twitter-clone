@@ -1,11 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {addDoc, collection , getDocs} from "@firebase/firestore"
 import {db} from "../firebase";
-
+import { storage } from "../firebase";
+import { ref , uploadBytes} from "firebase/storage";
+import { v4 } from "uuid";
 const PostsContext = createContext();
 
 export const PostsProvider = ({children}) =>{
-
+    const posts = collection(db, "posts")
     const [allPosts, setAllPosts] = useState([])
 
     useEffect(() =>{
@@ -22,13 +24,29 @@ export const PostsProvider = ({children}) =>{
       }, [])
 
     const addPosts = (newData) => {
-        const posts = collection(db, "posts")
         addDoc(posts, newData)
         setAllPosts([...allPosts, newData])
         
     };
+    
+    const addImgPosts = async (newData, user) => {
+        const storageRef = ref(storage, `images/${newData.name }`);
+        await uploadBytes(storageRef, newData).then(() =>{
+            console.log("yes")
+        });
 
-    const values = {allPosts,addPosts} 
+        const postInfo = {
+            userName:user.userName,
+            userSurname: user.userSurname,
+            userNick:user.userNick,
+            userPost: `images/${newData.name }`,
+        }
+        addDoc(posts, postInfo);
+        setAllPosts([...allPosts, postInfo])
+    };
+      
+      
+    const values = {allPosts,addPosts,addImgPosts} 
 
 
     return(

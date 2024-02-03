@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import style from "../../../style.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faRetweet, faChartSimple, faArrowUpFromBracket} from '@fortawesome/free-solid-svg-icons'
 import { faComment, faHeart, faBookmark  } from '@fortawesome/free-regular-svg-icons'
+import { getDownloadURL, ref, getStorage } from 'firebase/storage'
+import { storage } from '../../../firebase'
 library.add(faComment,faRetweet,faHeart,faChartSimple,faBookmark,faArrowUpFromBracket)
 function Post({ post}) {
+    const [downloadURL, setDownloadURL] = useState("");
+
+    useEffect(() => {
+        const fetchImageURL = async () => {
+          if (post.userPost && post.userPost.slice(0, 6) === "images") {
+            const storage = getStorage();
+            const storageRef = ref(storage, post.userPost);
+    
+            try {
+              const url = await getDownloadURL(storageRef);
+              setDownloadURL(url);
+            } catch (error) {
+              console.error('Error getting download URL:', error);
+            }
+          }
+        };
+    
+        fetchImageURL();
+      }, [post.userPost]);
+
   return (
     <div className={style.postBox}>
         <div className={style.userInfoBox}>
@@ -19,8 +41,13 @@ function Post({ post}) {
             </div>
         </div>
         <div className={style.postContainer}>
-            <div className={style.userPostBox}>
-                <p>{post.userPost}</p>
+            <div >
+                {
+                    (post.userPost.slice(0,6)!="images" &&  <div className={style.userPostBox}><p>{post.userPost}</p></div> )
+                }
+                {
+                    (post.userPost.slice(0,6)=="images" &&  <img style={{width:"100%",objectFit:"contain", overflow:"auto"}} src={downloadURL}/>)
+                }
             </div>
             <div className={style.reaction}>
                 <div className={style.reactionOne}>

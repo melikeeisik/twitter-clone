@@ -11,18 +11,34 @@ library.add(faGear,faPhotoFilm,faListUl,faFaceSmile,faCalendarDays,faLocationDot
 
 function Posts() {
   const {userInfo} = useUserInfo()
-  const {allPosts, addPosts} = usePosts()
+  const {allPosts, addPosts,addImgPosts} = usePosts()
   const [sendPost, setSendPost] = useState("")
   const [btnDisabled, setBtnDisabled] = useState(true)
+  const [imgPost, setImgPost] = useState("")
+  const [isImage, setIsImage] = useState(false)
+
+  const handleClickInput = () =>{
+    setBtnDisabled(false)
+    document.getElementById('fileInput').click();
+  }
+
+  const handleFileChange =  (event) => {
+    setImgPost(event.target.files[0]);
+    setIsImage(true)
+  };
 
   const handleSendPost = () =>{
-    const postInfo = {
-      userName:userInfo.userName,
-      userSurname: userInfo.userSurname,
-      userNick:userInfo.userNick,
-      userPost: sendPost,
+    if(isImage){
+      addImgPosts(imgPost, userInfo)
+    }else{
+      const postInfo = {
+        userName:userInfo.userName,
+        userSurname: userInfo.userSurname,
+        userNick:userInfo.userNick,
+        userPost: sendPost,
+      }
+      addPosts(postInfo)
     }
-    addPosts(postInfo)
     setSendPost("")
     setBtnDisabled(true)
   }
@@ -42,7 +58,10 @@ function Posts() {
             <textarea name='sendPost' value={sendPost} onChange={(e) => {setSendPost(e.target.value); setBtnDisabled(false)}} placeholder='Neler oluyor?'></textarea>
             <div className={style.categories}>
               <ul>
-                <li><FontAwesomeIcon icon="fa-solid fa-photo-film" /></li>
+                <li>
+                  <button onClick={handleClickInput}><FontAwesomeIcon icon="fa-solid fa-photo-film"/></button>
+                  <input type='file' id="fileInput" onChange={handleFileChange} style={{display:"none"}} />
+                </li>
                 <li><FontAwesomeIcon icon="fa-solid fa-list-ul" /></li>
                 <li><FontAwesomeIcon icon="fa-regular fa-face-smile" /></li>
                 <li><FontAwesomeIcon icon="fa-regular fa-calendar-days" /></li>
