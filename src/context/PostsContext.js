@@ -3,7 +3,7 @@ import {addDoc, collection , getDocs} from "@firebase/firestore"
 import {db} from "../firebase";
 import { storage } from "../firebase";
 import { ref , uploadBytes} from "firebase/storage";
-import { v4 } from "uuid";
+
 const PostsContext = createContext();
 
 export const PostsProvider = ({children}) =>{

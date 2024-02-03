@@ -255,12 +255,7 @@
     flex-direction: row;
     color: #fff;
 }
-.postAndAgendaPart{
-    display: grid;
-    width: calc(100% - 400px);
-    margin-left: 400px; 
-    grid-template-columns: 1.5fr 1fr;
-}
+
 .menuBar{
     height: 100vh;
     width: 400px;
@@ -269,6 +264,7 @@
     border-right: 1px solid #3e3d3d;
     display: flex;
     justify-content:end;
+    background-color: #000;
 }
 .menuBar ul {
     list-style: none;
@@ -378,33 +374,37 @@
     border-top: 10px solid #000;
 }
 .posts{
-    width: 100%;
+    width: calc(100%-772);
+    margin-left: 400px;
+    margin-right: 372px;
+    border-left:  1px solid #3e3d3d;
+    border-right:  1px solid #3e3d3d;
 }
 .postsHeader{
-    width: 640px;
-    position: fixed;
+    width: 100%;
+    position: sticky;
     z-index: 999;
     top: 0px;
     display: grid;
     grid-template-columns: 1fr 1.2fr 0.1fr ;
     border-bottom: 1px solid #3e3d3d;
     background-color: #000;
-    border-left:  1px solid #3e3d3d;
-    padding: 15px;
 }
 .postsHeader span{
+    padding: 12px;
     text-align: center;
     font-weight: 700;
 }
 .postPart{
     height: calc(100%-53);
-    margin-top: 53px;
+    margin-top: 10px;
 }
 .createPost{
     position: relative;
     width: 100%;
     height: 150px;
     border-bottom: 2px solid #3e3d3d;
+    padding-bottom: 10px;
 }
 .createPost textarea{
     background-color: #000;
@@ -413,8 +413,6 @@
     height: 60px;
     border-bottom: 1px solid #3e3d3d ;
     color: #fff;
-    position: absolute;
-    right: 15px;
     padding: 20px 0px;
     resize: none;
     font-size: 17px;
@@ -429,20 +427,16 @@
    
 }
 .createPost .profileImgContainer{
-    position: absolute;
-    left: 15px;
-    top: 15px;
+    margin-left: 10px;
 }
-.createPost .categories{
-    position: absolute;
-    bottom: 0px;
-    left: 65px;
-}
+
 .createPost .categories ul{
     list-style: none;
     display: flex;
     flex-direction: row;
-    padding-inline-start: 20px;
+    padding-inline-start: 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
 }
 .createPost .categories ul li{
     padding-right:20px;
@@ -453,10 +447,7 @@
     border: none;
 }
 .createPost .send{
-    position: absolute;
-    bottom: 6px;
-    right: 20px;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 20px;
     background-color: #1d9bf0;
     color: #fff;
@@ -539,9 +530,9 @@
     flex-direction: column;
     align-self: center;
     position: fixed;
-    right: 75px;
+    right: 0px;
     top: 0px;
-    border-left: 1px solid #3e3d3d;
+    background-color: #000;
 }
 .searchBox{
     background-color: #000;
