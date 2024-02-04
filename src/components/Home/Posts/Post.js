@@ -5,9 +5,16 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faRetweet, faChartSimple, faArrowUpFromBracket} from '@fortawesome/free-solid-svg-icons'
 import { faComment, faHeart, faBookmark  } from '@fortawesome/free-regular-svg-icons'
 import { getDownloadURL, ref, getStorage } from 'firebase/storage'
+import {useNavigate } from 'react-router-dom';
 library.add(faComment,faRetweet,faHeart,faChartSimple,faBookmark,faArrowUpFromBracket)
 function Post({ post}) {
     const [downloadURL, setDownloadURL] = useState("");
+    const navigate = useNavigate();
+
+    const showPost = (postId) =>{
+        console.log(postId)
+        navigate(`/postinfo/${postId}`);
+    }
 
     useEffect(() => {
         const fetchImageURL = async () => {
@@ -48,7 +55,7 @@ function Post({ post}) {
                     <div >
                         <p>{post.userPost.postText}</p>
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
-                            <img style={{ border:"1px solid #3e3d3d", width:"100%" ,height: "300px", objectFit: 'cover', overflow: 'auto', borderRadius:"20px" }} src={downloadURL} alt="Post" />
+                            <img onClick={() => showPost(post.id)}  style={{ border:"1px solid #3e3d3d", width:"100%" ,height: "300px", objectFit: 'cover', overflow: 'auto', borderRadius:"20px" }} src={downloadURL} alt="Post" />
                     </div>
                     </div> )
                 }

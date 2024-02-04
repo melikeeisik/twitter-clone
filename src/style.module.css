@@ -541,7 +541,7 @@
     position: absolute;
     top: 27px;
     left: 55px;
-    color:  rgb(92, 91, 91);
+    color:  #5c5b5b;
 }
 .searchBox input{
     background-color: #23252a;
@@ -590,7 +590,7 @@
 }
 
 .agendaList ul li:hover{
-    background-color:  rgb(37, 37, 37);
+    background-color:  #252525;
 }
 .agendaCategory{
     font-size: 13px !important;
@@ -646,4 +646,9 @@
     border: 1px solid #fff;
     border-radius: 30px;
     font-weight: 700
+}
+.postInfoPage{
+    display: flex;
+    flex-direction: row;
+    color: #fff;
 }

@@ -5,6 +5,7 @@ import Profile from './components/Profile/Profile';
 import Register from './components/Register/Register';
 import SignUp from './components/Register/Signup/SignUp';
 import Login from './components/Register/Login/Login';
+import PostInfo from './components/Home/Posts/PostInfo';
 function App() {
   return (
     <div >
@@ -16,6 +17,7 @@ function App() {
                 <Route path='/profile' element={<Profile/>} />
                 <Route path='/signup' element={<SignUp/>} />
                 <Route path='/login' element={<Login/>} />
+                <Route path='/postinfo/:postId' element={<PostInfo/>} />
             </Routes>
         </Router>
     </div>

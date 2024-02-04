@@ -13,7 +13,6 @@ export const UsersProvider = ({children}) =>{
                 .then((querySnapshot)=>{               
                     const newData = querySnapshot.docs
                         .map((doc) => ({...doc.data(), id:doc.id }));
-                        console.log(newData)
                         setUserList(newData)
                 })
           }
