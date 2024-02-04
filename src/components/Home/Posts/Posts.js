@@ -3,11 +3,12 @@ import style from "../../../style.module.css"
 import Post from './Post'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faGear, faPhotoFilm, faListUl, faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { faGear, faPhotoFilm, faListUl, faLocationDot,faXmark } from '@fortawesome/free-solid-svg-icons'
 import { faFaceSmile, faCalendarDays } from '@fortawesome/free-regular-svg-icons'
 import { useUserInfo } from '../../../context/UserInfoContext'
 import { usePosts } from '../../../context/PostsContext'
-library.add(faGear,faPhotoFilm,faListUl,faFaceSmile,faCalendarDays,faLocationDot)
+
+library.add(faGear,faPhotoFilm,faListUl,faFaceSmile,faCalendarDays,faLocationDot, faXmark)
 
 function Posts() {
   const {userInfo} = useUserInfo()
@@ -16,16 +17,24 @@ function Posts() {
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [imgPost, setImgPost] = useState("")
   const [isImage, setIsImage] = useState(false)
-
+  const [imgUrl, setImgUrl] = useState("");
+  const [xDisable, setXDisable] = useState(true)
   const handleClickInput = () =>{
     setBtnDisabled(false)
     document.getElementById('fileInput').click();
   }
 
   const handleFileChange =  (event) => {
-    setImgPost(event.target.files[0]);
+    const file = event.target.files[0]
+    setImgPost(file);
     setIsImage(true)
-  };
+    setXDisable(false)
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setImgUrl(e.target.result);
+    }
+    reader.readAsDataURL(file);
+    }
 
   const handleSendPost = () =>{
     if(isImage){
@@ -62,14 +71,23 @@ function Posts() {
               <div className={style.profileImgContainer}>
                   <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`}/>
               </div>
-              <textarea name='sendPost' value={sendPost} onChange={(e) => {setSendPost(e.target.value); setBtnDisabled(false)}} placeholder='Neler oluyor?'></textarea>
+              <div style={{display:"flex", flexDirection:"column", flex:"1", paddingRight:"20px"}}>
+                <textarea name='sendPost' value={sendPost} onChange={(e) => {setSendPost(e.target.value); setBtnDisabled(false)}} placeholder='Neler oluyor?'></textarea>
+                {
+                  isImage &&  
+                  <div style={{position:"relative"}}>
+                    <FontAwesomeIcon onClick={() => {setImgUrl(""); setXDisable(true)}} style={{display: xDisable ? "none" : "block", padding:"8px 10px",backgroundColor:"#252525", borderRadius:"999px", position:"absolute",top:"5px",right:"5px"}} icon="fa-solid fa-xmark" />
+                    <img style={{width:"100%" , objectFit:"cover", display:"block", borderRadius:"10px", marginBottom:"10px"}} src={imgUrl}/>
+                  </div>
+                }
+              </div>
             </div>
-            <div style={{paddingLeft:"55px", paddingRight:"30px", display:"flex", justifyContent:"space-between", margin:"10px 0px"}}>
+            <div style={{paddingLeft:"75px", paddingRight:"20px", display:"flex", justifyContent:"space-between", margin:"10px 0px"}}>
               <div className={style.categories}>
                 <ul>
                   <li>
                     <button onClick={handleClickInput}><FontAwesomeIcon icon="fa-solid fa-photo-film"/></button>
-                    <input type='file' id="fileInput" onChange={handleFileChange} style={{display:"none"}} />
+                    <input type='file' id="fileInput" accept="image/*" onChange={handleFileChange} style={{display:"none"}} />
                   </li>
                   <li><FontAwesomeIcon icon="fa-solid fa-list-ul" /></li>
                   <li><FontAwesomeIcon icon="fa-regular fa-face-smile" /></li>
