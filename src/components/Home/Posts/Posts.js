@@ -35,6 +35,7 @@ function Posts() {
       }
       addImgPosts(postDetail, userInfo)
     }else{
+      setIsImage(false)
       const postInfo = {
         userName:userInfo.userName,
         userSurname: userInfo.userSurname,
@@ -44,6 +45,7 @@ function Posts() {
       addPosts(postInfo)
     }
     setSendPost("")
+    setIsImage(false)
     setBtnDisabled(true)
   }
 
@@ -82,7 +84,7 @@ function Posts() {
               {
                 allPosts.map((post, index)=>{
                   return(
-                    <Post key={index} post={post}/>
+                    <Post key={index} post={post} />
                   )
                 })
               }

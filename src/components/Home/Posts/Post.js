@@ -5,7 +5,6 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faRetweet, faChartSimple, faArrowUpFromBracket} from '@fortawesome/free-solid-svg-icons'
 import { faComment, faHeart, faBookmark  } from '@fortawesome/free-regular-svg-icons'
 import { getDownloadURL, ref, getStorage } from 'firebase/storage'
-import { storage } from '../../../firebase'
 library.add(faComment,faRetweet,faHeart,faChartSimple,faBookmark,faArrowUpFromBracket)
 function Post({ post}) {
     const [downloadURL, setDownloadURL] = useState("");
@@ -24,7 +23,6 @@ function Post({ post}) {
             }
           }
         };
-    
         fetchImageURL();
       }, [post.userPost.postImg]);
 
