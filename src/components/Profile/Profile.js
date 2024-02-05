@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import style from "../../style.module.css"
 import Menu from '../Home/Menu/Menu'
 import Agenda from '../Home/Agenda/Agenda'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+import "./tabstyle.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
@@ -42,6 +45,24 @@ function Profile() {
                   <span style={{color: "rgb(92, 91, 91)"}}>@{userInfo.userNick}</span>
                   <span style={{color: "rgb(92, 91, 91)", paddingTop:"20px"}}>katılma tarihi</span>
                   <span style={{color: "rgb(92, 91, 91)", paddingTop:"20px"}}><span style={{color:"#fff" ,fontWeight:700,}}>1</span> Takip edilen <span style={{color:"#fff",fontWeight:700,}}>1</span> Takipçi</span>
+                </div>
+                <div>
+                  <Tabs className={style.tabs}>
+                    <TabList>
+                    <Tab>Gönderiler</Tab>
+                    <Tab>Yanıtlar</Tab>
+                    <Tab>Öne Çıkanlar</Tab>
+                    <Tab>Medya</Tab>
+                    <Tab>Beğeni</Tab>
+                    </TabList>
+
+                    <TabPanel>
+                    <h2>Any content 1</h2>
+                    </TabPanel>
+                    <TabPanel>
+                    <h2>Any content 2</h2>
+                    </TabPanel>
+                  </Tabs>
                 </div>
               </div>
             </div>
