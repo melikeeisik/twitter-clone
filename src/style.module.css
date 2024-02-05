@@ -472,7 +472,6 @@
     height: 40px;
 }
 .userProfile img{
-    margin-top: 5px;
     height: 100%;
     object-fit: contain;
 }
@@ -507,7 +506,7 @@
     margin-top: 20px;
     display: grid;
     grid-template-columns: 4fr 1fr;
-    color: rgb(92, 91, 91);
+    color: #5c5b5b;
 }
 .reactionOne{
     display: flex;
@@ -648,7 +647,48 @@
     font-weight: 700
 }
 .postInfoPage{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
     color: #fff;
+    position: relative;
+}
+.postInfo{
+    padding: 20px;
+    border-left: 1px solid #3e3d3d;;
+}
+.postInfo .userInfo{
+    display: flex;
+    gap: 10px;
+}
+.postInfo .userImg{
+    width: 50px;
+}
+.postInfoPage .reactionOne{
+    padding: 15px 10px;
+    font-size: 17px;
+    border-bottom: 1px solid #3e3d3d;
+    border-top: 1px solid #3e3d3d;
+}
+.postText{
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.postInfo input{
+    width: 100%;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    outline: none;
+} 
+.postImg{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(24, 23, 23, 0.5);
+}
+.postImg .reactionOne{
+    display: flex;
+    gap: 100px;
 }

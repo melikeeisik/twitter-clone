@@ -1,39 +1,54 @@
 import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import style from "../../../style.module.css"
 import { getDownloadURL, ref, getStorage } from 'firebase/storage'
 import { usePosts } from '../../../context/PostsContext'
+import { useUserInfo } from '../../../context/UserInfoContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faRetweet, faChartSimple, faArrowUpFromBracket} from '@fortawesome/free-solid-svg-icons'
-import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons'
-library.add(faComment,faRetweet,faHeart,faChartSimple,faArrowUpFromBracket)
+import { faRetweet, faChartSimple, faArrowUpFromBracket, faXmark} from '@fortawesome/free-solid-svg-icons'
+import { faComment, faHeart,faBookmark } from '@fortawesome/free-regular-svg-icons'
+library.add(faComment,faRetweet,faHeart,faChartSimple,faArrowUpFromBracket,faBookmark,faXmark)
 
 function PostInfo() {
     const postId = useParams()
     const [imgUrl, setImgUrl] = useState("");
     const {allPosts} = usePosts()
     const [post,setPost] = useState({})
-
+    const {userInfo} = useUserInfo()
+    const navigate = useNavigate()
+    console.log(allPosts)
+    console.log(post)
     useEffect(() => {
-        const showPost = allPosts.find(post => post.id == postId.postId)
-        setPost(showPost)
-        const fetchImageURL = async () => {
+        const showPost = allPosts.find(post => post.id == postId.postId);
+  
+        if (showPost) {
+            setPost(showPost);
+
+            const fetchImageURL = async () => {
             const storage = getStorage();
             const storageRef = ref(storage, showPost.userPost.postImg);
             try {
-              const url = await getDownloadURL(storageRef);
-              setImgUrl(url);
+                const url = await getDownloadURL(storageRef);
+                setImgUrl(url);
             } catch (error) {
-              console.error('Error getting download URL:', error);
+                console.error('Error getting download URL:', error);
             }
-          };
-        fetchImageURL();
-      }, [postId.postId]);
+            };
+
+            fetchImageURL();
+        }
+    }, [postId.postId]);
+
+      const closePostInfo = () =>{
+        navigate("/home")
+      }
+    
 
   return (
     <div className={style.postInfoPage}>
-        <div>
+        <FontAwesomeIcon onClick={closePostInfo} style={{padding:"8px 10px", borderRadius:"999px", position:"absolute",top:"15px",left:"10px"}} icon="fa-solid fa-xmark" />
+        <div className={style.postImg}>
             <div>
                 <img src={imgUrl} />
             </div>
@@ -45,23 +60,32 @@ function PostInfo() {
                 <FontAwesomeIcon icon="fa-solid fa-arrow-up-from-bracket" />
             </div>
         </div>
-        <div>
-            <div>
+        <div className={style.postInfo}>
+            <div className={style.userInfo}>
                 <div>
-                    <img src={`https://api.multiavatar.com/${post.userNick}.png`}/>
+                    <img className={style.userImg} src={`https://api.multiavatar.com/${post.userNick}.png`}/>
                 </div>
-                <div>
-                    <div>
-                        <span>{post.userName}</span>
-                        <span>{post.userSurname}</span>
-                    </div>
-                    <span>@{post.userNick}</span>
+                <div style={{display:"flex", flexDirection:"column"}}>
+                    <span style={{fontWeight:700}}>{post.userName} {post.userSurname}</span>
+                    <span style={{color:"#5c5b5b"}}>@{post.userNick}</span>
                 </div>
             </div>
-            <div>
+            <div className={style.postText}>
                 {post.userPost.postText && <span>{post.userPost.postText}</span>}
             </div>
+            <div className={style.reactionOne}>
+                <FontAwesomeIcon icon="fa-regular fa-comment" />
+                <FontAwesomeIcon icon="fa-solid fa-retweet" />
+                <FontAwesomeIcon icon="fa-regular fa-heart" />
+                <FontAwesomeIcon icon="fa-regular fa-bookmark" />
+                <FontAwesomeIcon icon="fa-solid fa-arrow-up-from-bracket" />
+            </div>
+            <div style={{display:"flex", padding:"10px", gap:"10px", borderBottom:" 1px solid #3e3d3d"}}>
+                <img className={style.userImg}  src={`https://api.multiavatar.com/${userInfo.userNick}.png`} />
+                <input placeholder='Yanıtını gönder' type='text' />
+            </div>
         </div>
+        
     </div>
   )
 }

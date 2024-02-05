@@ -12,7 +12,6 @@ function Post({ post}) {
     const navigate = useNavigate();
 
     const showPost = (postId) =>{
-        console.log(postId)
         navigate(`/postinfo/${postId}`);
     }
 
@@ -24,8 +23,7 @@ function Post({ post}) {
             try {
               const url = await getDownloadURL(storageRef);
               setDownloadURL(url);
-              console.log(url)
-            } catch (error) {
+           } catch (error) {
               console.error('Error getting download URL:', error);
             }
           }

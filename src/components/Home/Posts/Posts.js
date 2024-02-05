@@ -19,6 +19,9 @@ function Posts() {
   const [isImage, setIsImage] = useState(false)
   const [imgUrl, setImgUrl] = useState("");
   const [xDisable, setXDisable] = useState(true)
+
+  console.log(allPosts)
+
   const handleClickInput = () =>{
     setBtnDisabled(false)
     document.getElementById('fileInput').click();
