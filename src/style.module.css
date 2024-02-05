@@ -270,6 +270,7 @@
     list-style: none;
     padding: 0px;
     margin: 0px;
+    color: #fff;
 }
 .menuBar ul li {
     width: 250px;
@@ -531,6 +532,8 @@
     right: 0px;
     top: 0px;
     background-color: #000;
+    border-left: 1px solid #23252a;
+    margin-right: 50px;
 }
 .searchBox{
     background-color: #000;
@@ -598,6 +601,7 @@
 }
 .agendaName{
     font-size: 16px !important;
+    color: #fff;
 }
 .followPeople{
     background-color: #1a1b1e;
@@ -692,3 +696,60 @@
     display: flex;
     gap: 100px;
 }
+.profilePageContainer{
+    display: flex;
+    flex-direction: column;
+    width: calc(100%-825);
+    margin-left: 401px;
+    margin-right: 425px;
+}
+.profileHeader{
+    color: #fff;
+    display: flex;
+    position: sticky;
+    top: 0px;
+    padding: 10px 20px;
+    gap: 20px;
+    align-items: center;
+    background-color: #000;
+}
+.userCoverImg{
+    width: 100%;
+    height: 200px;
+    background-image: url("https://picsum.photos/seed/picsum/200/300");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.userInfoContainer{
+    width: 100%;
+    padding-top: 10px;
+    position: relative;
+}
+.userInfoContainer button{
+    margin-right: 10px;
+    background-color: #000;
+    border: 1px solid rgb(83, 100, 113);;
+    color: #fff;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 999px;
+}
+.userInfoContainer .profileInfoBox{
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 25px;
+}
+.userInfoContainer .profilePicture {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    top: -75px;
+    left: 20px;
+    background-color: #000;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

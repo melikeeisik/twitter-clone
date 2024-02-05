@@ -18,7 +18,7 @@ function Agenda() {
         </div>
       </div>
       <div className={style.agendaContainer}>
-        <span>İlgini çekebilecek gündemler</span>
+        <span style={{color:'#fff'}}>İlgini çekebilecek gündemler</span>
         <div className={style.agendaList}>
           <ul>
             <li>
@@ -37,7 +37,7 @@ function Agenda() {
         </div>
       </div>
       <div className={style.followPeople}>
-        <span>Kimi takip etmeli</span>
+        <span style={{color:'#fff'}}>Kimi takip etmeli</span>
         <div className={style.peopleList}>
           <ul>
           {userList.slice(0, 3).map((user, index) => (
@@ -47,7 +47,7 @@ function Agenda() {
                   <img src={`https://api.multiavatar.com/${user.userNick}.png`} alt={`Avatar for ${user.userNick}`} />
                 </div>
                 <div className={style.peopleName}>
-                  <span style={{ fontWeight: 600, fontSize: 16 }}>{user.userName} {user.userSurname}</span>
+                  <span style={{ fontWeight: 600, fontSize: 16 , color:"#fff", fontWeight:700}}>{user.userName} {user.userSurname}</span>
                   <span style={{ fontWeight: 400, fontSize: 14, color: "#666565" }}>@{user.userNick}</span>
                 </div>
               </div>

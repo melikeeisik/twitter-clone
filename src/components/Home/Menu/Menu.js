@@ -57,7 +57,7 @@ function Menu() {
                         <span>Mesajlar</span>
                     </li>
                     <li>
-                        <Link to="/profile"> 
+                        <Link to={`/profile/${userInfo.userNick}`}> 
                             <FontAwesomeIcon icon="fa-regular fa-user" />
                             <span>Profil</span>
                         </Link> 
@@ -81,7 +81,7 @@ function Menu() {
                     <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`}/>
                 </div>
                 <div className={style.profileNameContainer}>
-                    <span style={{display:"flex", fontWeight:"700"}}>{userInfo.userName} {userInfo.userSurname}</span>
+                    <span style={{display:"flex", fontWeight:"700", color:"#fff", fontWeight:700}}>{userInfo.userName} {userInfo.userSurname}</span>
                     <span style={{color:"#5c5b5b"}}>@{userInfo.userNick}</span>
                 </div>
                 
