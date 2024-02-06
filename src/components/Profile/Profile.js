@@ -10,19 +10,26 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { useParams } from 'react-router-dom'
 import { useUsers } from '../../context/UsersContext'
-import { useUserInfo } from '../../context/UserInfoContext'
-import { usePosts } from '../../context/PostsContext';
 import UsersPost from './UsersPost';
+import { collection, getDocs } from "firebase/firestore";
+import {db} from "../../firebase"
+
 library.add(faArrowLeft)
+
 function Profile() {
-  const {userList} = useUsers()
   const userNickName = useParams()
-  
-  const {userInfo} = useUserInfo()
-  useEffect (() =>{
-    
-   // user = userList.find(user => user.userNick == userNickName.userNick)
-  }, [userNickName]) 
+  const [userInfo , setUserInfo] = useState({})
+    useEffect(() => {
+      const findUser = async() =>{
+          const querySnapshot = await getDocs(collection(db, "users"));
+          querySnapshot.forEach((doc) => {
+              if(doc.data().userNick == userNickName.userNick){
+                setUserInfo(doc.data())
+              }
+          });
+      }
+      findUser()
+  }, [userInfo]);
 
   return (
     <div >
@@ -49,7 +56,7 @@ function Profile() {
                   <span style={{color: "rgb(92, 91, 91)", paddingTop:"20px"}}><span style={{color:"#fff" ,fontWeight:700,}}>1</span> Takip edilen <span style={{color:"#fff",fontWeight:700,}}>1</span> Takipçi</span>
                 </div>
                 <div>
-                  <Tabs className={style.tabs}>
+                  <Tabs >
                     <TabList>
                     <Tab>Gönderiler</Tab>
                     <Tab>Yanıtlar</Tab>
@@ -60,6 +67,15 @@ function Profile() {
 
                     <TabPanel>
                       <UsersPost user={userInfo} />
+                    </TabPanel>
+                    <TabPanel>
+                      
+                    </TabPanel>
+                    <TabPanel>
+                      
+                    </TabPanel>
+                    <TabPanel>
+                      
                     </TabPanel>
                     <TabPanel>
                       

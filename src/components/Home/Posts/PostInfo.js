@@ -8,35 +8,56 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faRetweet, faChartSimple, faArrowUpFromBracket, faXmark} from '@fortawesome/free-solid-svg-icons'
 import { faComment, faHeart,faBookmark } from '@fortawesome/free-regular-svg-icons'
+import { query, where, collection, getDocs } from "firebase/firestore";
+import {db} from "../../../firebase"
+
 library.add(faComment,faRetweet,faHeart,faChartSimple,faArrowUpFromBracket,faBookmark,faXmark)
 
 function PostInfo() {
-    const {postId} = useParams()
+    const {postId}= useParams()
     const [imgUrl, setImgUrl] = useState("");
-    const {allPosts} = usePosts()
     const [post,setPost] = useState({})
     const {userInfo} = useUserInfo()
     const navigate = useNavigate()
 
     useEffect(() => {
-        const showPost = allPosts.find(post => post.id == postId);
-        if (showPost) {
-            setPost(showPost);
+        /*const findPost = async() =>{
+            const querySnapshot = await getDocs(collection(db, "posts"));
+            querySnapshot.forEach((doc) => {
+                if(doc.id == postId){
+                   setPost(doc.data())
+                }
+            });
+        }
+        findPost()*/
+        const a = async () =>{
+            const q = query(collection(db, "posts"), where("documentId", "==", postId));
+    
+            const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+              // doc.data() is never undefined for query doc snapshots
+              console.log(doc.id, " => ", doc.data());
+            });
+          }
+          a()
+    }, []);
+
+    useEffect(() =>{
+        if (post.userPost) {
             const fetchImageURL = async () => {
             const storage = getStorage();
-            const storageRef = ref(storage, showPost.userPost.postImg);
+            const storageRef = ref(storage, post.userPost.postImg);
             try {
                 const url = await getDownloadURL(storageRef);
                 setImgUrl(url);
             } catch (error) {
                 console.error('Error getting download URL:', error);
-            }
-            };
-
+            }};
             fetchImageURL();
         }
-    }, [allPosts]);
+    }, [post.userPost])
 
+    console.log(post)
 
       const closePostInfo = () =>{
         navigate("/home")
@@ -47,7 +68,7 @@ function PostInfo() {
             <FontAwesomeIcon onClick={closePostInfo} style={{padding:"8px 10px", borderRadius:"999px", position:"absolute",top:"15px",left:"10px"}} icon="fa-solid fa-xmark" />
             <div className={style.postImg}>
                 <div style={{height:"90%",display:"flex", alignItems:"center"}}>
-                    <img src={imgUrl} />
+                    <img style={{height:"100%"}} src={imgUrl} />
                 </div>
                 <div className={style.reactionOne}>
                     <FontAwesomeIcon icon="fa-regular fa-comment" />

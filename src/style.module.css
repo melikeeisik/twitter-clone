@@ -3,18 +3,19 @@
     grid-template-columns: 1fr 1fr;
     color: #fff;
     position: relative;
+    height: 100vh;
 }
 .logo{
-    margin-top: 90px;
     font-size: 380px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .register{
-    margin-top: 70px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: self-start;
     font-family: "TwitterChirpExtendedHeavy","Verdana",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
 }
 .title{

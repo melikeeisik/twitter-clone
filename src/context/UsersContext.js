@@ -17,7 +17,7 @@ export const UsersProvider = ({children}) =>{
                 })
           }
         fetchUsers()
-    }, [])
+    }, [userList])
 
     const addUsers = (newUser) => {
         setUserList(newUser);
