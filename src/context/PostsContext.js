@@ -22,34 +22,41 @@ export const PostsProvider = ({children}) =>{
         fetchPost()
       }, [])
 
-    const addPosts = (newData) => {
-        addDoc(posts, newData)
-        setAllPosts([...allPosts, newData])
-        
-    };
-    
-    const addImgPosts = async (newData, user) => {
-        const storageRef = ref(storage, `images/${newData.postImg.name }`);
-        await uploadBytes(storageRef, newData.postImg).then(() =>{
-            console.log("yes")
-        });
 
-        const postInfo = {
-            userName:user.userName,
-            userSurname: user.userSurname,
-            userNick:user.userNick,
-            userPost:{
-                postText: newData.postText,
-                postImg:`images/${newData.postImg.name }`,
+      
+    const addPosts = async (newData, user) => {
+        let postInfo;
+        if(newData.postImg == ""){
+            postInfo = {
+                userName:user.userName,
+                userSurname: user.userSurname,
+                userNick:user.userNick,
+                userPost:{
+                    postText: newData.postText,
+                    postImg:"",
+                }
             }
-          
+        }else{
+            const storageRef = ref(storage, `images/${newData.postImg.name }`);
+            await uploadBytes(storageRef, newData.postImg).then(() =>{
+                console.log("yes")
+            });
+            postInfo = {
+                userName:user.userName,
+                userSurname: user.userSurname,
+                userNick:user.userNick,
+                userPost:{
+                    postText: newData.postText,
+                    postImg:`images/${newData.postImg.name }`,
+                }     
+            }
         }
         addDoc(posts, postInfo);
         setAllPosts([...allPosts, postInfo])
     };
       
       
-    const values = {allPosts,addPosts,addImgPosts} 
+    const values = {allPosts,addPosts} 
 
 
     return(

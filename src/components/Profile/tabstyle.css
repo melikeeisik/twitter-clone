@@ -37,4 +37,6 @@
     bottom: -5px;
     border-bottom: 4px solid #1d9bf0;
     background: #000;
+    border-radius: 60px 60px 10px 10px;
+
 }

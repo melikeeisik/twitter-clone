@@ -375,9 +375,9 @@
     border-top: 10px solid #000;
 }
 .posts{
-    width: calc(100%-772);
+    width: calc(100%-776);
     margin-left: 400px;
-    margin-right: 372px;
+    margin-right: 376px;
     border-left:  1px solid #3e3d3d;
     border-right:  1px solid #3e3d3d;
 }
@@ -492,7 +492,6 @@
     margin-bottom: 20px;
 }
 .userPostBox{
-    padding:0px 10px;
     max-height: 500px; 
     overflow: auto; 
 
@@ -533,7 +532,6 @@
     top: 0px;
     background-color: #000;
     border-left: 1px solid #23252a;
-    margin-right: 50px;
 }
 .searchBox{
     background-color: #000;
@@ -655,6 +653,7 @@
     grid-template-columns: 3fr 1fr;
     color: #fff;
     position: relative;
+    height: 100vh;
 }
 .postInfo{
     padding: 20px;
@@ -688,20 +687,22 @@
 .postImg{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: rgba(24, 23, 23, 0.5);
 }
 .postImg .reactionOne{
     display: flex;
     gap: 100px;
+    margin-bottom:10px ;
+    border: none;
 }
 .profilePageContainer{
     display: flex;
     flex-direction: column;
-    width: calc(100%-825);
+    width: calc(100%-777);
     margin-left: 401px;
-    margin-right: 425px;
+    margin-right: 376px;
 }
 .profileHeader{
     color: #fff;
@@ -752,24 +753,3 @@
     justify-content: center;
     align-items: center;
 }
-.react-tabs__tab-list {
-    display: flex;
-    justify-content: space-around;
-    background-color: #000;
-    padding: 10px;
-  }
-  
-  /* Seçili olan tab'ın stili */
-  .react-tabs__tab--selected {
-    color: #ffffff;
-    border-bottom: 1px solid #1d9bf0;
-    border-radius: 5px;
-  }
-  
-  /* TabPanel içeriği */
-  .react-tabs__tab-panel {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-top: 10px;
-  }

@@ -12,15 +12,13 @@ library.add(faGear,faPhotoFilm,faListUl,faFaceSmile,faCalendarDays,faLocationDot
 
 function Posts() {
   const {userInfo} = useUserInfo()
-  const {allPosts, addPosts,addImgPosts} = usePosts()
+  const {allPosts, addPosts} = usePosts()
   const [sendPost, setSendPost] = useState("")
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [imgPost, setImgPost] = useState("")
   const [isImage, setIsImage] = useState(false)
   const [imgUrl, setImgUrl] = useState("");
   const [xDisable, setXDisable] = useState(true)
-
-  console.log(allPosts)
 
   const handleClickInput = () =>{
     setBtnDisabled(false)
@@ -42,19 +40,17 @@ function Posts() {
   const handleSendPost = () =>{
     if(isImage){
       const postDetail = {
+        postText:sendPost,
         postImg:imgPost,
-        postText:sendPost
       }
-      addImgPosts(postDetail, userInfo)
+      addPosts(postDetail, userInfo)
     }else{
       setIsImage(false)
-      const postInfo = {
-        userName:userInfo.userName,
-        userSurname: userInfo.userSurname,
-        userNick:userInfo.userNick,
-        userPost: sendPost,
+      const postDetail = {
+        postText:sendPost,
+        postImg:"",
       }
-      addPosts(postInfo)
+      addPosts(postDetail, userInfo)
     }
     setSendPost("")
     setIsImage(false)

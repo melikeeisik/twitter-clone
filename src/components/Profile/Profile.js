@@ -11,11 +11,13 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { useParams } from 'react-router-dom'
 import { useUsers } from '../../context/UsersContext'
 import { useUserInfo } from '../../context/UserInfoContext'
+import { usePosts } from '../../context/PostsContext';
+import UsersPost from './UsersPost';
 library.add(faArrowLeft)
 function Profile() {
   const {userList} = useUsers()
   const userNickName = useParams()
-  console.log(userList)
+  
   const {userInfo} = useUserInfo()
   useEffect (() =>{
     
@@ -57,10 +59,10 @@ function Profile() {
                     </TabList>
 
                     <TabPanel>
-                    <h2>Any content 1</h2>
+                      <UsersPost user={userInfo} />
                     </TabPanel>
                     <TabPanel>
-                    <h2>Any content 2</h2>
+                      
                     </TabPanel>
                   </Tabs>
                 </div>

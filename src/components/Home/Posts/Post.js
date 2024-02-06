@@ -46,7 +46,7 @@ function Post({ post}) {
         <div className={style.postContainer}>
             <div >
                 {
-                    (!post.userPost.postImg  &&  <div className={style.userPostBox}><p>{post.userPost}</p></div> )
+                    (!post.userPost.postImg  &&  <div className={style.userPostBox}><p>{post.userPost.postText}</p></div> )
                 }
                 {
                     (post.userPost.postImg && 
