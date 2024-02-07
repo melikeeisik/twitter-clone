@@ -267,28 +267,32 @@
     justify-content:end;
     background-color: #000;
 }
-.menuBar ul {
+.menuList ul {
     list-style: none;
     padding: 0px;
     margin: 0px;
     color: #fff;
 }
-.menuBar ul li {
+.menuList ul li {
     width: 250px;
     padding: 0px;
     padding: 14px 0px;
 }
-.menuBar ul li svg{
+.menuList ul li svg{
     font-size: 22px;
 }
-.menuBar ul li span{
+.menuList ul li span{
     font-size: 21px;
     letter-spacing: 0.2px;
     margin-left: 20px;
 }
-.menuBar ul li a{
+.menuList ul li a{
     text-decoration: none;
     color: #fff;
+}
+.menuList ul li a.active svg,
+.menuList ul li a.active span {
+    font-weight: bold;
 }
 .mobileSend{
     display: none;
@@ -353,6 +357,8 @@
     height: 100px;
     left: 120px;
     transition: all 300ms ease-in-out;
+    color: #fff;
+    z-index: 999;
 }
 .logoutContainer span{
     display: flex;
@@ -587,15 +593,14 @@
     padding: 10px 0px;
     display: flex;
     flex-direction: column;
-    transition: all 300ms esa;
+    transition: all 300ms ease-in-out;
 }
-
 .agendaList ul li:hover{
     background-color:  #252525;
+    border-radius: 5px;
 }
 .agendaCategory{
-    font-size: 13px !important;
-    font-weight: 400 !important;
+    font-size: 13px !important;;
     color:  #666565;
 }
 .agendaName{
@@ -625,10 +630,20 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    transition: all 300ms ease-in-out;
+}
+.peopleList ul li:hover{
+    cursor: pointer;
+    background-color:  #252525;
+    border-radius: 5px;
 }
 .peopleInfo{
     display: flex;
     flex-direction: row;
+}
+.peopleLi:hover{
+    cursor: pointer;
+    background-color: #2b2a2a;
 }
 .peopleimg{
     width: 40px;
@@ -713,6 +728,7 @@
     padding: 10px 20px;
     gap: 20px;
     align-items: center;
+    z-index: 999;
     background-color: #000;
 }
 .userCoverImg{

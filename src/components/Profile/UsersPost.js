@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { usePosts } from '../../context/PostsContext'
-
+import Post from '../Home/Posts/Post'
 function UsersPost({user}) {
   const [usersPost,setUsersPost] = useState([])
   const {allPosts} = usePosts()
@@ -16,10 +16,10 @@ function UsersPost({user}) {
   }, [user])
 
   return (
-    <div>
+    <div style={{color:"#fff"}}>
       {
         usersPost.map((post, index) =>{
-          return <span style={{color:"#fff"}} key={index}>{post.userName}</span>
+          return <Post key={index} post={post} />
         })
       }
     </div>

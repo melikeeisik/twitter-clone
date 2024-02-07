@@ -17,6 +17,8 @@ function Menu() {
     const {userInfo, removeUserInfo} = useUserInfo()
     const [logoutDisable, setLogoutDisable] = useState(false)
     const navigate = useNavigate()
+    const [activePage, setActivePage] = useState("")
+
     const handleLogOutContainer = () =>{
         if(logoutDisable){
             setLogoutDisable(false)
@@ -30,20 +32,24 @@ function Menu() {
         navigate("/")
     }
 
+    const chanePage = (pageName) =>{
+        setActivePage(pageName)
+    }
+
   return (
     <div className={style.menuBar}>
         <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between"}} >
-            <div>
+            <div className={style.menuList}>
                 <ul>
                     <li>
-                        <Link to="/home">
+                        <Link to="/home" >
                             <FontAwesomeIcon style={{fontSize:30}} icon="fa-brands fa-x-twitter" />
                         </Link>
                     </li>
-                    <li>
+                    <li onClick={() => chanePage("home")}>
                         <Link to="/home">
                             <FontAwesomeIcon icon="fa-solid fa-house" />
-                            <span>Anasayfa</span>
+                            <span style={{fontWeight:activePage=="home" ? "bold" : ""}}>Anasayfa</span>
                         </Link>
                     </li>
                     <li>
@@ -58,10 +64,10 @@ function Menu() {
                         <FontAwesomeIcon icon="fa-regular fa-envelope" />
                         <span>Mesajlar</span>
                     </li>
-                    <li>
+                    <li  onClick={() => chanePage("profile")}>
                         <Link to={`/profile/${userInfo.userNick}`}> 
                             <FontAwesomeIcon icon="fa-regular fa-user" />
-                            <span>Profil</span>
+                            <span style={{fontWeight:activePage=="profile" ? "bold" : ""}}>Profil</span>
                         </Link> 
                     </li>
                     <li>

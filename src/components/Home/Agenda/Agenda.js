@@ -5,11 +5,17 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useUsers } from '../../../context/UsersContext'
 import arrayShuffle from 'array-shuffle';
+import { useNavigate } from 'react-router-dom'
 library.add(faMagnifyingGlass)
 
 function Agenda() {
   const {userList} = useUsers()
   const shuffledUserList = arrayShuffle(userList);
+  const navigate = useNavigate()
+
+  const goProfile = (userNick) =>{
+    navigate(`/profile/${userNick}`)
+  }
   return (
     <div className={style.agendaPage}>
       <div className={style.searchBox}>
@@ -44,7 +50,7 @@ function Agenda() {
             {
               shuffledUserList.length <3 &&
               shuffledUserList.map((user, index) => (
-                <li key={index}>
+                <li onClick={()=>goProfile(user.userNick)} key={index}>
                   <div className={style.peopleInfo}>
                     <div className={style.peopleimg}>
                       <img src={`https://api.multiavatar.com/${user.userNick}.png`} alt={`Avatar for ${user.userNick}`} />
@@ -64,7 +70,7 @@ function Agenda() {
             }
             {shuffledUserList.length > 3 &&
             shuffledUserList.slice(0, 3).map((user, index) => (
-              <li key={index}>
+              <li  key={index}>
                 <div className={style.peopleInfo}>
                   <div className={style.peopleimg}>
                     <img src={`https://api.multiavatar.com/${user.userNick}.png`} alt={`Avatar for ${user.userNick}`} />

@@ -7,15 +7,17 @@
     color: rgb(113, 118, 123);
     font-weight: 700;
     border-bottom: 1.5px solid#23252a;
+    
 }
   .react-tabs__tab--selected {
     border-radius: 5px;
     border: none;
     background: #000;
     color: #fff;
+    border-bottom: 4px solid #1d9bf0;
 }
   .react-tabs__tab-panel {
-    padding: 20px;
+    padding: 5px;
     border-radius: 5px;
     margin-top: 10px;
   }
