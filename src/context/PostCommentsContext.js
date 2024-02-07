@@ -1,11 +1,10 @@
-import { createContext, useContext, useState, useEffect } from "react";
-import { addDoc, collection, getDocs, doc, setDoc,updateDoc, arrayUnion,getDoc  } from "@firebase/firestore";
+import { createContext, useContext} from "react";
+import { doc, setDoc,getDoc  } from "@firebase/firestore";
 import { db } from "../firebase";
 
 const PostCommentContext = createContext();
 
 export const PostCommentsProvider = ({ children }) => {
-    const [postComments, setPostComments] = useState([]);
 
       const addComment = async (postId, comment, user) => {
           const commentRef = doc(db, "comments", `${postId}`);
@@ -38,7 +37,8 @@ export const PostCommentsProvider = ({ children }) => {
                   initialComments[user.userNick] = [{
                       comment: comment,
                       userName: user.userName,
-                      userSurname: user.userSurname
+                      userSurname: user.userSurname,
+                      userNick:user.userNick
                   }];
                   await setDoc(commentRef, {
                       comments: initialComments
@@ -57,8 +57,8 @@ export const PostCommentsProvider = ({ children }) => {
             if (docSnap.exists()) {
                 const commentData = docSnap.data();
                 const commentsById = commentData.comments || [];
-    
-                setPostComments(commentsById);
+                console.log(commentsById)
+                return commentsById;
             } else {
                 console.log("Belirtilen postId ile eşleşen belge bulunamadı.");
             }
@@ -67,7 +67,7 @@ export const PostCommentsProvider = ({ children }) => {
         }
     };
 
-    const values = { postComments,addComment, getCommentsByPostId };
+    const values = {addComment, getCommentsByPostId };
 
     return (
         <PostCommentContext.Provider value={values}>

@@ -24,7 +24,6 @@ function PostInfo() {
 
     useEffect(() => {
         const showPost = allPosts.find(post => post.id == postId);
-        console.log(postId)
         if (showPost) {
             setPost(showPost);
 
@@ -48,17 +47,17 @@ function PostInfo() {
     
   return (
     <div className={style.postInfoPage}> 
-            <FontAwesomeIcon onClick={closePostInfo} style={{padding:"8px 10px", borderRadius:"999px", position:"absolute",top:"15px",left:"10px"}} icon="fa-solid fa-xmark" />
             <div className={style.postImg}>
-                <div style={{height:"90%",display:"flex", alignItems:"center"}}>
-                    <img style={{height:"100%"}} src={imgUrl} alt={`${post.userNick} Kapak Resmi`} />
-                </div>
-                <div className={style.reactionOne}>
-                    <FontAwesomeIcon icon="fa-regular fa-comment" />
-                    <FontAwesomeIcon icon="fa-solid fa-retweet" />
-                    <FontAwesomeIcon icon="fa-regular fa-heart" />
-                    <FontAwesomeIcon icon="fa-solid fa-chart-simple" />
-                    <FontAwesomeIcon icon="fa-solid fa-arrow-up-from-bracket" />
+                <FontAwesomeIcon onClick={closePostInfo} style={{padding:"8px 10px", borderRadius:"999px", position:"fixed",top:"15px",left:"10px",zIndex:"999"}} icon="fa-solid fa-xmark" />
+                <div style={{position: "sticky", top:"0px", margin:"auto", width:"50%"}}>
+                    <img style={{ minHeight:"94vh", maxWidth:"95vh", objectFit:"cover"}} src={imgUrl} alt={`${post.userNick} Kapak Resmi`} />
+                    <div className={style.reactionOnePost}>
+                        <FontAwesomeIcon icon="fa-regular fa-comment" />
+                        <FontAwesomeIcon icon="fa-solid fa-retweet" />
+                        <FontAwesomeIcon icon="fa-regular fa-heart" />
+                        <FontAwesomeIcon icon="fa-solid fa-chart-simple" />
+                        <FontAwesomeIcon icon="fa-solid fa-arrow-up-from-bracket" />
+                    </div>
                 </div>
             </div>
             <div className={style.postInfo}>
@@ -84,10 +83,10 @@ function PostInfo() {
                 <div style={{display:"flex", padding:"10px", gap:"10px", borderBottom:" 1px solid #3e3d3d", alignItems:"center"}}>
                     <img className={style.userImg}  src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
                     <input name='comment' value={comment}  placeholder='Yanıtını gönder' type='text' onChange={(e) => setComment(e.target.value)} />
-                    <button onClick={() =>addComment(postId,comment,userInfo)} style={{ filter:comment=="" ?  "brightness(65%)":""}} disabled={comment == "" ? "disabled" : ""}>Yanıtla</button>
+                    <button onClick={() =>{addComment(postId,comment,userInfo); setComment("")}} style={{ filter:comment=="" ?  "brightness(65%)":""}} disabled={comment == "" ? "disabled" : ""}>Yanıtla</button>
                 </div>
                 <div>
-                    <PostComment postId={postId}  comment={comment}/>
+                    <PostComment postId={postId} />
                 </div>
             </div>
         </div>

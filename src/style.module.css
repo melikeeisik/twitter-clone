@@ -672,25 +672,25 @@
     height: 100vh;
 }
 .postInfo{
-    padding: 20px;
     border-left: 1px solid #3e3d3d;;
 }
 .postInfo .userInfo{
     display: flex;
     gap: 10px;
+    padding: 10px 20px;
 }
 .postInfo .userImg{
     width: 50px;
 }
 .postInfoPage .reactionOne{
-    padding: 15px 10px;
+    margin-top: 20px;
+    padding: 15px 20px;
     font-size: 17px;
     border-bottom: 1px solid #3e3d3d;
     border-top: 1px solid #3e3d3d;
 }
 .postText{
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding:10px 20px;
 }
 .postInfo input{
     width: 100%;
@@ -716,17 +716,14 @@
     cursor: pointer;
 }
 .postImg{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     background-color: rgba(24, 23, 23, 0.5);
+    position: relative
 }
-.postImg .reactionOne{
+.postImg .reactionOnePost{
     display: flex;
     gap: 100px;
-    margin-bottom:10px ;
     border: none;
+    margin-top: 10px;
 }
 .profilePageContainer{
     display: flex;
@@ -784,4 +781,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.commentReaction{
+    display: flex;
+    padding: 10px 70px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color:rgb(92, 91, 91);
+    border-bottom: 1px solid #3e3d3d;
 }
