@@ -86,7 +86,7 @@ function Menu() {
             </div>
             <div onClick={handleLogOutContainer}  className={style.profileContainer}>
                 <div className={style.profileImgContainer}>
-                    <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`}/>
+                    <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt={`${userInfo.userNick} Profil Resmi`}/>
                 </div>
                 <div className={style.profileNameContainer}>
                     <span style={{display:"flex", fontWeight:"700", color:"#fff", fontWeight:700}}>{userInfo.userName} {userInfo.userSurname}</span>

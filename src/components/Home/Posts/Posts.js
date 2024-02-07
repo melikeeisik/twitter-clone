@@ -68,7 +68,7 @@ function Posts() {
           <div className={style.createPost}>
             <div style={{display:"flex", gap:"15px"}}>
               <div className={style.profileImgContainer}>
-                  <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`}/>
+                  <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt='Profile Picture'/>
               </div>
               <div style={{display:"flex", flexDirection:"column", flex:"1", paddingRight:"20px"}}>
                 <textarea name='sendPost' value={sendPost} onChange={(e) => {setSendPost(e.target.value); setBtnDisabled(false)}} placeholder='Neler oluyor?'></textarea>
@@ -76,7 +76,7 @@ function Posts() {
                   isImage &&  
                   <div style={{position:"relative"}}>
                     <FontAwesomeIcon onClick={() => {setImgUrl(""); setXDisable(true)}} style={{display: xDisable ? "none" : "block", padding:"8px 10px",backgroundColor:"#252525", borderRadius:"999px", position:"absolute",top:"5px",right:"5px"}} icon="fa-solid fa-xmark" />
-                    <img style={{width:"100%" , objectFit:"cover", display:"block", borderRadius:"10px", marginBottom:"10px"}} src={imgUrl}/>
+                    <img style={{width:"100%" , objectFit:"cover", display:"block", borderRadius:"10px", marginBottom:"10px"}} src={imgUrl} alt={`Profile Picture`}/>
                   </div>
                 }
               </div>

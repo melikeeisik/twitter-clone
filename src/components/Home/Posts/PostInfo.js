@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import style from "../../../style.module.css"
 import { getDownloadURL, ref, getStorage } from 'firebase/storage'
 import { usePosts } from '../../../context/PostsContext'
+import PostComment from './PostComment'
 import { useUserInfo } from '../../../context/UserInfoContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -48,7 +49,7 @@ function PostInfo() {
             <FontAwesomeIcon onClick={closePostInfo} style={{padding:"8px 10px", borderRadius:"999px", position:"absolute",top:"15px",left:"10px"}} icon="fa-solid fa-xmark" />
             <div className={style.postImg}>
                 <div style={{height:"90%",display:"flex", alignItems:"center"}}>
-                    <img style={{height:"100%"}} src={imgUrl} />
+                    <img style={{height:"100%"}} src={imgUrl} alt={`${post.userNick} Kapak Resmi`} />
                 </div>
                 <div className={style.reactionOne}>
                     <FontAwesomeIcon icon="fa-regular fa-comment" />
@@ -61,7 +62,7 @@ function PostInfo() {
             <div className={style.postInfo}>
                 <div className={style.userInfo}>
                     <div>
-                        <img className={style.userImg} src={`https://api.multiavatar.com/${post.userNick}.png`}/>
+                        <img className={style.userImg} src={`https://api.multiavatar.com/${post.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
                     </div>
                     <div style={{display:"flex", flexDirection:"column"}}>
                         <span style={{fontWeight:700}}>{post.userName} {post.userSurname}</span>
@@ -79,8 +80,11 @@ function PostInfo() {
                     <FontAwesomeIcon icon="fa-solid fa-arrow-up-from-bracket" />
                 </div>
                 <div style={{display:"flex", padding:"10px", gap:"10px", borderBottom:" 1px solid #3e3d3d"}}>
-                    <img className={style.userImg}  src={`https://api.multiavatar.com/${userInfo.userNick}.png`} />
+                    <img className={style.userImg}  src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
                     <input placeholder='Yanıtını gönder' type='text' />
+                </div>
+                <div>
+                    <PostComment/>
                 </div>
             </div>
         </div>

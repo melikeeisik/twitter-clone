@@ -35,7 +35,7 @@ function Post({ post}) {
     <div className={style.postBox}>
         <div className={style.userInfoBox}>
             <div className={style.userProfile}>
-                <img  src={`https://api.multiavatar.com/${post.userNick}.png`}/>
+                <img  src={`https://api.multiavatar.com/${post.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
             </div>
             <div className={style.userNameBox}>
                 <span style={{fontWeight:700}}>{post.userName}</span>
@@ -53,7 +53,7 @@ function Post({ post}) {
                     <div >
                         <p>{post.userPost.postText}</p>
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
-                            <img onClick={() => showPost(post.id)}  style={{ border:"1px solid #3e3d3d", width:"100%" ,height: "300px", objectFit: 'cover', overflow: 'auto', borderRadius:"20px" }} src={downloadURL} alt="Post" />
+                            <img onClick={() => showPost(post.id)}  style={{ border:"1px solid #3e3d3d", width:"100%" ,height: "300px", objectFit: 'cover', overflow: 'auto', borderRadius:"20px" }} src={downloadURL} alt={`${post.userNick} Postu`} />
                     </div>
                     </div> )
                 }

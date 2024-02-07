@@ -53,7 +53,7 @@ function Agenda() {
                 <li onClick={()=>goProfile(user.userNick)} key={index}>
                   <div className={style.peopleInfo}>
                     <div className={style.peopleimg}>
-                      <img src={`https://api.multiavatar.com/${user.userNick}.png`} alt={`Avatar for ${user.userNick}`} />
+                      <img src={`https://api.multiavatar.com/${user.userNick}.png`} alt={`${user.userNick} Profil Resmi`} />
                     </div>
                     <div className={style.peopleName}>
                       <span style={{ fontWeight: 600, fontSize: 16 , color:"#fff", fontWeight:700}}>{user.userName} {user.userSurname}</span>
