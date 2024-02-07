@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faRetweet, faChartSimple, faArrowUpFromBracket, faXmark} from '@fortawesome/free-solid-svg-icons'
 import { faComment, faHeart,faBookmark } from '@fortawesome/free-regular-svg-icons'
-
+import { useComments } from '../../../context/PostCommentsContext'
 library.add(faComment,faRetweet,faHeart,faChartSimple,faArrowUpFromBracket,faBookmark,faXmark)
 
 function PostInfo() {
@@ -19,6 +19,8 @@ function PostInfo() {
     const {userInfo} = useUserInfo()
     const navigate = useNavigate()
     const {allPosts} = usePosts()
+    const [comment, setComment] = useState("")
+    const {addComment} = useComments()
 
     useEffect(() => {
         const showPost = allPosts.find(post => post.id == postId);
@@ -79,12 +81,13 @@ function PostInfo() {
                     <FontAwesomeIcon icon="fa-regular fa-bookmark" />
                     <FontAwesomeIcon icon="fa-solid fa-arrow-up-from-bracket" />
                 </div>
-                <div style={{display:"flex", padding:"10px", gap:"10px", borderBottom:" 1px solid #3e3d3d"}}>
+                <div style={{display:"flex", padding:"10px", gap:"10px", borderBottom:" 1px solid #3e3d3d", alignItems:"center"}}>
                     <img className={style.userImg}  src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
-                    <input placeholder='Yanıtını gönder' type='text' />
+                    <input name='comment' value={comment}  placeholder='Yanıtını gönder' type='text' onChange={(e) => setComment(e.target.value)} />
+                    <button onClick={() =>addComment(postId,comment,userInfo)} style={{ filter:comment=="" ?  "brightness(65%)":""}} disabled={comment == "" ? "disabled" : ""}>Yanıtla</button>
                 </div>
                 <div>
-                    <PostComment/>
+                    <PostComment postId={postId}  comment={comment}/>
                 </div>
             </div>
         </div>

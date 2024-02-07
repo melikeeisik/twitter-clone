@@ -1,9 +1,12 @@
 import React from 'react'
 
-function PostComment() {
+function PostComment({postId,comment}) {
+    
   return (
     <div>
-      postcomment
+      
+        deneme
+      
     </div>
   )
 }

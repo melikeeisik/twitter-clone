@@ -21,8 +21,6 @@ export const PostsProvider = ({children}) =>{
         }
         fetchPost()
       }, [])
-
-
       
     const addPosts = async (newData, user) => {
         let postInfo;

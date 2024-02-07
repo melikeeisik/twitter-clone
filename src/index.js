@@ -6,13 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import { UserInfoProvider } from './context/UserInfoContext';
 import { PostsProvider } from './context/PostsContext';
 import { UsersProvider } from './context/UsersContext';
+import { PostCommentsProvider } from './context/PostCommentsContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <UserInfoProvider>
       <PostsProvider>
-        <UsersProvider>        
-          <App />
+        <UsersProvider>  
+          <PostCommentsProvider >
+            <App />
+          </PostCommentsProvider>     
         </UsersProvider>
       </PostsProvider>
     </UserInfoProvider>

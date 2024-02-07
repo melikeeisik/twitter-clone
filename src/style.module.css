@@ -699,7 +699,22 @@
     color: #fff;
     font-size: 17px;
     outline: none;
+    max-height:100px ;
 } 
+.postInfo button{
+    padding:0px 20px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #1d9bf0;
+    border: 1px solid #1d9bf0;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+.postInfo button:hover{
+    cursor: pointer;
+}
 .postImg{
     display: flex;
     flex-direction: column;

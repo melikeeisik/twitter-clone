@@ -29,7 +29,7 @@ function Post({ post}) {
           }
         };
         fetchImageURL();
-      }, [post.userPost.postImg]);
+      }, [post]);
 
   return (
     <div className={style.postBox}>
