@@ -3,14 +3,19 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore} from '@firebase/firestore';
 import {getStorage} from "firebase/storage"
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBJAta7sfTMBPjM9SWJKo6W5KQPu1kKLaU",
-  authDomain: "react-app-edc94.firebaseapp.com",
-  projectId: "react-app-edc94",
-  storageBucket: "react-app-edc94.appspot.com",
-  messagingSenderId: "288362416337",
-  appId: "1:288362416337:web:9ae7e5d07da41f23b65df0",
-  measurementId: "G-58HFCXZTW8"
+  apiKey: "AIzaSyCWXet00VhGZUD3QAyUlpYv_bNmutISnZU",
+  authDomain: "clone-twitter-ce95b.firebaseapp.com",
+  projectId: "clone-twitter-ce95b",
+  storageBucket: "clone-twitter-ce95b.appspot.com",
+  messagingSenderId: "639190313426",
+  appId: "1:639190313426:web:8d6ab93282b9e50e19c00b",
+  measurementId: "G-4P30DSRZH2"
 };
 
 // Initialize Firebase

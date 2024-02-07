@@ -4,11 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useUsers } from '../../../context/UsersContext'
+import arrayShuffle from 'array-shuffle';
 library.add(faMagnifyingGlass)
 
 function Agenda() {
   const {userList} = useUsers()
-
+  const shuffledUserList = arrayShuffle(userList);
   return (
     <div className={style.agendaPage}>
       <div className={style.searchBox}>
@@ -40,24 +41,46 @@ function Agenda() {
         <span style={{color:'#fff'}}>Kimi takip etmeli</span>
         <div className={style.peopleList}>
           <ul>
-          {userList.slice(0, 3).map((user, index) => (
-            <li key={index}>
-              <div className={style.peopleInfo}>
-                <div className={style.peopleimg}>
-                  <img src={`https://api.multiavatar.com/${user.userNick}.png`} alt={`Avatar for ${user.userNick}`} />
+            {
+              shuffledUserList.length <3 &&
+              shuffledUserList.map((user, index) => (
+                <li key={index}>
+                  <div className={style.peopleInfo}>
+                    <div className={style.peopleimg}>
+                      <img src={`https://api.multiavatar.com/${user.userNick}.png`} alt={`Avatar for ${user.userNick}`} />
+                    </div>
+                    <div className={style.peopleName}>
+                      <span style={{ fontWeight: 600, fontSize: 16 , color:"#fff", fontWeight:700}}>{user.userName} {user.userSurname}</span>
+                      <span style={{ fontWeight: 400, fontSize: 14, color: "#666565" }}>@{user.userNick}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <button className={style.peopleFollowBtn}>
+                      Takip et
+                    </button>
+                  </div>
+                </li>
+              ))
+            }
+            {shuffledUserList.length > 3 &&
+            shuffledUserList.slice(0, 3).map((user, index) => (
+              <li key={index}>
+                <div className={style.peopleInfo}>
+                  <div className={style.peopleimg}>
+                    <img src={`https://api.multiavatar.com/${user.userNick}.png`} alt={`Avatar for ${user.userNick}`} />
+                  </div>
+                  <div className={style.peopleName}>
+                    <span style={{ fontWeight: 600, fontSize: 16 , color:"#fff", fontWeight:700}}>{user.userName} {user.userSurname}</span>
+                    <span style={{ fontWeight: 400, fontSize: 14, color: "#666565" }}>@{user.userNick}</span>
+                  </div>
                 </div>
-                <div className={style.peopleName}>
-                  <span style={{ fontWeight: 600, fontSize: 16 , color:"#fff", fontWeight:700}}>{user.userName} {user.userSurname}</span>
-                  <span style={{ fontWeight: 400, fontSize: 14, color: "#666565" }}>@{user.userNick}</span>
+                <div>
+                  <button className={style.peopleFollowBtn}>
+                    Takip et
+                  </button>
                 </div>
-              </div>
-              <div>
-                <button className={style.peopleFollowBtn}>
-                  Takip et
-                </button>
-              </div>
-            </li>
-          ))}
+              </li>
+            ))}
           </ul>
         </div>
       </div>

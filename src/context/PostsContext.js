@@ -20,7 +20,7 @@ export const PostsProvider = ({children}) =>{
               })
         }
         fetchPost()
-      }, [allPosts])
+      }, [])
 
 
       

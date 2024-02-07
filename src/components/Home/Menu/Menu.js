@@ -41,8 +41,10 @@ function Menu() {
                         </Link>
                     </li>
                     <li>
-                        <FontAwesomeIcon icon="fa-solid fa-house" />
-                        <span>Anasayfa</span>
+                        <Link to="/home">
+                            <FontAwesomeIcon icon="fa-solid fa-house" />
+                            <span>Anasayfa</span>
+                        </Link>
                     </li>
                     <li>
                         <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />

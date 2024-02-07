@@ -11,25 +11,22 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { useParams } from 'react-router-dom'
 import { useUsers } from '../../context/UsersContext'
 import UsersPost from './UsersPost';
-import { collection, getDocs } from "firebase/firestore";
-import {db} from "../../firebase"
 
 library.add(faArrowLeft)
 
 function Profile() {
   const userNickName = useParams()
   const [userInfo , setUserInfo] = useState({})
-    useEffect(() => {
-      const findUser = async() =>{
-          const querySnapshot = await getDocs(collection(db, "users"));
-          querySnapshot.forEach((doc) => {
-              if(doc.data().userNick == userNickName.userNick){
-                setUserInfo(doc.data())
-              }
-          });
+  const {userList} = useUsers([])
+
+  useEffect(() => {
+    if(userList){
+      const showUser = userList.find(user => user.userNick == userNickName.userNick) 
+      if(showUser){
+        setUserInfo(showUser)
       }
-      findUser()
-  }, [userInfo]);
+    }
+  }, [userNickName]);
 
   return (
     <div >

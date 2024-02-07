@@ -17,10 +17,10 @@ export const UsersProvider = ({children}) =>{
                 })
           }
         fetchUsers()
-    }, [userList])
+    }, [])
 
     const addUsers = (newUser) => {
-        setUserList(newUser);
+        setUserList([...userList,newUser]);
         addDoc(users,newUser)
     };
 
