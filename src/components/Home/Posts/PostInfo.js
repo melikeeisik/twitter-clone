@@ -66,7 +66,7 @@ function PostInfo() {
                         <img className={style.userImg} src={`https://api.multiavatar.com/${post.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
                     </div>
                     <div style={{display:"flex", flexDirection:"column"}}>
-                        <span style={{fontWeight:700}}>{post.userName} {post.userSurname}</span>
+                        <span style={{fontWeight:700}}>{post.userName} {post.userSurname} <span style={{color:"#5c5b5b",fontWeight:400}}>• {post.postDate}</span></span>
                         <span style={{color:"#5c5b5b"}}>@{post.userNick}</span>
                     </div>
                 </div>
