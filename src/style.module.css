@@ -801,3 +801,32 @@
     color:rgb(92, 91, 91);
     border-bottom: 1px solid #3e3d3d;
 }
+.messagesPages{
+    display:grid;
+    grid-template-columns:1.5fr 3fr;
+    margin-left: 400.8px;
+    color: #fff;
+    padding: 10px 15px;
+}
+.messagesHeader{
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    position: sticky;
+    top: 0px;
+}
+.messagesHeader span{
+    font-weight: 700;
+}
+.messagesHeader svg{
+    padding-right: 15px;
+}
+.messagesPages input{
+    background-color: #000;
+    border: 1px solid #3e3d3d;
+    outline: none;
+    width: 100%;
+    padding: 10px 0px;
+    border-radius: 20px;
+    margin-top: 25px;
+}

@@ -68,7 +68,7 @@ function Agenda() {
                 </li>
               ))
             }
-            {shuffledUserList.length > 3 &&
+            {shuffledUserList.length >= 3 &&
             shuffledUserList.slice(0, 3).map((user, index) => (
               <li  key={index}>
                 <div className={style.peopleInfo}>

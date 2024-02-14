@@ -1,11 +1,10 @@
 import './App.css';
 import Home from './components/Home/Home';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Profile from './components/Profile/Profile';
 import Register from './components/Register/Register';
-import SignUp from './components/Register/Signup/SignUp';
-import Login from './components/Register/Login/Login';
 import PostInfo from './components/Home/Posts/PostInfo';
+import Messages from './components/Messages/Messages';
 function App() {
   return (
     <div >
@@ -15,9 +14,8 @@ function App() {
                 <Route path='/' element={<Register/>}/>
                 <Route path='/home' element={<Home/>} />
                 <Route path='/profile/:userNick' element={<Profile/>} />
-                <Route path='/signup' element={<SignUp/>} />
-                <Route path='/login' element={<Login/>} />
-                <Route path='/postinfo/:postId' element={<PostInfo/>} />
+                <Route path='/postinfo/:postId' element={<PostInfo/>} />4
+                <Route path='/messages' element={<Messages/>} />
             </Routes>
         </Router>
     </div>

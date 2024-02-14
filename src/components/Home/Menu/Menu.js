@@ -35,7 +35,7 @@ function Menu() {
     const chanePage = (pageName) =>{
         setActivePage(pageName)
     }
-    
+
   return (
     <div className={style.menuBar}>
         <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between"}} >
@@ -61,8 +61,10 @@ function Menu() {
                         <span>Bildirimler</span>
                     </li>
                     <li>
-                        <FontAwesomeIcon icon="fa-regular fa-envelope" />
-                        <span>Mesajlar</span>
+                        <Link to="/messages">
+                            <FontAwesomeIcon icon="fa-regular fa-envelope" />
+                            <span style={{fontWeight:activePage=="home" ? "bold" : ""}}>Mesajlar</span>
+                        </Link>
                     </li>
                     <li  onClick={() => chanePage("profile")}>
                         <Link to={`/profile/${userInfo.userNick}`}> 
