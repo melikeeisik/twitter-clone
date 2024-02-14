@@ -42,6 +42,7 @@ function PostComment({postId}) {
                               <div style={{marginTop:"5px"}}>
                                 <span style={{fontWeight:700}}>{item.userName} {item.userSurname} </span>
                                 <span style={{color:"rgb(92, 91, 91)"}}>@{item.userNick}</span>
+                                <span style={{color:"rgb(92, 91, 91)"}}> • {item.commentDate}</span>
                               </div>
                               <div>
                                 {item.comment}

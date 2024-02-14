@@ -44,6 +44,19 @@ function PostInfo() {
       const closePostInfo = () =>{
         navigate(-1)
       }
+
+      const handleSendComment = () =>{
+        const day = new Date();
+        const dateDay = day.getDate()
+        const month = day.getMonth();
+        const year = day.getFullYear();
+        const monthsOfYear = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+        const monthName = monthsOfYear[month];
+        const currentDate = `${dateDay} ${monthName.slice(0,3)} ${year}`;
+    
+        addComment(postId,comment,userInfo, currentDate); 
+        setComment("")
+      }
     
   return (
     <div className={style.postInfoPage}> 
@@ -83,7 +96,7 @@ function PostInfo() {
                 <div style={{display:"flex", padding:"10px", gap:"10px", borderBottom:" 1px solid #3e3d3d", alignItems:"center"}}>
                     <img className={style.userImg}  src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
                     <input name='comment' value={comment}  placeholder='Yanıtını gönder' type='text' onChange={(e) => setComment(e.target.value)} />
-                    <button onClick={() =>{addComment(postId,comment,userInfo); setComment("")}} style={{ filter:comment=="" ?  "brightness(65%)":""}} disabled={comment == "" ? "disabled" : ""}>Yanıtla</button>
+                    <button onClick={handleSendComment} style={{ filter:comment=="" ?  "brightness(65%)":""}} disabled={comment == "" ? "disabled" : ""}>Yanıtla</button>
                 </div>
                 <div>
                     <PostComment postId={postId} />

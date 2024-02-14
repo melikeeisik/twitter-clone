@@ -5,7 +5,7 @@ import { db } from "../firebase";
 const PostCommentContext = createContext();
 
 export const PostCommentsProvider = ({ children }) => {
-      const addComment = async (postId, comment, user) => {
+      const addComment = async (postId, comment, user, date) => {
           const commentRef = doc(db, "comments", `${postId}`);
           try {
               const docSnap = await getDoc(commentRef);
@@ -18,7 +18,8 @@ export const PostCommentsProvider = ({ children }) => {
                           comment: comment,
                           userName: user.userName,
                           userSurname: user.userSurname,
-                          userNick:user.userNick
+                          userNick:user.userNick,
+                          commentDate: date,
 
                       });
                   } else {
@@ -27,7 +28,8 @@ export const PostCommentsProvider = ({ children }) => {
                           comment: comment,
                           userName: user.userName,
                           userSurname: user.userSurname,
-                          userNick:user.userNick
+                          userNick:user.userNick,
+                          commentDate: date,
 
                       }];
                   }
@@ -41,7 +43,8 @@ export const PostCommentsProvider = ({ children }) => {
                       comment: comment,
                       userName: user.userName,
                       userSurname: user.userSurname,
-                      userNick:user.userNick
+                      userNick:user.userNick,
+                      commentDate: date,
                   }];
                   await setDoc(commentRef, {
                       comments: initialComments
