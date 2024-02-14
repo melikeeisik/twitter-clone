@@ -41,7 +41,7 @@ function Profile() {
               <div className={style.userCoverImg}></div>
               <div className={style.userInfoContainer}>
                 <div className={style.profilePicture}>
-                  <img style={{width:"130px", objectFit:"contain"}} src={`https://api.multiavatar.com/${userInfo.userNick}.png`} />
+                  <img style={{width:"130px", objectFit:"contain"}} src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt='Profile Picture'/>
                 </div>
                 <div style={{width:"100%", display:"flex", justifyContent:"flex-end"}}>
                   <button>Profili düzenle</button>

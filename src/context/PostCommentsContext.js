@@ -18,14 +18,18 @@ export const PostCommentsProvider = ({ children }) => {
                       commentsObj[user.userNick].push({ 
                           comment: comment,
                           userName: user.userName,
-                          userSurname: user.userSurname
+                          userSurname: user.userSurname,
+                          userNick:user.userNick
+
                       });
                   } else {
 
                       commentsObj[user.userNick] = [{
                           comment: comment,
                           userName: user.userName,
-                          userSurname: user.userSurname
+                          userSurname: user.userSurname,
+                          userNick:user.userNick
+
                       }];
                   }
                   await setDoc(commentRef, {

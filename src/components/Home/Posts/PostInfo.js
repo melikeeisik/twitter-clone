@@ -42,7 +42,7 @@ function PostInfo() {
 
 
       const closePostInfo = () =>{
-        navigate("/home")
+        navigate(-1)
       }
     
   return (
