@@ -41,6 +41,7 @@ function Post({ post}) {
                 <span style={{fontWeight:700}}>{post.userName}</span>
                 <span style={{fontWeight:700}}>{post.userSurname}</span>
                 <span style={{color:"#5c5b5b"}}>@{post.userNick}</span>
+                <span style={{color:"#5c5b5b"}}>• {post.postDate}</span>
             </div>
         </div>
         <div className={style.postContainer}>

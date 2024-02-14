@@ -19,7 +19,7 @@ function Posts() {
   const [isImage, setIsImage] = useState(false)
   const [imgUrl, setImgUrl] = useState("");
   const [xDisable, setXDisable] = useState(true)
-
+  const [date, setDate] = useState("")
   const handleClickInput = () =>{
     setBtnDisabled(false)
     document.getElementById('fileInput').click();
@@ -38,19 +38,27 @@ function Posts() {
     }
 
   const handleSendPost = () =>{
+    const day = new Date();
+    const dateDay = day.getDate()
+    const month = day.getMonth();
+    const year = day.getFullYear();
+    const monthsOfYear = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+    const monthName = monthsOfYear[month];
+    setDate(`${dateDay} ${monthName.slice(0,3)} ${year}`)
+    
     if(isImage){
       const postDetail = {
         postText:sendPost,
         postImg:imgPost,
       }
-      addPosts(postDetail, userInfo)
+      addPosts(postDetail, userInfo, date)
     }else{
       setIsImage(false)
       const postDetail = {
         postText:sendPost,
         postImg:"",
       }
-      addPosts(postDetail, userInfo)
+      addPosts(postDetail, userInfo,date)
     }
     setSendPost("")
     setIsImage(false)

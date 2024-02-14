@@ -22,17 +22,18 @@ export const PostsProvider = ({children}) =>{
         fetchPost()
       }, [])
       
-    const addPosts = async (newData, user) => {
+    const addPosts = async (newData, user,date) => {
         let postInfo;
         if(newData.postImg == ""){
             postInfo = {
                 userName:user.userName,
                 userSurname: user.userSurname,
                 userNick:user.userNick,
+                postDate :date,
                 userPost:{
                     postText: newData.postText,
                     postImg:"",
-                }
+                },
             }
         }else{
             const storageRef = ref(storage, `images/${newData.postImg.name }`);
@@ -43,6 +44,7 @@ export const PostsProvider = ({children}) =>{
                 userName:user.userName,
                 userSurname: user.userSurname,
                 userNick:user.userNick,
+                postDate :date,
                 userPost:{
                     postText: newData.postText,
                     postImg:`images/${newData.postImg.name }`,
