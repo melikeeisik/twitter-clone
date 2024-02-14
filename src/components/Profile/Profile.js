@@ -49,7 +49,7 @@ function Profile() {
                 <div className={style.profileInfoBox}>
                   <span>{userInfo.userName} {userInfo.userSurname}</span>
                   <span style={{color: "rgb(92, 91, 91)"}}>@{userInfo.userNick}</span>
-                  <span style={{color: "rgb(92, 91, 91)", paddingTop:"20px"}}>katılma tarihi</span>
+                  <span style={{color: "rgb(92, 91, 91)", paddingTop:"20px"}}>{userInfo.userDate} tarihinde katıldı</span>
                   <span style={{color: "rgb(92, 91, 91)", paddingTop:"20px"}}><span style={{color:"#fff" ,fontWeight:700,}}>1</span> Takip edilen <span style={{color:"#fff",fontWeight:700,}}>1</span> Takipçi</span>
                 </div>
                 <div>

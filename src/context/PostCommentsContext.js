@@ -1,11 +1,10 @@
-import { createContext, useContext} from "react";
+import { createContext, useContext, useState} from "react";
 import { doc, setDoc,getDoc  } from "@firebase/firestore";
 import { db } from "../firebase";
 
 const PostCommentContext = createContext();
 
 export const PostCommentsProvider = ({ children }) => {
-
       const addComment = async (postId, comment, user) => {
           const commentRef = doc(db, "comments", `${postId}`);
           try {

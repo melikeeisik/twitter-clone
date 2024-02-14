@@ -11,6 +11,18 @@ library.add(faXTwitter, faApple,faX)
 function Register() {
     const [openForm, setOpenForm] = useState(false) 
     const [formName, setFormName] = useState("")
+    const [date, setDate] = useState("")
+
+    const handleDate = () =>{
+      setOpenForm(true); 
+      setFormName("signup")
+      const day = new Date();
+      const month = day.getMonth();
+      const year = day.getFullYear();
+      const monthsOfYear = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
+      const monthName = monthsOfYear[month];
+      setDate(`${monthName} ${year}`)
+    }
   return (
     <div style={{backgroundColor:openForm?"rgba(91, 112, 131, 0.4)" : ""}} className={style.registerPage}>
       <div style={{display:openForm ? "block" : "none" , opacity:""}} className={style.form}>
@@ -18,7 +30,7 @@ function Register() {
           <FontAwesomeIcon icon="fa-solid fa-x" />
         </div>
         {
-          formName=="signup" && <SignUp/>
+          formName=="signup" && <SignUp date={date}/>
         }
         {
           formName =="login" && <Login/>
@@ -48,7 +60,7 @@ function Register() {
             <div className={style.seperateText}>veya</div>
             <div className={style.seperateLine}></div>
         </div>
-        <button style={{opacity:openForm? "60%" : ""}} onClick={() => {setOpenForm(true); setFormName("signup")}} className={style.createAccountBtn}>
+        <button style={{opacity:openForm? "60%" : ""}} onClick={handleDate} className={style.createAccountBtn}>
             <span>Hesap oluştur</span>
         </button>
         <div style={{opacity:openForm? "60%" : ""}}>

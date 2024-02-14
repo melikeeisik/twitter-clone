@@ -5,24 +5,25 @@ import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom';
 import { useUserInfo } from '../../../context/UserInfoContext';
 import { useUsers } from '../../../context/UsersContext';
-function SignUp() {
+function SignUp({date}) {
   const {updateUserInfo} = useUserInfo() 
   const {userList,addUsers} = useUsers()
   const [formError, setFormError] = useState(false)
   const navigate = useNavigate()
+
+
   const {handleChange, handleSubmit, values, handleBlur, errors, touched} = useFormik({
     initialValues:{
       userName:"",
       userSurname:"",
       userNick: "",
-      userPassword:""
+      userPassword:"",
+      userDate: date,
     },onSubmit: values =>{
       const findUser = userList.find(user => user.userNick == values.userNick)
       if(findUser){
-        console.log("var")
         setFormError(true)
       }else{
-        console.log("hayır")
         updateUserInfo(values)
         addUsers(values)
         navigate("/home")
@@ -30,7 +31,6 @@ function SignUp() {
     },validationSchema:validationsSignup,
   })
 
-  console.log(userList)
 
   return (
     <div className={style.signupForm}>

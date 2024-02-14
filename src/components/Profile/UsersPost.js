@@ -11,7 +11,6 @@ function UsersPost({user}) {
       if(posts){
         setUsersPost(posts)
       }
-      console.log(usersPost)
     }
   }, [user])
 

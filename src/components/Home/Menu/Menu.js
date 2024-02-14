@@ -35,7 +35,7 @@ function Menu() {
     const chanePage = (pageName) =>{
         setActivePage(pageName)
     }
-
+    
   return (
     <div className={style.menuBar}>
         <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between"}} >
@@ -70,7 +70,7 @@ function Menu() {
                             <span style={{fontWeight:activePage=="profile" ? "bold" : ""}}>Profil</span>
                         </Link> 
                     </li>
-                    <li>
+                    <li className={style.sendContainer}>
                         <div className={style.mobileSend}>
                             <FontAwesomeIcon icon="fa-solid fa-plus" />
                         </div>
