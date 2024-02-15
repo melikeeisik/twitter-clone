@@ -1,28 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Menu from '../Home/Menu/Menu'
 import ChatContainer from './ChatContainer';
+import MessagesUsers from './MessagesUsers';
 import { BsEnvelopePlus } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoIosSearch } from "react-icons/io";
 import style from "../../style.module.css"
 import { useUserInfo } from '../../context/UserInfoContext';
+import { useUsers } from '../../context/UsersContext';
 function Messages() {
+    const [pageVisible, setPageVisible] = useState(false)
     const {userInfo} = useUserInfo()
+    const {userList} = useUsers()
+
   return (
     <div>
-        <Menu/>
-        <div className={style.messagesPages} >
+        <Menu pageVisible={pageVisible}/>
+        <div style={{display:pageVisible ? "block": "none"}} className={style.messageUsers}>
+            <MessagesUsers  userList={userList} setPageVisible={setPageVisible}/>
+        </div>
+        <div style={{backgroundColor:pageVisible?"rgba(91, 112, 131, 0.4)":""}}  className={style.messagesPages} >
             <div>
                 <div >
-                    <div className={style.messagesHeader}>
+                    <div style={{backgroundColor:pageVisible?"rgba(91, 112, 131, 0)":""}} className={style.messagesHeader}>
                         <span>Mesajlar</span>
                         <div>
                             <IoSettingsOutline />
-                            <BsEnvelopePlus />
+                            <BsEnvelopePlus onClick={() =>setPageVisible(true)} />
                         </div>
                     </div>
                     <div className={style.messageInput}>
-                        <input placeholder='Direk Mesajlarda Ara' />
+                        <input style={{backgroundColor:pageVisible?"rgba(91, 112, 131, 0)":""}} placeholder='Direk Mesajlarda Ara' />
                         <IoIosSearch />
                     </div>
                     <div>
@@ -88,7 +96,7 @@ function Messages() {
                     </div>
                 </div>
             </div>
-            <ChatContainer />
+            <ChatContainer pageVisible={pageVisible} />
         </div>
     </div>
   )

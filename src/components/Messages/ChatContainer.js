@@ -3,12 +3,12 @@ import style from "../../style.module.css"
 import { useUserInfo } from '../../context/UserInfoContext';
 import { VscSend } from "react-icons/vsc";
 
-function ChatContainer() {
+function ChatContainer({pageVisible}) {
     const {userInfo} = useUserInfo()
 
   return (
     <div className={style.chatContainer}>
-            <div  className={style.chatHeader}>
+            <div style={{backgroundColor:pageVisible?"rgba(91, 112, 121, 0)":""}}  className={style.chatHeader}>
                 <img style={{width:"40px", objectFit:"contain"}} src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt='Profile Picture'/>
                 <span style={{fontWeight:700}}>{userInfo.userName} {userInfo.userSurname}</span>
             </div>

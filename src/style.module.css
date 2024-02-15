@@ -816,7 +816,7 @@
     background-color: #000;
     top: 0px;
     padding: 10px 15px;
-    z-index: 999;
+    z-index: 1;
 }
 .messagesHeader span{
     font-weight: 700;
@@ -944,4 +944,41 @@
     right: 30px;
     font-size: 17px;
     color:#1d9bf0;
+}
+.messageUsers{
+    display: none;
+    position: fixed;
+    background-color: #000;
+    width: 550px;
+    z-index: 999;
+    height: 500px;
+    max-height: 500px;
+    color: #fff;
+    top: 10%;
+    left: 30%;
+    border-radius: 10px;
+}
+.searchMessageUser{
+    padding:5px 0px;
+    border-bottom:1px solid #3e3d3d;
+    position: relative;
+}
+.searchMessageUser input{
+    width:100%;
+    padding:10px 0px;
+    background-color:#000;
+    outline:none;
+    border:none;
+    color:#fff ;
+    text-indent: 25px;
+    font-size: 15px;
+}
+.searchMessageUser svg{
+    font-size: 20px;
+    position: absolute;
+    left: 0px;
+    bottom: 15px;
+}
+.searchMessageUser input:focus+svg{
+    color: #1d9bf0;
 }
