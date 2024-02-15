@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { IoCloseOutline } from "react-icons/io5";
 import { IoIosSearch } from "react-icons/io";
 import style from "../../style.module.css"
-function MessagesUsers({userList,setPageVisible}) {
-    const [users, setUsers] = useState([])
+function MessagesUsers({userList,setSelectedUser,setPageVisible}) {
+    const [users, setUsers] = useState(userList)
     const [searchName, setSearchName] = useState("")
+    const [click, setClick] = useState({})
 
     useEffect(() =>{
         const searchNameLower = searchName.toLocaleLowerCase()
@@ -25,7 +26,7 @@ function MessagesUsers({userList,setPageVisible}) {
                     </div>
                     <span style={{fontWeight:700, fontSize:20}}>Yeni mesaj</span>
                 </div>
-                <button style={{padding:"7px 20px", borderRadius:20, backgroundColor:"#fff", border:"1px solid #fff", fontWeight:700, fontSize:14}}>Sonraki</button>
+                <button className={style.selectUserBtn} onClick={() => {setSelectedUser(click);setPageVisible(false)}}>Sonraki</button>
             </div>
             <div className={style.searchMessageUser}>
                 <input value={searchName} placeholder='Kişi ara' onChange={(e) => setSearchName(e.target.value)} />
@@ -33,12 +34,12 @@ function MessagesUsers({userList,setPageVisible}) {
             </div>
         </div>
       </div>
-      <div>
-        <ul style={{margin:0,padding:0,listStyle:"none"}}>
+      <div className={style.searchUserList}>
+        <ul >
             {
                 users.map((user,index) =>{
                     return(
-                        <li style={{display:"flex", gap:"10px", padding:"10px 0px"}} key={index}>
+                        <li style={{backgroundColor:user == click ? "#2f3336" : ""}} onClick={() => setClick(user)} key={index}>
                             <img style={{width:"40px", objectFit:"contain"}} src={`https://api.multiavatar.com/${user.userNick}.png`} alt='Profile Picture' />
                             <div style={{display:"flex", flexDirection:"column"}}>
                                     <span style={{fontWeight:700}}>{user.userName} {user.userSurname}</span>

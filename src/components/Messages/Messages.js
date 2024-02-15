@@ -12,12 +12,14 @@ function Messages() {
     const [pageVisible, setPageVisible] = useState(false)
     const {userInfo} = useUserInfo()
     const {userList} = useUsers()
+    const [selectedUser, setSelectedUser] = useState({})
+    console.log(selectedUser)
 
   return (
     <div>
         <Menu pageVisible={pageVisible}/>
         <div style={{display:pageVisible ? "block": "none"}} className={style.messageUsers}>
-            <MessagesUsers  userList={userList} setPageVisible={setPageVisible}/>
+            <MessagesUsers  userList={userList} setSelectedUser={setSelectedUser} setPageVisible={setPageVisible}/>
         </div>
         <div style={{backgroundColor:pageVisible?"rgba(91, 112, 131, 0.4)":""}}  className={style.messagesPages} >
             <div>
@@ -96,7 +98,7 @@ function Messages() {
                     </div>
                 </div>
             </div>
-            <ChatContainer pageVisible={pageVisible} />
+            <ChatContainer selectedUser={selectedUser} pageVisible={pageVisible}  setPageVisible={setPageVisible}/>
         </div>
     </div>
   )
