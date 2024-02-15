@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import style from "../../style.module.css"
 import { useUserInfo } from '../../context/UserInfoContext';
 import { VscSend } from "react-icons/vsc";
-
+import { useMessages } from '../../context/MessagesContext';
 function ChatContainer({selectedUser,pageVisible,setPageVisible}) {
     const {userInfo} = useUserInfo()
+    const {sendMessages} = useMessages()
+    const [inputMessage,setInputMessage] = useState("")
+    
+    const handleSendMessage = () =>{
+        const messageInfo = {
+            senderId:selectedUser.id,
+            receiverId:userInfo.id,
+            message:inputMessage
+        }
+        sendMessages(messageInfo)
+        setInputMessage("")
+    }
+
+    useEffect(() =>{
+        
+    })
 
   return (
     <div className={style.chatContainer}>
@@ -26,12 +42,14 @@ function ChatContainer({selectedUser,pageVisible,setPageVisible}) {
                 <div className={style.chatBox}>
                     <div className={style.outgoingMessage}> 
                         {/*className={style.incomingMessage}*/}
-                        gregre
+                        
                     </div>
                 </div>
                 <div className={style.chatInput}>
-                    <VscSend />
-                    <input placeholder='Yeni bir mesaja başla' />
+                    <div onClick={handleSendMessage}>
+                        <VscSend />
+                    </div>
+                    <input value={inputMessage} placeholder='Yeni bir mesaja başla' onChange={(e) =>setInputMessage(e.target.value)} />
                 </div>
             </>
         }           

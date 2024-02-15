@@ -7,6 +7,7 @@ import { UserInfoProvider } from './context/UserInfoContext';
 import { PostsProvider } from './context/PostsContext';
 import { UsersProvider } from './context/UsersContext';
 import { PostCommentsProvider } from './context/PostCommentsContext';
+import { MessagesProvider } from './context/MessagesContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -14,7 +15,9 @@ root.render(
       <PostsProvider>
         <UsersProvider>  
           <PostCommentsProvider >
-            <App />
+            <MessagesProvider>
+              <App />
+            </MessagesProvider>
           </PostCommentsProvider>     
         </UsersProvider>
       </PostsProvider>

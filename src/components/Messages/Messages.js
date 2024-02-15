@@ -13,7 +13,6 @@ function Messages() {
     const {userInfo} = useUserInfo()
     const {userList} = useUsers()
     const [selectedUser, setSelectedUser] = useState({})
-    console.log(selectedUser)
 
   return (
     <div>
