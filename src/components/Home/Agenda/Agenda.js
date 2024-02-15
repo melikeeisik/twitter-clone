@@ -70,7 +70,7 @@ function Agenda() {
             }
             {shuffledUserList.length >= 3 &&
             shuffledUserList.slice(0, 3).map((user, index) => (
-              <li  key={index}>
+              <li onClick={()=>goProfile(user.userNick)}  key={index}>
                 <div className={style.peopleInfo}>
                   <div className={style.peopleimg}>
                     <img src={`https://api.multiavatar.com/${user.userNick}.png`} alt={`Avatar for ${user.userNick}`} />
