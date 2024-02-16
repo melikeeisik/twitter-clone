@@ -4,13 +4,22 @@ const MessagesContext = createContext()
 
 export const MessagesProvider = ({children}) =>{
     const [messages, setMessages] = useState([])
-    
-    const getMessages = (senderId, receiverId) =>{
-        fetch(`http://localhost:8090/messages/sender/${senderId}/receiver/${receiverId}`)
-        .then(res => res.json())
-        .then(data => setMessages(data))
-        .catch(error => console.error("Hata oluştu", error));
-        return messages;
+
+    const getMessages = async (senderId, receiverId) => {
+        try {
+            const response = await fetch(`http://localhost:8090/messages/sender/${senderId}/receiver/${receiverId}`, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: 'GET',
+            });
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error("Hata oluştu", error);
+            return [];
+        }
     }
     
     const sendMessages = (messageInfo) =>{
@@ -29,7 +38,7 @@ export const MessagesProvider = ({children}) =>{
         .catch(error => {
             console.error('fetchde hata', error); 
         });
-        setMessages([...messages, messageInfo])
+       
     }
 
     const values={

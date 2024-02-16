@@ -875,6 +875,7 @@
     flex-direction: column;
     height: 100vh; 
     justify-content: space-between;
+    
   }
   
   .chatHeader {
@@ -892,37 +893,56 @@
   .chatBox {
     display: flex;
     flex-direction: column;
-    overflow-y: auto; 
-    padding: 10px;
-    justify-content: space-between;
+    overflow:auto ; 
+    padding: 10px 15px;
   }
-  
+  .chatBox ul{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+  }
+  .chatBox ul li{
+    width: 100%;
+    padding: 0px;
+    margin-bottom: 5px;
+  }
+  .chatBox ul li:hover{
+    background-color: #000;
+  }
+  .outgoingMessageLi{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .incomingMessageLi{
+    display: flex;
+    justify-content: flex-start;
+  }
   .outgoingMessage {
     max-width: 200px;
-    min-width: 100px;
+    min-width: 50px;
     background-color: rgb(47, 51, 54);
     margin-left: 15px;
     border-radius: 25px;
-    padding: 10px;
-    margin-bottom: 8px;
-    align-self: flex-start; /* Mesajları sola yasla */
+    padding: 15px;
+    text-align: center;
   }
-  
   .incomingMessage {
+    text-align: center;
     max-width: 200px;
-    min-width: 100px;
+    min-width: 50px;
     background-color: rgb(26, 140, 216);
-    margin-right: 15px;
     border-radius: 25px;
-    padding: 10px;
-    align-self: flex-end; /* Mesajları sağa yasla */
+    padding: 15px;
+
   }
 .chatInput{
     padding: 7px 0px;
     border-top: 1px solid #3e3d3d;
     display: flex;
     justify-content: center;
-    position: relative;
+    position:sticky;
+    bottom: 0px;
+    background-color: #000;
 }
 .chatInput input{
     padding: 13px 0px;
@@ -934,6 +954,7 @@
     text-indent: 20px;
     color: #fff;
     font-size: 17px;
+   
 }
 .chatInput input::placeholder{
     font-size: 15px;
