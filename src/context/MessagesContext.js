@@ -1,10 +1,9 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext,useEffect, useState } from "react";
 
 const MessagesContext = createContext()
 
 export const MessagesProvider = ({children}) =>{
-    const [messages, setMessages] = useState([])
-
+    
     const getMessages = async (senderId, receiverId) => {
         try {
             const response = await fetch(`http://localhost:8090/messages/sender/${senderId}/receiver/${receiverId}`, {
@@ -23,7 +22,6 @@ export const MessagesProvider = ({children}) =>{
     }
     
     const sendMessages = (messageInfo) =>{
-        console.log("message", messageInfo)
         fetch(`http://localhost:8090/messages/send/${messageInfo.senderId}/receiver/${messageInfo.receiverId}`, {
             headers: {
                 'Accept': 'application/json',

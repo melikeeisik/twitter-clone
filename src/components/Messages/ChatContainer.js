@@ -3,11 +3,16 @@ import style from "../../style.module.css"
 import { useUserInfo } from '../../context/UserInfoContext';
 import { VscSend } from "react-icons/vsc";
 import { useMessages } from '../../context/MessagesContext';
+import {io} from "socket.io-client"
+
 function ChatContainer({selectedUser,pageVisible,setPageVisible}) {
     const {userInfo} = useUserInfo()
     const {getMessages,sendMessages} = useMessages()
     const [inputMessage,setInputMessage] = useState("")
     const [messages, setMessages] = useState([])
+    const socket = io('http://localhost:8090', {
+        path: '/ws'
+    });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,6 +22,15 @@ function ChatContainer({selectedUser,pageVisible,setPageVisible}) {
         fetchData();
     }, [selectedUser, userInfo]);
 
+    useEffect(() =>{
+        socket.on('chat', message => {
+            setMessages([...messages, message]);
+        });
+        return () => {
+            socket.disconnect();
+        };
+    }, [messages])
+
     
     const handleSendMessage = () =>{
         const messageInfo = {
@@ -25,6 +39,7 @@ function ChatContainer({selectedUser,pageVisible,setPageVisible}) {
             message:inputMessage
         }
         sendMessages(messageInfo)
+        socket.emit('chat', messageInfo);
         setInputMessage("")
         setMessages(prev => [...prev, messageInfo])
     }

@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { IoCloseOutline } from "react-icons/io5";
 import { IoIosSearch } from "react-icons/io";
 import style from "../../style.module.css"
+import { useUserInfo } from '../../context/UserInfoContext';
 function MessagesUsers({userList,setSelectedUser,setPageVisible}) {
     const [users, setUsers] = useState(userList)
     const [searchName, setSearchName] = useState("")
     const [click, setClick] = useState({})
-
+    const {userInfo} = useUserInfo()
     useEffect(() =>{
         const searchNameLower = searchName.toLocaleLowerCase()
-        const newUsers = userList.filter(user => user.userName.toLocaleLowerCase().includes(searchNameLower));
+        const newUsers = userList.filter(user => user.userName.toLocaleLowerCase().includes(searchNameLower) && user.userNick != userInfo.userNick);
         if(newUsers.length > 0){
             setUsers(newUsers)
         }
