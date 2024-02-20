@@ -19,7 +19,36 @@ function Posts() {
   const [isImage, setIsImage] = useState(false)
   const [imgUrl, setImgUrl] = useState("");
   const [xDisable, setXDisable] = useState(true)
-  const [date, setDate] = useState("")
+  const [newList, setNewList] = useState([])
+
+  useEffect(() => {
+    const newData = allPosts.sort((a, b) => {
+        const dayA = a.postDate.postDay.split(" ");
+        const dayB = b.postDate.postDay.split(" ");
+        const timeA = a.postDate.postTime.split(":");
+        const timeB = b.postDate.postTime.split(":");
+        const months = ["Oca", "Şub", "Mar", "Nis", "May", "Haz", "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"];
+        const monthA = months.indexOf(dayA[1]);
+        const monthB = months.indexOf(dayB[1]);
+
+        if (dayA[2] !== dayB[2]) {
+            return dayB[2] - dayA[2];
+        } else if (monthA !== monthB) {
+            return monthB - monthA;
+        } else if (parseInt(dayA[0]) !== parseInt(dayB[0])) {
+            return parseInt(dayB[0]) - parseInt(dayA[0]);
+        } else if (parseInt(timeA[0]) !== parseInt(timeB[0])) {
+            return parseInt(timeB[0]) - parseInt(timeA[0]);
+        } else if (parseInt(timeA[1]) !== parseInt(timeB[1])) {
+            return parseInt(timeB[1]) - parseInt(timeA[1]);
+        } else {
+            return 0;
+        }
+    });
+
+    setNewList(newData);
+}, [allPosts]);
+
   const handleClickInput = () =>{
     setBtnDisabled(false)
     document.getElementById('fileInput').click();
@@ -42,25 +71,27 @@ function Posts() {
       const dateDay = day.getDate()
       const month = day.getMonth();
       const year = day.getFullYear();
+      const hour = day.getHours();
+      const minute = day.getMinutes();
+      const second = day.getSeconds();
       const monthsOfYear = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
       const monthName = monthsOfYear[month];
       const currentDate = `${dateDay} ${monthName.slice(0,3)} ${year}`;
-  
-      setDate(currentDate);
-      
+      const currentTime = `${hour}:${minute}:${second}`
+        
       if(isImage){
         const postDetail = {
           postText:sendPost,
           postImg:imgPost,
         }
-        addPosts(postDetail, userInfo, currentDate)
+        addPosts(postDetail, userInfo, currentDate, currentTime)
       }else{
         setIsImage(false)
         const postDetail = {
           postText:sendPost,
           postImg:"",
         }
-        addPosts(postDetail, userInfo, currentDate)
+        addPosts(postDetail, userInfo, currentDate, currentTime)
       }
       setSendPost("")
       setIsImage(false)
@@ -109,7 +140,7 @@ function Posts() {
           </div>
           <div className={style.postsList}>
               {
-                allPosts.map((post, index)=>{
+                newList.map((post, index)=>{
                   return(
                     <Post key={index} post={post} />
                   )

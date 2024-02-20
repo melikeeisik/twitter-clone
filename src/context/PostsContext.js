@@ -10,6 +10,7 @@ export const PostsProvider = ({children}) =>{
     const posts = collection(db, "posts")
     const [allPosts, setAllPosts] = useState([])
 
+    
     useEffect(() =>{
         const fetchPost = async () => {
           await getDocs(collection(db, "posts"))
@@ -22,14 +23,17 @@ export const PostsProvider = ({children}) =>{
         fetchPost()
       }, [])
       
-    const addPosts = async (newData, user,date) => {
+    const addPosts = async (newData, user,date, time) => {
         let postInfo;
         if(newData.postImg == ""){
             postInfo = {
                 userName:user.userName,
                 userSurname: user.userSurname,
                 userNick:user.userNick,
-                postDate :date,
+                postDate :{
+                    postDay : date,
+                    postTime : time,
+                },
                 userPost:{
                     postText: newData.postText,
                     postImg:"",
@@ -44,7 +48,10 @@ export const PostsProvider = ({children}) =>{
                 userName:user.userName,
                 userSurname: user.userSurname,
                 userNick:user.userNick,
-                postDate :date,
+                postDate :{
+                    postDay : date,
+                    postTime : time,
+                },
                 userPost:{
                     postText: newData.postText,
                     postImg:`images/${newData.postImg.name }`,

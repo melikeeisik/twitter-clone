@@ -22,13 +22,24 @@ function ChatContainer({selectedUser,pageVisible,setPageVisible}) {
         fetchData();
     }, [selectedUser, userInfo]);
 
+    console.log("socket",socket)
+
     useEffect(() =>{
-        socket.on('chat', message => {
-            setMessages([...messages, message]);
+        const socket = new WebSocket('ws://localhost:8090/ws');
+        socket.onmessage = function(event) {
+        const message = JSON.parse(event.data);
+        console.log(message)
+    // Gelen mesajları işleyin
+        };
+        /*
+        console.log("useeffect")
+        socket.on('/messages/topic', message => {
+            console.log("chat response")
+            setMessages([prev => [...prev, message]]);
         });
         return () => {
             socket.disconnect();
-        };
+        };*/
     }, [messages])
 
     
@@ -39,7 +50,7 @@ function ChatContainer({selectedUser,pageVisible,setPageVisible}) {
             message:inputMessage
         }
         sendMessages(messageInfo)
-        socket.emit('chat', messageInfo);
+        socket.emit('chatsend', messageInfo);
         setInputMessage("")
         setMessages(prev => [...prev, messageInfo])
     }

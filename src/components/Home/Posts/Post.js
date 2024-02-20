@@ -15,6 +15,9 @@ function Post({ post}) {
         navigate(`/postinfo/${postId}`);
     }
 
+    const goProfile = () =>{
+        navigate(`/profile/:userNick`)
+    }
     useEffect(() => {
         const fetchImageURL = async () => {
           if (post.userPost.postImg ) {
@@ -33,7 +36,7 @@ function Post({ post}) {
 
   return (
     <div className={style.postBox}>
-        <div className={style.userInfoBox}>
+        <div onClick={goProfile} className={style.userInfoBox}>
             <div className={style.userProfile}>
                 <img  src={`https://api.multiavatar.com/${post.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
             </div>
@@ -41,7 +44,7 @@ function Post({ post}) {
                 <span style={{fontWeight:700}}>{post.userName}</span>
                 <span style={{fontWeight:700}}>{post.userSurname}</span>
                 <span style={{color:"#5c5b5b"}}>@{post.userNick}</span>
-                <span style={{color:"#5c5b5b"}}>• {post.postDate}</span>
+                <span style={{color:"#5c5b5b"}}>• {post.postDate.postDay}</span>
             </div>
         </div>
         <div className={style.postContainer}>
