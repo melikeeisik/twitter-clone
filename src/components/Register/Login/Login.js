@@ -20,7 +20,6 @@ function Login() {
       userNick: "",
       userPassword:""
     },onSubmit:values=>{
-      console.log(userList)
       const findUser = userList.find(user => user.userNick == values.userNick)
       if(findUser){
         if(findUser.userPassword != values.userPassword){

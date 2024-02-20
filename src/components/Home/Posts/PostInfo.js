@@ -21,7 +21,7 @@ function PostInfo() {
     const {allPosts} = usePosts()
     const [comment, setComment] = useState("")
     const {addComment} = useComments()
-
+    const [newComment, setNewComment] = useState(0)
     useEffect(() => {
         const showPost = allPosts.find(post => post.id == postId);
         if (showPost) {
@@ -56,6 +56,7 @@ function PostInfo() {
     
         addComment(postId,comment,userInfo, currentDate); 
         setComment("")
+        setNewComment(prev => prev + 1)
       }
     
   return (
@@ -79,7 +80,7 @@ function PostInfo() {
                         <img className={style.userImg} src={`https://api.multiavatar.com/${post.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
                     </div>
                     <div style={{display:"flex", flexDirection:"column"}}>
-                        <span style={{fontWeight:700}}>{post.userName} {post.userSurname} <span style={{color:"#5c5b5b",fontWeight:400}}>• {post.postDate}</span></span>
+                        <span style={{fontWeight:700}}>{post.userName} {post.userSurname} <span style={{color:"#5c5b5b",fontWeight:400}}>• {post.postDate ? post.postDate.postDay : ""}</span></span>
                         <span style={{color:"#5c5b5b"}}>@{post.userNick}</span>
                     </div>
                 </div>
@@ -99,7 +100,7 @@ function PostInfo() {
                     <button onClick={handleSendComment} style={{ filter:comment=="" ?  "brightness(65%)":""}} disabled={comment == "" ? "disabled" : ""}>Yanıtla</button>
                 </div>
                 <div>
-                    <PostComment postId={postId} />
+                    <PostComment postId={postId} newComment={newComment} />
                 </div>
             </div>
         </div>

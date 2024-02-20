@@ -7,7 +7,7 @@ import { faRetweet, faChartSimple, faArrowUpFromBracket, faXmark} from '@fortawe
 import { faComment, faHeart,faBookmark } from '@fortawesome/free-regular-svg-icons'
 library.add(faComment,faRetweet,faHeart,faChartSimple,faArrowUpFromBracket,faBookmark,faXmark)
 
-function PostComment({postId}) {
+function PostComment({postId, newComment}) {
     const [comments, setComments] = useState([])
     const {getCommentsByPostId} = useComments()
 
@@ -21,8 +21,7 @@ function PostComment({postId}) {
             }
         };
         fetchData();
-     
-    }, []);
+    }, [newComment]);
 
 
   return (

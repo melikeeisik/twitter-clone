@@ -20,10 +20,8 @@ export const PostCommentsProvider = ({ children }) => {
                           userSurname: user.userSurname,
                           userNick:user.userNick,
                           commentDate: date,
-
                       });
                   } else {
-
                       commentsObj[user.userNick] = [{
                           comment: comment,
                           userName: user.userName,
@@ -63,8 +61,7 @@ export const PostCommentsProvider = ({ children }) => {
             if (docSnap.exists()) {
                 const commentData = docSnap.data();
                 const commentsById = commentData.comments || [];
-                console.log(commentsById)
-                return commentsById;
+                return commentsById
             } else {
                 console.log("Belirtilen postId ile eşleşen belge bulunamadı.");
             }
