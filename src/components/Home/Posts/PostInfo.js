@@ -66,7 +66,7 @@ function PostInfo() {
             <div className={style.postImg}>
                 <FontAwesomeIcon onClick={closePostInfo} style={{padding:"8px 10px", borderRadius:"999px", position:"fixed",top:"15px",left:"10px",zIndex:"999"}} icon="fa-solid fa-xmark" />
                 <div style={{position: "sticky", top:"0px", margin:"auto", width:"50%"}}>
-                    <img style={{ minHeight:"94vh", maxWidth:"95vh", objectFit:"cover", zIndex:"999"}} src={imgUrl} alt={`${post.userNick} Kapak Resmi`} />
+                    <img style={{ minHeight:"94vh", maxWidth:"95vh", objectFit:"contain", zIndex:"999"}} src={imgUrl} alt={`${post.userNick} Kapak Resmi`} />
                     <div className={style.reactionOnePost}>
                         <FontAwesomeIcon icon="fa-regular fa-comment" />
                         <FontAwesomeIcon icon="fa-solid fa-retweet" />
