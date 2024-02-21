@@ -109,7 +109,7 @@ function PostInfoPage() {
             </div>
             <div style={{display:"flex", alignItems:"center",borderBottom:"1px solid #3e3d3d", justifyContent:"space-between"}}>
               <div style={{display:"flex", gap:10, alignItems:"center"}}>
-                <img style={{width:"50px", objectFit:"contain"}} src={`https://api.multiavatar.com/${post.userNick}.png`} alt='Profile Picture' />
+                <img style={{width:"50px", objectFit:"contain"}} src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt='Profile Picture' />
                 <input placeholder='Yanıtını gönder'  name='comment' value={comment} onChange={(e) => setComment(e.target.value)}    style={{background:"#000", outline:"none", border:"none", width:"80vh", padding:"25px 0px",color:"#fff", fontSize:20}} />
               </div>
               <button onClick={handleSendComment} disabled={comment == "" ? "disabled" : ""} style={{border:"none", backgroundColor:"#1a8cd8", padding:"10px 20px",borderRadius:"20px", fontWeight:700,color:"#fff", fontSize:15, filter:comment=="" ?  "brightness(65%)":""}}>Yanıtla</button>
