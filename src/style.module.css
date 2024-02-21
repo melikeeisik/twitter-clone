@@ -391,11 +391,11 @@
     border-top: 10px solid #000;
 }
 .posts{
-    width: calc(100%-776);
+    min-width: 746px;
     margin-left: 400px;
     margin-right: 370px;
     border-left:  1px solid #3e3d3d;
-    border-right:  1px solid #3e3d3d;
+   
 }
 .postsHeader{
     width: 100%;
@@ -547,7 +547,7 @@
     right: 0px;
     top: 0px;
     background-color: #000;
-    border-left: 1px solid #23252a;
+    border-left: 1px solid #3e3d3d;
 }
 .searchBox{
     background-color: #000;
