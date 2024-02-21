@@ -11,13 +11,15 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { useParams } from 'react-router-dom'
 import { useUsers } from '../../context/UsersContext'
 import UsersPost from './UsersPost';
+import { useNavigate } from 'react-router-dom';
 
 library.add(faArrowLeft)
 
 function Profile() {
   const userNickName = useParams()
   const [userInfo , setUserInfo] = useState({})
-  const {userList} = useUsers([])
+  const {userList} = useUsers()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if(userList){
@@ -34,7 +36,7 @@ function Profile() {
         <div className={style.postAndAgendaPart}>
           <div className={style.profilePageContainer}>
             <div className={style.profileHeader}>
-              <FontAwesomeIcon icon="fa-solid fa-arrow-left" />
+              <FontAwesomeIcon onClick={() =>navigate(-1)}  icon="fa-solid fa-arrow-left" />
               <span style={{fontWeight:700, fontSize:"19px"}}>{userInfo.userName} {userInfo.userSurname}</span>
             </div>
             <div>

@@ -16,7 +16,7 @@ function Post({ post}) {
     }
 
     const goProfile = () =>{
-        navigate(`/profile/:userNick`)
+        navigate(`/profile/${post.userNick}`)
     }
     useEffect(() => {
         const fetchImageURL = async () => {
@@ -35,12 +35,12 @@ function Post({ post}) {
       }, [post]);
 
   return (
-    <div className={style.postBox}>
-        <div onClick={goProfile} className={style.userInfoBox}>
-            <div className={style.userProfile}>
+    <div onClick={() => navigate(`/postinfopage/${post.id}`)} className={style.postBox}>
+        <div className={style.userInfoBox}>
+            <div  onClick={goProfile} className={style.userProfile}>
                 <img  src={`https://api.multiavatar.com/${post.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
             </div>
-            <div className={style.userNameBox}>
+            <div  onClick={goProfile} className={style.userNameBox}>
                 <span style={{fontWeight:700}}>{post.userName}</span>
                 <span style={{fontWeight:700}}>{post.userSurname}</span>
                 <span style={{color:"#5c5b5b"}}>@{post.userNick}</span>

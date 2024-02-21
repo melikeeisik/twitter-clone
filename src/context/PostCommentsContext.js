@@ -5,7 +5,8 @@ import { db } from "../firebase";
 const PostCommentContext = createContext();
 
 export const PostCommentsProvider = ({ children }) => {
-      const addComment = async (postId, comment, user, date) => {
+    const [comments, setComments] = useState({})
+      const addComment = async (postId, comment, user, date, time) => {
           const commentRef = doc(db, "comments", `${postId}`);
           try {
               const docSnap = await getDoc(commentRef);
@@ -19,7 +20,10 @@ export const PostCommentsProvider = ({ children }) => {
                           userName: user.userName,
                           userSurname: user.userSurname,
                           userNick:user.userNick,
-                          commentDate: date,
+                          commentDate: {
+                            commentDay : date,
+                            commentTime: time,
+                          },
                       });
                   } else {
                       commentsObj[user.userNick] = [{
@@ -27,13 +31,18 @@ export const PostCommentsProvider = ({ children }) => {
                           userName: user.userName,
                           userSurname: user.userSurname,
                           userNick:user.userNick,
-                          commentDate: date,
+                          commentDate: {
+                            commentDay : date,
+                            commentTime: time,
+                          },
 
                       }];
                   }
                   await setDoc(commentRef, {
                       comments: commentsObj
                   }, { merge: true });
+                  setComments(commentsObj);
+
                 }
                 else {
                   const initialComments = {};
@@ -42,11 +51,16 @@ export const PostCommentsProvider = ({ children }) => {
                       userName: user.userName,
                       userSurname: user.userSurname,
                       userNick:user.userNick,
-                      commentDate: date,
+                      commentDate: {
+                        commentDay : date,
+                        commentTime: time,
+                      },
                   }];
                   await setDoc(commentRef, {
                       comments: initialComments
                   });
+                  setComments(initialComments);
+
               }
           } catch (error) {
               console.error("Yorum eklenirken hata oluştu: ", error);
@@ -61,7 +75,7 @@ export const PostCommentsProvider = ({ children }) => {
             if (docSnap.exists()) {
                 const commentData = docSnap.data();
                 const commentsById = commentData.comments || [];
-                return commentsById
+                setComments(commentsById)
             } else {
                 console.log("Belirtilen postId ile eşleşen belge bulunamadı.");
             }
@@ -70,7 +84,7 @@ export const PostCommentsProvider = ({ children }) => {
         }
     };
 
-    const values = {addComment, getCommentsByPostId };
+    const values = {addComment, getCommentsByPostId, comments,setComments };
 
     return (
         <PostCommentContext.Provider value={values}>

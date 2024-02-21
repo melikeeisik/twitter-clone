@@ -5,6 +5,7 @@ import Profile from './components/Profile/Profile';
 import Register from './components/Register/Register';
 import PostInfo from './components/Home/Posts/PostInfo';
 import Messages from './components/Messages/Messages';
+import PostInfoPage from './components/Home/Posts/PostInfoPage';
 function App() {
   return (
     <div >
@@ -14,7 +15,8 @@ function App() {
                 <Route path='/' element={<Register/>}/>
                 <Route path='/home' element={<Home/>} />
                 <Route path='/profile/:userNick' element={<Profile/>} />
-                <Route path='/postinfo/:postId' element={<PostInfo/>} />4
+                <Route path='/postinfo/:postId' element={<PostInfo/>} />
+                <Route path='/postinfopage/:postId' element={<PostInfoPage/>} />
                 <Route path='/messages' element={<Messages/>} />
             </Routes>
         </Router>

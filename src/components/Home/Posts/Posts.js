@@ -7,7 +7,7 @@ import { faGear, faPhotoFilm, faListUl, faLocationDot,faXmark } from '@fortaweso
 import { faFaceSmile, faCalendarDays } from '@fortawesome/free-regular-svg-icons'
 import { useUserInfo } from '../../../context/UserInfoContext'
 import { usePosts } from '../../../context/PostsContext'
-
+import { useNavigate } from 'react-router-dom'
 library.add(faGear,faPhotoFilm,faListUl,faFaceSmile,faCalendarDays,faLocationDot, faXmark)
 
 function Posts() {
@@ -20,6 +20,7 @@ function Posts() {
   const [imgUrl, setImgUrl] = useState("");
   const [xDisable, setXDisable] = useState(true)
   const [newList, setNewList] = useState([])
+  const navigate = {useNavigate}
 
   useEffect(() => {
     const newData = allPosts.sort((a, b) => {
@@ -142,7 +143,7 @@ function Posts() {
               {
                 newList.map((post, index)=>{
                   return(
-                    <Post key={index} post={post} />
+                    <Post  key={index} post={post} />
                   )
                 })
               }

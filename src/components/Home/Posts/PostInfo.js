@@ -21,7 +21,6 @@ function PostInfo() {
     const {allPosts} = usePosts()
     const [comment, setComment] = useState("")
     const {addComment} = useComments()
-    const [newComment, setNewComment] = useState(0)
     useEffect(() => {
         const showPost = allPosts.find(post => post.id == postId);
         if (showPost) {
@@ -50,13 +49,16 @@ function PostInfo() {
         const dateDay = day.getDate()
         const month = day.getMonth();
         const year = day.getFullYear();
+        const hour = day.getHours();
+        const minute = day.getMinutes();
+        const second = day.getSeconds();
         const monthsOfYear = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"];
         const monthName = monthsOfYear[month];
         const currentDate = `${dateDay} ${monthName.slice(0,3)} ${year}`;
-    
-        addComment(postId,comment,userInfo, currentDate); 
+        const currentTime = `${hour}:${minute}:${second}`
+
+        addComment(postId,comment,userInfo, currentDate, currentTime); 
         setComment("")
-        setNewComment(prev => prev + 1)
       }
     
   return (
@@ -64,7 +66,7 @@ function PostInfo() {
             <div className={style.postImg}>
                 <FontAwesomeIcon onClick={closePostInfo} style={{padding:"8px 10px", borderRadius:"999px", position:"fixed",top:"15px",left:"10px",zIndex:"999"}} icon="fa-solid fa-xmark" />
                 <div style={{position: "sticky", top:"0px", margin:"auto", width:"50%"}}>
-                    <img style={{ minHeight:"94vh", maxWidth:"95vh", objectFit:"cover"}} src={imgUrl} alt={`${post.userNick} Kapak Resmi`} />
+                    <img style={{ minHeight:"94vh", maxWidth:"95vh", objectFit:"cover", zIndex:"999"}} src={imgUrl} alt={`${post.userNick} Kapak Resmi`} />
                     <div className={style.reactionOnePost}>
                         <FontAwesomeIcon icon="fa-regular fa-comment" />
                         <FontAwesomeIcon icon="fa-solid fa-retweet" />
@@ -100,7 +102,7 @@ function PostInfo() {
                     <button onClick={handleSendComment} style={{ filter:comment=="" ?  "brightness(65%)":""}} disabled={comment == "" ? "disabled" : ""}>Yanıtla</button>
                 </div>
                 <div>
-                    <PostComment postId={postId} newComment={newComment} />
+                    <PostComment postId={postId}/>
                 </div>
             </div>
         </div>
