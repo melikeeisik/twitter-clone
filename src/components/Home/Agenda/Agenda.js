@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from  "../../../style.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -6,25 +6,31 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useUsers } from '../../../context/UsersContext'
 import arrayShuffle from 'array-shuffle';
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 library.add(faMagnifyingGlass)
 
-function Agenda() {
+function Agenda({postContainer}) {
   const {userList} = useUsers()
-  const shuffledUserList = arrayShuffle(userList);
+  const [shuffledUserList,setShuffledUserList] = useState([])
   const navigate = useNavigate()
+
+  useEffect(() =>{
+    setShuffledUserList(arrayShuffle(userList))
+  }, [userList])
 
   const goProfile = (userNick) =>{
     navigate(`/profile/${userNick}`)
   }
+  
   return (
-    <div className={style.agendaPage}>
-      <div className={style.searchBox}>
+    <div style={{backgroundColor:postContainer ?"rgba(91, 112, 131, 0.4)":""}} className={style.agendaPage}>
+      <div style={{backgroundColor:postContainer ?"rgba(91, 112, 131, 0)":""}} className={style.searchBox}>
         <input type='text' placeholder='Ara' /> 
         <div>
           <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
         </div>
       </div>
-      <div className={style.agendaContainer}>
+      <div style={{backgroundColor:postContainer ?"rgba(91, 112, 131, 0)":""}} className={style.agendaContainer}>
         <span style={{color:'#fff'}}>İlgini çekebilecek gündemler</span>
         <div className={style.agendaList}>
           <ul>
@@ -43,7 +49,7 @@ function Agenda() {
           </ul>
         </div>
       </div>
-      <div className={style.followPeople}>
+      <div style={{backgroundColor:postContainer ?"rgba(91, 112, 131, 0)":""}} className={style.followPeople}>
         <span style={{color:'#fff'}}>Kimi takip etmeli</span>
         <div className={style.peopleList}>
           <ul>

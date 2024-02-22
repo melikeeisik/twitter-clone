@@ -395,7 +395,29 @@
     margin-left: 400px;
     margin-right: 370px;
     border-left:  1px solid #3e3d3d;
-   
+    position: relative;
+}
+.sendPostContainer{
+    display: none;
+    position: absolute;
+    z-index: 999;
+    background-color: #000;
+    margin-top: 50px;
+    margin-left: 10vh;
+    padding: 15px;
+    border-radius: 15px;
+}
+.sendPostContainer textarea {
+    color:#fff;
+    font-size:18px;
+    background-color:#000;
+    border:none;
+    outline:none;
+    resize:none;
+    min-height: 150px;
+    overflow-y: hidden;
+    width:560px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;;
 }
 .postsHeader{
     width: 100%;
@@ -446,7 +468,7 @@
     margin-left: 10px;
 }
 
-.createPost .categories ul{
+ .categories ul{
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -454,15 +476,18 @@
     margin-block-start: 0px;
     margin-block-end: 0px;
 }
-.createPost .categories ul li{
+.categories ul li{
     padding-right:20px;
 }
-.createPost .categories ul li button{
+ .categories ul li button{
     color: #1d9bf0;
     background-color: transparent;
     border: none;
 }
-.createPost .send{
+.categories ul li svg{
+    color: #1d9bf0;
+}
+.send{
     padding: 12px 20px;
     border-radius: 20px;
     background-color: #1d9bf0;

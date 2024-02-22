@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from "../../../style.module.css"
 import {  Link } from 'react-router-dom';
 import Profile from "../../Profile/Profile"
@@ -13,11 +13,15 @@ import { useUserInfo } from '../../../context/UserInfoContext'
 
 library.add(faXTwitter,faHouse,faMagnifyingGlass,faBell,faEnvelope, faUser, faPlus)
 
-function Menu({pageVisible}) {
+function Menu({pageVisible,postContainer, setPostContainer}) {
     const {userInfo, removeUserInfo} = useUserInfo()
     const [logoutDisable, setLogoutDisable] = useState(false)
     const navigate = useNavigate()
     const [activePage, setActivePage] = useState("")
+
+    useEffect(() =>{
+
+    }, )
 
     const handleLogOutContainer = () =>{
         if(logoutDisable){
@@ -36,8 +40,9 @@ function Menu({pageVisible}) {
         setActivePage(pageName)
     }
 
+
   return (
-    <div style={{backgroundColor:pageVisible?"rgba(91, 112, 131, 0.4)":""}} className={style.menuBar}>
+    <div style={{backgroundColor:pageVisible || postContainer ?"rgba(91, 112, 131, 0.4)":""}} className={style.menuBar}>
         <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between"}} >
             <div className={style.menuList}>
                 <ul>
@@ -77,7 +82,7 @@ function Menu({pageVisible}) {
                             <FontAwesomeIcon icon="fa-solid fa-plus" />
                         </div>
                         <div >
-                            <button className={style.webSend}>Gönder</button>
+                            <button onClick={() => setPostContainer(true)} className={style.webSend}>Gönder</button>
                         </div>
                     </li>
                 </ul>
