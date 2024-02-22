@@ -110,7 +110,7 @@ function Posts({postContainer, setPostContainer}) {
     <div style={{backgroundColor:postContainer ?"rgba(91, 112, 131, 0.4)":"", minWidth:postContainer ?"765px":""}}  className={style.posts}>
         <div style={{display:postContainer ? "block": "none"}} className={style.sendPostContainer}>
           <div>
-            <IoCloseSharp onClick={() => {setPostContainer(false);  setIsImage(false)}} />
+            <IoCloseSharp style={{fontSize:22}} onClick={() => {setPostContainer(false);  setIsImage(false)}} />
           </div>
           <div style={{borderBottom:"1px solid  #3e3d3d"}}>
             <div style={{display:"flex", alignItems:"start", padding:"20px 0px", gap:"10px"}}>
