@@ -504,11 +504,15 @@
     cursor: pointer;
     filter: brightness(85%);
 }
+.postContainer{
+    width: 100%;
+}
 .postBox{
     display: flex;
-    flex-direction: column;
     border-bottom: 1px solid #3e3d3d;
     width: 100%;
+    padding: 12px 16px;
+    gap: 8px;
 }
 .userInfoBox{
     padding: 10px;
@@ -525,18 +529,11 @@
 .userNameBox{
     display: flex;
     flex-direction:  row;
-    margin-left: 10px;
     align-items: center;
+    margin-bottom: 2px;
+    gap: 4px;
 }
-.userNameBox span{
-    margin-top: 10px;
-    padding-right: 5px;
-}
-.postContainer{
-    margin-left: 50px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-}
+
 .userPostBox{
     max-height: 500px; 
     overflow: auto; 
@@ -549,9 +546,9 @@
     
 }
 .reaction{
-    margin-top: 20px;
+    margin-top: 12px;
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 5fr 1fr;
     color: #5c5b5b;
 }
 .reactionOne{

@@ -44,18 +44,16 @@ function Post({ post}) {
 
   return (
     <div onClick={() => navigate(`/postinfopage/${post.id}`)} className={style.postBox}>
-        <div className={style.userInfoBox}>
-            <div  onClick={goProfile} className={style.userProfile}>
-                <img  src={`https://api.multiavatar.com/${post.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
-            </div>
+        <div  onClick={goProfile} className={style.userProfile}>
+            <img  src={`https://api.multiavatar.com/${post.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
+        </div>
+        <div className={style.postContainer}>
             <div  onClick={goProfile} className={style.userNameBox}>
                 <span style={{fontWeight:700}}>{post.userName}</span>
                 <span style={{fontWeight:700}}>{post.userSurname}</span>
                 <span style={{color:"#5c5b5b"}}>@{post.userNick}</span>
                 <span style={{color:"#5c5b5b"}}>• {post.postDate.postDay}</span>
             </div>
-        </div>
-        <div className={style.postContainer}>
             <div >
                 {
                     (!post.userPost.postImg  &&  <div className={style.userPostBox}><p>{post.userPost.postText}</p></div> )
@@ -63,9 +61,9 @@ function Post({ post}) {
                 {
                     (post.userPost.postImg && 
                     <div >
-                        <p>{post.userPost.postText}</p>
+                        <span>{post.userPost.postText}</span>
                         <div style={{ display: 'flex', justifyContent: 'center' }}>
-                            <img onClick={() => showPost(post.id)}  style={{ border:"1px solid #3e3d3d", width:"100%" ,height: "300px", objectFit: 'cover', overflow: 'auto', borderRadius:"20px" }} src={downloadURL} alt={`${post.userNick} Postu`} />
+                            <img onClick={() => showPost(post.id)}  style={{ border:"1px solid #3e3d3d", width:"100%" ,maxHeight: "400px", objectFit: 'cover', overflow: 'auto', borderRadius:"20px", marginTop:"12px" }} src={downloadURL} alt={`${post.userNick} Postu`} />
                     </div>
                     </div> )
                 }
