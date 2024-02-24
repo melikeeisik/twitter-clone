@@ -94,21 +94,22 @@ function PostInfo() {
                         <img className={style.userImg} src={`https://api.multiavatar.com/${post.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
                     </div>
                     <div style={{display:"flex", flexDirection:"column"}}>
-                        <span style={{fontWeight:700}}>{post.userName} {post.userSurname} <span style={{color:"#5c5b5b",fontWeight:400}}>• {post.postDate ? post.postDate.postDay : ""}</span></span>
+                        <span style={{fontWeight:700}}>{post.userName} {post.userSurname} </span>
                         <span style={{color:"#5c5b5b"}}>@{post.userNick}</span>
                     </div>
                 </div>
-                <div className={style.postText}>
-                    {post.userPost && <span>{post.userPost.postText}</span>}
+                <div style={{display:"flex", flexDirection:"column"}}>
+                    {post.userPost && post.userPost.postText && <span className={style.postText}>{post.userPost.postText}</span>}
+                    <span style={{color:"#5c5b5b",fontWeight:400, marginTop:16, marginBottom:16,paddingLeft:16,paddingRight:16}}>{post.postDate ? post.postDate.postDay : ""}</span>
                 </div>
                 <div style={{color:"#5c5b5b"}} className={style.reactionOne}>
-                    <span style={{display:"flex",alignItems:"center", gap:"5px"}}><FontAwesomeIcon icon="fa-regular fa-comment" /> <span style={{fontSize:15, fontWeight:700}}>{totalComments==0 ? "": totalComments }</span></span>
+                    <span style={{display:"flex",alignItems:"center", }}><FontAwesomeIcon icon="fa-regular fa-comment" /> <span style={{fontSize:15, fontWeight:700}}>{totalComments==0 ? "": totalComments }</span></span>
                     <FontAwesomeIcon icon="fa-solid fa-retweet" />
                     <FontAwesomeIcon icon="fa-regular fa-heart" />
                     <FontAwesomeIcon icon="fa-regular fa-bookmark" />
                     <FontAwesomeIcon icon="fa-solid fa-arrow-up-from-bracket" />
                 </div>
-                <div style={{display:"flex", padding:"10px", gap:"10px", borderBottom:" 1px solid #3e3d3d", alignItems:"center"}}>
+                <div style={{display:"flex", padding:"12px 16px", gap:"10px", borderBottom:" 1px solid #3e3d3d", alignItems:"center"}}>
                     <img className={style.userImg}  src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt={`${post.userNick} Profil Resmi`}/>
                     <input name='comment' value={comment}  placeholder='Yanıtını gönder' type='text' onChange={(e) => setComment(e.target.value)} />
                     <button onClick={handleSendComment} style={{ filter:comment=="" ?  "brightness(65%)":""}} disabled={comment == "" ? "disabled" : ""}>Yanıtla</button>
