@@ -533,17 +533,14 @@
     margin-bottom: 2px;
     gap: 4px;
 }
-
 .userPostBox{
     max-height: 500px; 
     overflow: auto; 
-
 }
 .userPostBox p{
     white-space: normal; 
     margin-block-start: 0px;
     margin-block-end: 0px;
-    
 }
 .reaction{
     margin-top: 12px;
@@ -1074,9 +1071,9 @@
 .postInfoHeader{
     position: sticky;
     top: 0px;
-    padding: 15px;
+    padding: 16px;
     background-color: #000;
 }
 .postUserBox{
-    padding:0px 15px;
+    padding:0px 16px;
 }

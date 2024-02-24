@@ -91,7 +91,7 @@ function PostInfoPage() {
           </div>
           <div className={style.postUserBox}>
             <div style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
-              <div style={{display:"flex", gap:10, alignItems:"center"}}>
+              <div style={{display:"flex", gap:8, alignItems:"center"}}>
                 <img style={{width:"50px", objectFit:"contain"}} src={`https://api.multiavatar.com/${post.userNick}.png`} alt='Profile Picture' />
                 <div style={{display:"flex", flexDirection:"column"}}>
                   <span style={{fontWeight:700}}>{post.userName} {post.userSurname}</span>
@@ -100,7 +100,7 @@ function PostInfoPage() {
               </div>
               <BsThreeDots style={{color:"#5c5b5b"}}/>
             </div>
-            <div style={{marginBottom:15}}>
+            <div style={{marginTop:12, marginBottom:16}}>
               {
                 post.userPost && <span>{post.userPost.postText}</span>
               }
@@ -113,18 +113,18 @@ function PostInfoPage() {
                   </div> )
               }
             </div>
-            <span style={{color:"#5c5b5b"}}>{post.postDate ? post.postDate.postDay : ""} </span>
-            <div style={{display:"flex", gap:150, marginTop:15, fontSize:20, padding:10, borderTop:"1px solid #3e3d3d", borderBottom:"1px solid #3e3d3d",color:"#5c5b5b"}}>
-              <span style={{display:"flex",alignItems:"center", gap:"5px"}}><FontAwesomeIcon icon="fa-regular fa-comment" /> <span style={{fontSize:15, fontWeight:700}}>{totalComments==0 ? "": totalComments }</span></span>
+            <span style={{color:"#5c5b5b"}}>{post.postDate ? post.postDate.postDay : ""}a </span>
+            <div style={{display:"flex", width:"100%", justifyContent:"space-between", marginTop:16, fontSize:20, padding:"10px 0px", borderTop:"1px solid #3e3d3d", borderBottom:"1px solid #3e3d3d",color:"#5c5b5b"}}>
+              <span style={{display:"flex",alignItems:"center", gap:"5px",paddingLeft:4}}><FontAwesomeIcon icon="fa-regular fa-comment" /> <span style={{fontSize:15, fontWeight:700}}>{totalComments==0 ? "": totalComments }</span></span>
               <FontAwesomeIcon icon="fa-solid fa-retweet" />
               <FontAwesomeIcon icon="fa-regular fa-heart" />
               <FontAwesomeIcon icon="fa-solid fa-chart-simple" />
-              <FontAwesomeIcon icon="fa-solid fa-arrow-up-from-bracket" />
+              <FontAwesomeIcon icon="fa-solid fa-arrow-up-from-bracket" style={{paddingRight:4}}/>
             </div>
             <div style={{display:"flex", alignItems:"center",borderBottom:"1px solid #3e3d3d", justifyContent:"space-between"}}>
-              <div style={{display:"flex", gap:10, alignItems:"center"}}>
+              <div style={{display:"flex", gap:10, alignItems:"center",paddingTop:12,paddingBottom:8}}>
                 <img style={{width:"50px", objectFit:"contain"}} src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt='Profile Picture' />
-                <input placeholder='Yanıtını gönder'  name='comment' value={comment} onChange={(e) => setComment(e.target.value)}    style={{background:"#000", outline:"none", border:"none", width:"80vh", padding:"25px 0px",color:"#fff", fontSize:20}} />
+                <input placeholder='Yanıtını gönder'  name='comment' value={comment} onChange={(e) => setComment(e.target.value)}    style={{background:"#000", outline:"none", border:"none", width:"80vh", padding:"12px 0px",color:"#fff", fontSize:20}} />
               </div>
               <button onClick={handleSendComment} disabled={comment == "" ? "disabled" : ""} style={{border:"none", backgroundColor:"#1a8cd8", padding:"10px 20px",borderRadius:"20px", fontWeight:700,color:"#fff", fontSize:15, filter:comment=="" ?  "brightness(65%)":""}}>Yanıtla</button>
             </div>
