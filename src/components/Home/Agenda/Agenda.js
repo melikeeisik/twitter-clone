@@ -7,15 +7,18 @@ import { useUsers } from '../../../context/UsersContext'
 import arrayShuffle from 'array-shuffle';
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useUserInfo } from '../../../context/UserInfoContext'
 library.add(faMagnifyingGlass)
 
-function Agenda({postContainer}) {
+function Agenda() {
   const {userList} = useUsers()
   const [shuffledUserList,setShuffledUserList] = useState([])
+  const {userInfo} = useUserInfo()
   const navigate = useNavigate()
 
   useEffect(() =>{
-    setShuffledUserList(arrayShuffle(userList))
+    const newList = userList.filter(user => user.userNick != userInfo.userNick)
+    setShuffledUserList(arrayShuffle(newList))
   }, [userList])
 
   const goProfile = (userNick) =>{

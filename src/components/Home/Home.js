@@ -5,7 +5,7 @@ import Posts from './Posts/Posts'
 import Agenda from './Agenda/Agenda'
 import SendPost from './Posts/SendPost'
 function Home({postContainer, setPostContainer}) {
-  //const [postContainer, setPostContainer] = useState(false)
+ 
   return (
     <div>
       <div style={{display:postContainer ? "block": "none"}} >
