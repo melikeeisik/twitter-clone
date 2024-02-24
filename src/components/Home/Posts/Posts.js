@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import style from "../../../style.module.css"
 import Post from './Post'
-import { IoCloseSharp } from "react-icons/io5";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGear, faPhotoFilm, faListUl, faLocationDot,faXmark } from '@fortawesome/free-solid-svg-icons'
 import { faFaceSmile, faCalendarDays } from '@fortawesome/free-regular-svg-icons'
 import { useUserInfo } from '../../../context/UserInfoContext'
 import { usePosts } from '../../../context/PostsContext'
+import SendPost from './SendPost';
 library.add(faGear,faPhotoFilm,faListUl,faFaceSmile,faCalendarDays,faLocationDot, faXmark)
 
 function Posts({postContainer, setPostContainer}) {
@@ -20,8 +20,6 @@ function Posts({postContainer, setPostContainer}) {
   const [imgUrl, setImgUrl] = useState("");
   const [xDisable, setXDisable] = useState(true)
   const [newList, setNewList] = useState([])
-
-
 
   useEffect(() => {
     const newData = allPosts.sort((a, b) => {
@@ -72,7 +70,7 @@ function Posts({postContainer, setPostContainer}) {
       setImgUrl(e.target.result);
     }
     reader.readAsDataURL(file);
-    }
+  }
 
     const handleSendPost = () =>{
       const day = new Date();
@@ -107,90 +105,61 @@ function Posts({postContainer, setPostContainer}) {
   }
 
   return (
-    <div style={{backgroundColor:postContainer ?"rgba(91, 112, 131, 0.4)":"", minWidth:postContainer ?"765px":""}}  className={style.posts}>
-        <div style={{display:postContainer ? "block": "none"}} className={style.sendPostContainer}>
-          <div>
-            <IoCloseSharp style={{fontSize:22}} onClick={() => {setPostContainer(false);  setIsImage(false)}} />
+    <>
+      <div >
+        <SendPost postContainer={postContainer} setPostContainer={setPostContainer}  />
+      </div>
+      <div  className={style.posts}>
+          <div   className={style.postsHeader} >
+            <span>Sana özel</span>
+            <span>Takip edilenler</span>
+            <span><FontAwesomeIcon icon="fa-solid fa-gear" /></span>
           </div>
-          <div style={{borderBottom:"1px solid  #3e3d3d"}}>
-            <div style={{display:"flex", alignItems:"start", padding:"20px 0px", gap:"10px"}}>
-                <img style={{ width: "50px", objectFit:"contain"}} src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt='Profile Picture'/>
-                <textarea placeholder='Neler oluyor?' name='sendPost' value={sendPost}  onChange={(e) => {setSendPost(e.target.value); setBtnDisabled(false)}}  />
-            </div>
-              {
-                isImage &&  postContainer && 
-                <div style={{position:"relative"}}>
-                  <FontAwesomeIcon onClick={() => {setImgUrl(""); setXDisable(true);setIsImage(false)}} style={{display: xDisable ? "none" : "block", padding:"8px 10px",backgroundColor:"#252525", borderRadius:"999px", position:"absolute",top:"5px",right:"5px"}} icon="fa-solid fa-xmark" />
-                  <img style={{height:"300px", width:"100%", objectFit:"cover", display:"block", borderRadius:"10px", marginBottom:"10px"}} src={imgUrl} alt={`Profile Picture`}/>
+          <div className={style.postPart}>
+            <div className={style.createPost}>
+              <div style={{display:"flex", gap:"15px"}}>
+                <div className={style.profileImgContainer}>
+                    <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt='Profile Picture'/>
                 </div>
-              }
-          </div>
-          <div style={{display:"flex", justifyContent:"space-between", padding:"10px 0px"}}>
-            <div className={style.categories}>
-              <ul>
-                <li>
-                  <button onClick={handleClickInput}><FontAwesomeIcon icon="fa-solid fa-photo-film"/></button>
-                  <input type='file' id="fileInput" accept="image/*" onChange={handleFileChange} style={{display:"none"}} />
-                </li>
-                <li><FontAwesomeIcon icon="fa-solid fa-list-ul" /></li>
-                <li><FontAwesomeIcon icon="fa-regular fa-face-smile" /></li>
-                <li><FontAwesomeIcon icon="fa-regular fa-calendar-days" /></li>
-                <li><FontAwesomeIcon icon="fa-solid fa-location-dot" /></li>
-              </ul>
-            </div>  
-            <button style={{filter: btnDisabled ? "brightness(55%)" : ""}} disabled={btnDisabled} onClick={() => {handleSendPost(); setPostContainer(false)}} className={style.send}>Gönder</button>
-          </div>
-        </div>
-        <div style={{backgroundColor:postContainer ?"rgba(91, 112, 131, 0)":""}}  className={style.postsHeader}>
-          <span>Sana özel</span>
-          <span>Takip edilenler</span>
-          <span><FontAwesomeIcon icon="fa-solid fa-gear" /></span>
-        </div>
-        <div className={style.postPart}>
-          <div className={style.createPost}>
-            <div style={{display:"flex", gap:"15px"}}>
-              <div className={style.profileImgContainer}>
-                  <img  src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt='Profile Picture'/>
+                <div style={{display:"flex", flexDirection:"column", flex:"1", paddingRight:"20px"}}>
+                  <textarea  name='sendPost' value={sendPost} onChange={(e) => {setSendPost(e.target.value); setBtnDisabled(false)}} placeholder='Neler oluyor?'></textarea>
+                  {
+                    isImage &&  !postContainer && 
+                    <div style={{position:"relative"}}>
+                      <FontAwesomeIcon onClick={() => {setImgUrl(""); setXDisable(true)}} style={{display: xDisable ? "none" : "block", padding:"8px 10px",backgroundColor:"#252525", borderRadius:"999px", position:"absolute",top:"5px",right:"5px"}} icon="fa-solid fa-xmark" />
+                      <img style={{width:"100%" , objectFit:"cover", display:"block", borderRadius:"10px", marginBottom:"10px"}} src={imgUrl} alt={`Profile Picture`}/>
+                    </div>
+                  }
+                </div>
               </div>
-              <div style={{display:"flex", flexDirection:"column", flex:"1", paddingRight:"20px"}}>
-                <textarea style={{backgroundColor:postContainer ?"rgba(91, 112, 131, 0)":""}} name='sendPost' value={sendPost} onChange={(e) => {setSendPost(e.target.value); setBtnDisabled(false)}} placeholder='Neler oluyor?'></textarea>
+              <div style={{paddingLeft:"75px", paddingRight:"20px", display:"flex", justifyContent:"space-between", margin:"10px 0px"}}>
+                <div className={style.categories}>
+                  <ul>
+                    <li>
+                      <button onClick={handleClickInput}><FontAwesomeIcon icon="fa-solid fa-photo-film"/></button>
+                      <input type='file' id="fileInput" accept="image/*" onChange={handleFileChange} style={{display:"none"}} />
+                    </li>
+                    <li><FontAwesomeIcon icon="fa-solid fa-list-ul" /></li>
+                    <li><FontAwesomeIcon icon="fa-regular fa-face-smile" /></li>
+                    <li><FontAwesomeIcon icon="fa-regular fa-calendar-days" /></li>
+                    <li><FontAwesomeIcon icon="fa-solid fa-location-dot" /></li>
+                  </ul>
+                </div>
+                <button style={{filter: btnDisabled ? "brightness(55%)" : ""}} disabled={btnDisabled} onClick={handleSendPost} className={style.send}>Gönder</button>
+              </div>
+            </div>
+            <div className={style.postsList}>
                 {
-                  isImage &&  !postContainer && 
-                  <div style={{position:"relative"}}>
-                    <FontAwesomeIcon onClick={() => {setImgUrl(""); setXDisable(true)}} style={{display: xDisable ? "none" : "block", padding:"8px 10px",backgroundColor:"#252525", borderRadius:"999px", position:"absolute",top:"5px",right:"5px"}} icon="fa-solid fa-xmark" />
-                    <img style={{width:"100%" , objectFit:"cover", display:"block", borderRadius:"10px", marginBottom:"10px"}} src={imgUrl} alt={`Profile Picture`}/>
-                  </div>
+                  newList.map((post, index)=>{
+                    return(
+                      <Post  key={index} post={post} />
+                    )
+                  })
                 }
-              </div>
-            </div>
-            <div style={{paddingLeft:"75px", paddingRight:"20px", display:"flex", justifyContent:"space-between", margin:"10px 0px"}}>
-              <div className={style.categories}>
-                <ul>
-                  <li>
-                    <button onClick={handleClickInput}><FontAwesomeIcon icon="fa-solid fa-photo-film"/></button>
-                    <input type='file' id="fileInput" accept="image/*" onChange={handleFileChange} style={{display:"none"}} />
-                  </li>
-                  <li><FontAwesomeIcon icon="fa-solid fa-list-ul" /></li>
-                  <li><FontAwesomeIcon icon="fa-regular fa-face-smile" /></li>
-                  <li><FontAwesomeIcon icon="fa-regular fa-calendar-days" /></li>
-                  <li><FontAwesomeIcon icon="fa-solid fa-location-dot" /></li>
-                </ul>
-              </div>
-              <button style={{filter: btnDisabled ? "brightness(55%)" : ""}} disabled={btnDisabled} onClick={handleSendPost} className={style.send}>Gönder</button>
             </div>
           </div>
-          <div className={style.postsList}>
-              {
-                newList.map((post, index)=>{
-                  return(
-                    <Post  key={index} post={post} />
-                  )
-                })
-              }
-          </div>
-        </div>
-    </div>
-
+      </div>
+    </>
   )
 }
 

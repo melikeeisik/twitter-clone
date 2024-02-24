@@ -18,13 +18,14 @@ library.add(faComment,faRetweet,faHeart,faChartSimple,faArrowUpFromBracket,faBoo
 
 function PostInfoPage() {
   const {postId} = useParams();
-  const {allPosts} = usePosts();
+  const {allPosts,setCommentCount} = usePosts();
   const [post, setPost] = useState({});
   const [imgUrl, setImgUrl] = useState("");
   const navigate = useNavigate()
   const [comment, setComment] = useState("")
-  const {addComment} = useComments()
+  const {addComment, comments} = useComments()
   const {userInfo} = useUserInfo()
+  const [totalComments,setTotalComments] = useState(0);
 
   useEffect(() => {
     const showPost = allPosts.find(post => post.id == postId);
@@ -43,6 +44,18 @@ function PostInfoPage() {
     }
   }, [post.usePost]);
 
+  console.log(comments)
+
+  useEffect(() =>{
+    let total = 0
+    for (const user in comments) {
+      if (Object.hasOwnProperty.call(comments, user)) {
+        total += comments[user].length;
+      }
+    }
+    setTotalComments(total)
+  },[postId,comments])
+
   const handleSendComment = () =>{
     if(comment != ""){
       const day = new Date();
@@ -59,6 +72,7 @@ function PostInfoPage() {
   
       addComment(postId,comment,userInfo, currentDate, currentTime); 
       setComment("")
+      setCommentCount(prev => prev +1)
     }
   }
 
@@ -101,7 +115,7 @@ function PostInfoPage() {
             </div>
             <span style={{color:"#5c5b5b"}}>{post.postDate ? post.postDate.postDay : ""} </span>
             <div style={{display:"flex", gap:150, marginTop:15, fontSize:20, padding:10, borderTop:"1px solid #3e3d3d", borderBottom:"1px solid #3e3d3d",color:"#5c5b5b"}}>
-              <FontAwesomeIcon icon="fa-regular fa-comment" />
+              <span style={{display:"flex",alignItems:"center", gap:"5px"}}><FontAwesomeIcon icon="fa-regular fa-comment" /> <span style={{fontSize:15, fontWeight:700}}>{totalComments==0 ? "": totalComments }</span></span>
               <FontAwesomeIcon icon="fa-solid fa-retweet" />
               <FontAwesomeIcon icon="fa-regular fa-heart" />
               <FontAwesomeIcon icon="fa-solid fa-chart-simple" />

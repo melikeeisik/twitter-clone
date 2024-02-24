@@ -8,30 +8,33 @@ import { IoIosSearch } from "react-icons/io";
 import style from "../../style.module.css"
 import { useUserInfo } from '../../context/UserInfoContext';
 import { useUsers } from '../../context/UsersContext';
-function Messages() {
-    const [pageVisible, setPageVisible] = useState(false)
+import SendPost from '../Home/Posts/SendPost';
+function Messages({postContainer, setPostContainer}) {
     const {userInfo} = useUserInfo()
-    const {userList} = useUsers()
     const [selectedUser, setSelectedUser] = useState({})
-
+    const [messagesUser, setMessagesUser] = useState(false)
   return (
+    <>
     <div>
-        <Menu pageVisible={pageVisible}/>
-        <div style={{display:pageVisible ? "block": "none"}} className={style.messageUsers}>
-            <MessagesUsers  userList={userList} setSelectedUser={setSelectedUser} setPageVisible={setPageVisible}/>
-        </div>
-        <div style={{backgroundColor:pageVisible?"rgba(91, 112, 131, 0.4)":""}}  className={style.messagesPages} >
+        <SendPost postContainer={postContainer} setPostContainer={setPostContainer} />
+    </div>
+    <div>
+        <MessagesUsers messagesUser={messagesUser} setMessagesUser={setMessagesUser}  setSelectedUser={setSelectedUser} />
+    </div>
+     <div>
+        <Menu  setPostContainer={setPostContainer}/>
+        <div className={style.messagesPages} >
             <div>
                 <div >
-                    <div style={{backgroundColor:pageVisible?"rgba(91, 112, 131, 0)":""}} className={style.messagesHeader}>
+                    <div  className={style.messagesHeader}>
                         <span>Mesajlar</span>
                         <div>
                             <IoSettingsOutline />
-                            <BsEnvelopePlus onClick={() =>setPageVisible(true)} />
+                            <BsEnvelopePlus onClick={() =>setMessagesUser(true)} />
                         </div>
                     </div>
                     <div className={style.messageInput}>
-                        <input style={{backgroundColor:pageVisible?"rgba(91, 112, 131, 0)":""}} placeholder='Direk Mesajlarda Ara' />
+                        <input placeholder='Direk Mesajlarda Ara' />
                         <IoIosSearch />
                     </div>
                     <div>
@@ -97,9 +100,10 @@ function Messages() {
                     </div>
                 </div>
             </div>
-            <ChatContainer selectedUser={selectedUser} pageVisible={pageVisible}  setPageVisible={setPageVisible}/>
+            <ChatContainer selectedUser={selectedUser} setSelectedUser={setSelectedUser} messagesUser={messagesUser} setMessagesUser={setMessagesUser}/>
         </div>
     </div>
+    </>
   )
 }
 

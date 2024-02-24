@@ -9,7 +9,7 @@ const PostsContext = createContext();
 export const PostsProvider = ({children}) =>{
     const posts = collection(db, "posts")
     const [allPosts, setAllPosts] = useState([])
-
+    const [commentCount, setCommentCount] = useState(0)
     
     useEffect(() =>{
         const fetchPost = async () => {
@@ -38,6 +38,7 @@ export const PostsProvider = ({children}) =>{
                     postText: newData.postText,
                     postImg:"",
                 },
+                postCommentCount:commentCount,
             }
         }else{
             const storageRef = ref(storage, `images/${newData.postImg.name }`);
@@ -55,7 +56,8 @@ export const PostsProvider = ({children}) =>{
                 userPost:{
                     postText: newData.postText,
                     postImg:`images/${newData.postImg.name }`,
-                }     
+                },
+                postCommentCount:commentCount,
             }
         }
         addDoc(posts, postInfo);
@@ -63,7 +65,7 @@ export const PostsProvider = ({children}) =>{
     };
       
       
-    const values = {allPosts,addPosts} 
+    const values = {allPosts,addPosts, setCommentCount} 
 
 
     return(

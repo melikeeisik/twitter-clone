@@ -398,14 +398,19 @@
     position: relative;
 }
 .sendPostContainer{
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    z-index: 999;
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(91, 112, 131,0.4);
+}
+.sendPostBox{
     background-color: #000;
-    margin-top: 50px;
-    margin-left: 10vh;
-    padding: 15px;
-    border-radius: 15px;
+    padding: 20px;
+    border-radius: 10px;
 }
 .sendPostContainer textarea {
     color:#fff;
@@ -902,13 +907,12 @@
     justify-content: space-between;
     
   }
-  
   .chatHeader {
     font-size: 18px;
     position: sticky;
     background-color: #000;
     top: 0px;
-    z-index: 999;
+    z-index: 1;
     padding: 10px 20px;
     display: flex;
     align-items: center;
@@ -991,18 +995,27 @@
     font-size: 17px;
     color:#1d9bf0;
 }
-.messageUsers{
-    display: none;
-    position: fixed;
-    background-color: #000;
-    width: 550px;
+.messageUsersContainer{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(91, 112, 131,0.4);
     z-index: 999;
+}
+.messageUsers{
+    width: 550px;
     height: 500px;
     max-height: 500px;
     color: #fff;
-    top: 10%;
-    left: 30%;
     border-radius: 10px;
+    padding:15px;
+    background-color:#000;
+}
+.messagesUserBox{
+    background-color: #000;
 }
 .searchMessageUser{
     padding:5px 0px;

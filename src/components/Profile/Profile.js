@@ -12,10 +12,11 @@ import { useParams } from 'react-router-dom'
 import { useUsers } from '../../context/UsersContext'
 import UsersPost from './UsersPost';
 import { useNavigate } from 'react-router-dom';
+import SendPost from '../Home/Posts/SendPost';
 
 library.add(faArrowLeft)
 
-function Profile() {
+function Profile({postContainer, setPostContainer}) {
   const userNickName = useParams()
   const [userInfo , setUserInfo] = useState({})
   const {userList} = useUsers()
@@ -31,63 +32,68 @@ function Profile() {
   }, [userNickName]);
 
   return (
-    <div >
-       <Menu/>
-        <div className={style.postAndAgendaPart}>
-          <div className={style.profilePageContainer}>
-            <div className={style.profileHeader}>
-              <FontAwesomeIcon onClick={() =>navigate(-1)}  icon="fa-solid fa-arrow-left" />
-              <span style={{fontWeight:700, fontSize:"19px"}}>{userInfo.userName} {userInfo.userSurname}</span>
-            </div>
-            <div>
-              <div className={style.userCoverImg}></div>
-              <div className={style.userInfoContainer}>
-                <div className={style.profilePicture}>
-                  <img style={{width:"130px", objectFit:"contain"}} src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt='Profile Picture'/>
-                </div>
-                <div style={{width:"100%", display:"flex", justifyContent:"flex-end"}}>
-                  <button>Profili düzenle</button>
-                </div>  
-                <div className={style.profileInfoBox}>
-                  <span>{userInfo.userName} {userInfo.userSurname}</span>
-                  <span style={{color: "rgb(92, 91, 91)"}}>@{userInfo.userNick}</span>
-                  <span style={{color: "rgb(92, 91, 91)", paddingTop:"20px"}}>{userInfo.userDate} tarihinde katıldı</span>
-                  <span style={{color: "rgb(92, 91, 91)", paddingTop:"20px"}}><span style={{color:"#fff" ,fontWeight:700,}}>1</span> Takip edilen <span style={{color:"#fff",fontWeight:700,}}>1</span> Takipçi</span>
-                </div>
-                <div>
-                  <Tabs >
-                    <TabList>
-                    <Tab>Gönderiler</Tab>
-                    <Tab>Yanıtlar</Tab>
-                    <Tab>Öne Çıkanlar</Tab>
-                    <Tab>Medya</Tab>
-                    <Tab>Beğeni</Tab>
-                    </TabList>
+    <>
+      <div>
+        <SendPost postContainer={postContainer} setPostContainer={setPostContainer} />
+      </div>
+      <div >
+        <Menu setPostContainer={setPostContainer}/>
+          <div className={style.postAndAgendaPart}>
+            <div className={style.profilePageContainer}>
+              <div className={style.profileHeader}>
+                <FontAwesomeIcon onClick={() =>navigate(-1)}  icon="fa-solid fa-arrow-left" />
+                <span style={{fontWeight:700, fontSize:"19px"}}>{userInfo.userName} {userInfo.userSurname}</span>
+              </div>
+              <div>
+                <div className={style.userCoverImg}></div>
+                <div className={style.userInfoContainer}>
+                  <div className={style.profilePicture}>
+                    <img style={{width:"130px", objectFit:"contain"}} src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt='Profile Picture'/>
+                  </div>
+                  <div style={{width:"100%", display:"flex", justifyContent:"flex-end"}}>
+                    <button>Profili düzenle</button>
+                  </div>  
+                  <div className={style.profileInfoBox}>
+                    <span>{userInfo.userName} {userInfo.userSurname}</span>
+                    <span style={{color: "rgb(92, 91, 91)"}}>@{userInfo.userNick}</span>
+                    <span style={{color: "rgb(92, 91, 91)", paddingTop:"20px"}}>{userInfo.userDate} tarihinde katıldı</span>
+                    <span style={{color: "rgb(92, 91, 91)", paddingTop:"20px"}}><span style={{color:"#fff" ,fontWeight:700,}}>1</span> Takip edilen <span style={{color:"#fff",fontWeight:700,}}>1</span> Takipçi</span>
+                  </div>
+                  <div>
+                    <Tabs >
+                      <TabList>
+                      <Tab>Gönderiler</Tab>
+                      <Tab>Yanıtlar</Tab>
+                      <Tab>Öne Çıkanlar</Tab>
+                      <Tab>Medya</Tab>
+                      <Tab>Beğeni</Tab>
+                      </TabList>
 
-                    <TabPanel>
-                      <UsersPost user={userInfo} />
-                    </TabPanel>
-                    <TabPanel>
-                      
-                    </TabPanel>
-                    <TabPanel>
-                      
-                    </TabPanel>
-                    <TabPanel>
-                      
-                    </TabPanel>
-                    <TabPanel>
-                      
-                    </TabPanel>
-                  </Tabs>
+                      <TabPanel>
+                        <UsersPost user={userInfo} />
+                      </TabPanel>
+                      <TabPanel>
+                        
+                      </TabPanel>
+                      <TabPanel>
+                        
+                      </TabPanel>
+                      <TabPanel>
+                        
+                      </TabPanel>
+                      <TabPanel>
+                        
+                      </TabPanel>
+                    </Tabs>
+                  </div>
                 </div>
               </div>
             </div>
+            <Agenda/>
           </div>
-          <Agenda/>
-        </div>
-    </div>
-  )
+      </div>
+    </>
+   )
 }
 
 export default Profile

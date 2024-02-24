@@ -23,14 +23,14 @@ function Agenda({postContainer}) {
   }
   
   return (
-    <div style={{backgroundColor:postContainer ?"rgba(91, 112, 131, 0.4)":""}} className={style.agendaPage}>
-      <div style={{backgroundColor:postContainer ?"rgba(91, 112, 131, 0)":""}} className={style.searchBox}>
+    <div className={style.agendaPage}>
+      <div  className={style.searchBox}>
         <input type='text' placeholder='Ara' /> 
         <div>
           <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
         </div>
       </div>
-      <div style={{backgroundColor:postContainer ?"rgba(91, 112, 131, 0)":""}} className={style.agendaContainer}>
+      <div className={style.agendaContainer}>
         <span style={{color:'#fff'}}>İlgini çekebilecek gündemler</span>
         <div className={style.agendaList}>
           <ul>
@@ -49,7 +49,7 @@ function Agenda({postContainer}) {
           </ul>
         </div>
       </div>
-      <div style={{backgroundColor:postContainer ?"rgba(91, 112, 131, 0)":""}} className={style.followPeople}>
+      <div className={style.followPeople}>
         <span style={{color:'#fff'}}>Kimi takip etmeli</span>
         <div className={style.peopleList}>
           <ul>

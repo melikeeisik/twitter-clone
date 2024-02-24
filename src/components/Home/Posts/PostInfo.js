@@ -20,7 +20,9 @@ function PostInfo() {
     const navigate = useNavigate()
     const {allPosts} = usePosts()
     const [comment, setComment] = useState("")
-    const {addComment} = useComments()
+    const {addComment,comments} = useComments()
+    const [totalComments,setTotalComments] = useState(0);
+
     useEffect(() => {
         const showPost = allPosts.find(post => post.id == postId);
         if (showPost) {
@@ -38,6 +40,16 @@ function PostInfo() {
             fetchImageURL();
         }
     }, [post.userPost])
+
+    useEffect(() =>{
+        let total = 0
+        for (const user in comments) {
+          if (Object.hasOwnProperty.call(comments, user)) {
+            total += comments[user].length;
+          }
+        }
+        setTotalComments(total)
+    }, [postId,comments])
 
 
       const closePostInfo = () =>{
@@ -68,7 +80,7 @@ function PostInfo() {
                 <div style={{position: "sticky", top:"0px", margin:"auto", width:"50%"}}>
                     <img style={{ minHeight:"94vh", maxWidth:"95vh", objectFit:"contain", zIndex:"999"}} src={imgUrl} alt={`${post.userNick} Kapak Resmi`} />
                     <div className={style.reactionOnePost}>
-                        <FontAwesomeIcon icon="fa-regular fa-comment" />
+                        <span style={{display:"flex",alignItems:"center", gap:"5px"}}><FontAwesomeIcon icon="fa-regular fa-comment" /> <span style={{fontSize:15, fontWeight:700}}>{totalComments==0 ? "": totalComments }</span></span>
                         <FontAwesomeIcon icon="fa-solid fa-retweet" />
                         <FontAwesomeIcon icon="fa-regular fa-heart" />
                         <FontAwesomeIcon icon="fa-solid fa-chart-simple" />
@@ -89,8 +101,8 @@ function PostInfo() {
                 <div className={style.postText}>
                     {post.userPost && <span>{post.userPost.postText}</span>}
                 </div>
-                <div className={style.reactionOne}>
-                    <FontAwesomeIcon icon="fa-regular fa-comment" />
+                <div style={{color:"#5c5b5b"}} className={style.reactionOne}>
+                    <span style={{display:"flex",alignItems:"center", gap:"5px"}}><FontAwesomeIcon icon="fa-regular fa-comment" /> <span style={{fontSize:15, fontWeight:700}}>{totalComments==0 ? "": totalComments }</span></span>
                     <FontAwesomeIcon icon="fa-solid fa-retweet" />
                     <FontAwesomeIcon icon="fa-regular fa-heart" />
                     <FontAwesomeIcon icon="fa-regular fa-bookmark" />

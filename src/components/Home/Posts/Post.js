@@ -6,10 +6,18 @@ import { faRetweet, faChartSimple, faArrowUpFromBracket} from '@fortawesome/free
 import { faComment, faHeart, faBookmark  } from '@fortawesome/free-regular-svg-icons'
 import { getDownloadURL, ref, getStorage } from 'firebase/storage'
 import {useNavigate } from 'react-router-dom';
+import { useComments } from '../../../context/PostCommentsContext'
 library.add(faComment,faRetweet,faHeart,faChartSimple,faBookmark,faArrowUpFromBracket)
 function Post({ post}) {
     const [downloadURL, setDownloadURL] = useState("");
     const navigate = useNavigate();
+    const {getCommentsByPostId,comments} = useComments()
+    const [totalComments,setTotalComments] = useState(0);
+
+
+    useEffect(() =>{
+        getCommentsByPostId(post.id)
+    }, [post])
 
     const showPost = (postId) =>{
         navigate(`/postinfo/${postId}`);
@@ -64,7 +72,10 @@ function Post({ post}) {
             </div>
             <div className={style.reaction}>
                 <div className={style.reactionOne}>
-                    <FontAwesomeIcon icon="fa-regular fa-comment" />
+                    <span style={{display:"flex",alignItems:"center", gap:"5px"}}>
+                        <FontAwesomeIcon icon="fa-regular fa-comment" /> 
+                        <span style={{fontSize:15, fontWeight:700}}></span>
+                    </span>
                     <FontAwesomeIcon icon="fa-solid fa-retweet" />
                     <FontAwesomeIcon icon="fa-regular fa-heart" />
                     <FontAwesomeIcon icon="fa-solid fa-chart-simple" />

@@ -13,7 +13,7 @@ import { useUserInfo } from '../../../context/UserInfoContext'
 
 library.add(faXTwitter,faHouse,faMagnifyingGlass,faBell,faEnvelope, faUser, faPlus)
 
-function Menu({pageVisible,postContainer, setPostContainer}) {
+function Menu({ setPostContainer}) {
     const {userInfo, removeUserInfo} = useUserInfo()
     const [logoutDisable, setLogoutDisable] = useState(false)
     const navigate = useNavigate()
@@ -42,7 +42,7 @@ function Menu({pageVisible,postContainer, setPostContainer}) {
 
 
   return (
-    <div style={{backgroundColor:pageVisible || postContainer ?"rgba(91, 112, 131, 0.4)":""}} className={style.menuBar}>
+    <div className={style.menuBar}>
         <div style={{display:"flex", flexDirection:"column", justifyContent:"space-between"}} >
             <div className={style.menuList}>
                 <ul>

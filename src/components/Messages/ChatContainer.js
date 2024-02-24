@@ -4,8 +4,9 @@ import { useUserInfo } from '../../context/UserInfoContext';
 import { VscSend } from "react-icons/vsc";
 import { useMessages } from '../../context/MessagesContext';
 import {io} from "socket.io-client"
+import MessagesUsers from './MessagesUsers';
 
-function ChatContainer({selectedUser,pageVisible,setPageVisible}) {
+function ChatContainer({selectedUser,setSelectedUser,messagesUser,setMessagesUser}) {
     const {userInfo} = useUserInfo()
     const {getMessages,sendMessages} = useMessages()
     const [inputMessage,setInputMessage] = useState("")
@@ -57,20 +58,20 @@ function ChatContainer({selectedUser,pageVisible,setPageVisible}) {
 
 
   return (
-    <>
+    <div style={{display:"flex"}}>
         {
            (Object.keys(selectedUser).length === 0) && 
             <div style={{display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"start", height:"100vh", paddingLeft:"200px", borderLeft:"1px solid  #3e3d3d"}}>
                 <h1>Mesaj seç</h1>
                 <span style={{color: "rgb(92, 91, 91)", marginBottom:20}}>Bir kullanıcı seçerek sohbet başlat</span>
-                <button onClick={()=>setPageVisible(true)} style={{padding:"17px 40px", borderRadius:"30px", border:"none", backgroundColor:"#1d9bf0", color:"#fff", fontWeight:700, fontSize:17}}>Yeni mesaj</button>
+                <button onClick={()=>setMessagesUser(true)} style={{padding:"17px 40px", borderRadius:"30px", border:"none", backgroundColor:"#1d9bf0", color:"#fff", fontWeight:700, fontSize:17}}>Yeni mesaj</button>
             </div>
         }
         {
             Object.keys(selectedUser).length > 0 &&
             
              <div  className={style.chatContainer}>
-                <div style={{backgroundColor:pageVisible?"rgba(91, 112, 121, 0)":""}}  className={style.chatHeader}>
+                <div className={style.chatHeader}>
                     <img style={{width:"40px", objectFit:"contain"}} src={`https://api.multiavatar.com/${selectedUser.userNick}.png`} alt='Profile Picture'/>
                     <span style={{fontWeight:700}}>{selectedUser.userName} {selectedUser.userSurname}</span>
                 </div>
@@ -100,7 +101,7 @@ function ChatContainer({selectedUser,pageVisible,setPageVisible}) {
                 </div>
             </div> 
         }           
-    </>
+    </div>
   )
 }
 
