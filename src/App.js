@@ -9,7 +9,6 @@ import PostInfoPage from './components/Home/Posts/PostInfoPage';
 import { useState } from 'react';
 function App() {
   const [postContainer, setPostContainer]=useState(false)
-  console.log("post",postContainer)
   return (
     <div >
       <div>

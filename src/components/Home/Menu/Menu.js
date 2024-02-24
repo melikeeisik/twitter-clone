@@ -17,11 +17,11 @@ function Menu({ setPostContainer}) {
     const {userInfo, removeUserInfo} = useUserInfo()
     const [logoutDisable, setLogoutDisable] = useState(false)
     const navigate = useNavigate()
-    const [activePage, setActivePage] = useState("")
+    const [pageUrl, setPageUrl] = useState("")
 
     useEffect(() =>{
-
-    }, )
+        setPageUrl(window.location.pathname)
+    },[pageUrl] )
 
     const handleLogOutContainer = () =>{
         if(logoutDisable){
@@ -36,9 +36,6 @@ function Menu({ setPostContainer}) {
         navigate("/")
     }
 
-    const chanePage = (pageName) =>{
-        setActivePage(pageName)
-    }
 
 
   return (
@@ -51,10 +48,10 @@ function Menu({ setPostContainer}) {
                             <FontAwesomeIcon style={{fontSize:30}} icon="fa-brands fa-x-twitter" />
                         </Link>
                     </li>
-                    <li onClick={() => chanePage("home")}>
+                    <li >
                         <Link to="/home">
                             <FontAwesomeIcon icon="fa-solid fa-house" />
-                            <span style={{fontWeight:activePage=="home" ? "bold" : ""}}>Anasayfa</span>
+                            <span style={{fontWeight:pageUrl=="/home" ? "bold" : ""}}>Anasayfa</span>
                         </Link>
                     </li>
                     <li>
@@ -68,13 +65,13 @@ function Menu({ setPostContainer}) {
                     <li>
                         <Link to="/messages">
                             <FontAwesomeIcon icon="fa-regular fa-envelope" />
-                            <span style={{fontWeight:activePage=="home" ? "bold" : ""}}>Mesajlar</span>
+                            <span style={{fontWeight:pageUrl=="/messages" ? "bold" : ""}}>Mesajlar</span>
                         </Link>
                     </li>
-                    <li  onClick={() => chanePage("profile")}>
+                    <li  >
                         <Link to={`/profile/${userInfo.userNick}`}> 
                             <FontAwesomeIcon icon="fa-regular fa-user" />
-                            <span style={{fontWeight:activePage=="profile" ? "bold" : ""}}>Profil</span>
+                            <span style={{fontWeight:pageUrl==`/profile/${userInfo.userNick}` ? "bold" : ""}}>Profil</span>
                         </Link> 
                     </li>
                     <li className={style.sendContainer}>
