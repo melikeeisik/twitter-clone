@@ -510,7 +510,6 @@
 .postBox{
     display: flex;
     border-bottom: 1px solid #3e3d3d;
-    width: 100%;
     padding: 12px 16px;
     gap: 8px;
 }
@@ -821,12 +820,11 @@
 
 .commentReaction{
     display: flex;
-    padding: 10px 70px;
+    margin-top: 12px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     color:rgb(92, 91, 91);
-    border-bottom: 1px solid #3e3d3d;
 }
 .messagesPages{
     display:grid;
@@ -1076,7 +1074,4 @@
     top: 0px;
     padding: 16px;
     background-color: #000;
-}
-.postUserBox{
-    padding:0px 16px;
 }

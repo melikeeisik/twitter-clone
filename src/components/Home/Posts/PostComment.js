@@ -31,28 +31,30 @@ function PostComment({postId}) {
                   <li key={index}>
                     <ul style={{listStyle:"none", margin:"0px", padding:"0px"}}>
                       {value.map((item, itemIndex) => (
-                        <li className={style.commentLi}  key={itemIndex}>
-                          <div style={{display:"flex",gap:"10px", padding:"10px"}}>
+                        <li  style={{padding:"12px 0px", borderBottom: "1px solid #3e3d3d"}} key={itemIndex}>
+                          <div style={{display:"flex", padding:"0px 16px", gap:"8px"}}>
                             <div>
                                 <img style={{width: "50px", objectFit:"contain"}} src={`https://api.multiavatar.com/${item.userNick}.png`} alt={`${item.userNick} Profil Resmi`}/>
                             </div>
-                            <div>
-                              <div style={{marginTop:"5px"}}>
-                                <span style={{fontWeight:700}}>{item.userName} {item.userSurname} </span>
-                                <span style={{color:"rgb(92, 91, 91)"}}>@{item.userNick}</span>
-                                <span style={{color:"rgb(92, 91, 91)"}}> • {item.commentDate.commentDay}</span>
-                              </div>
+                            <div style={{width:"100%"}}>
                               <div>
-                                {item.comment}
+                                <div style={{marginTop:"5px", marginBottom:2}}>
+                                  <span style={{fontWeight:700}}>{item.userName} {item.userSurname} </span>
+                                  <span style={{color:"rgb(92, 91, 91)"}}>@{item.userNick}</span>
+                                  <span style={{color:"rgb(92, 91, 91)"}}> • {item.commentDate.commentDay}</span>
+                                </div>
+                                <div>
+                                  {item.comment}
+                                </div>
+                              </div>
+                              <div className={style.commentReaction}>
+                                <FontAwesomeIcon icon="fa-regular fa-comment" />
+                                <FontAwesomeIcon icon="fa-solid fa-retweet" />
+                                <FontAwesomeIcon icon="fa-regular fa-heart" />
+                                <FontAwesomeIcon icon="fa-regular fa-bookmark" />
+                                <FontAwesomeIcon icon="fa-solid fa-arrow-up-from-bracket" />
                               </div>
                             </div>
-                          </div>
-                          <div className={style.commentReaction}>
-                            <FontAwesomeIcon icon="fa-regular fa-comment" />
-                            <FontAwesomeIcon icon="fa-solid fa-retweet" />
-                            <FontAwesomeIcon icon="fa-regular fa-heart" />
-                            <FontAwesomeIcon icon="fa-regular fa-bookmark" />
-                            <FontAwesomeIcon icon="fa-solid fa-arrow-up-from-bracket" />
                           </div>
                         </li>
                       ))}
