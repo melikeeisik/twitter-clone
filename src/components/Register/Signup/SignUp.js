@@ -5,12 +5,16 @@ import { useFormik } from 'formik'
 import { useNavigate } from 'react-router-dom';
 import { useUserInfo } from '../../../context/UserInfoContext';
 import { useUsers } from '../../../context/UsersContext';
-function SignUp({date}) {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faX } from '@fortawesome/free-solid-svg-icons'
+library.add(faX)
+
+function SignUp({date,setOpenForm}) {
   const {updateUserInfo} = useUserInfo() 
   const {userList,addUsers} = useUsers()
   const [formError, setFormError] = useState(false)
   const navigate = useNavigate()
-
 
   const {handleChange, handleSubmit, values, handleBlur, errors, touched} = useFormik({
     initialValues:{
@@ -31,9 +35,11 @@ function SignUp({date}) {
     },validationSchema:validationsSignup,
   })
 
-
   return (
     <div className={style.signupForm}>
+      <div onClick={() =>{setOpenForm(false);console.log("clic")}} className={style.closeForm}>
+        <FontAwesomeIcon  icon="fa-solid fa-x" />
+      </div>
       <h1>Hesabını oluştur</h1>
       <form onSubmit={handleSubmit}>
         <div className={style.inputBox}>

@@ -10,7 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faXTwitter, faApple} from '@fortawesome/free-brands-svg-icons'
 library.add( faXTwitter,faApple)
 
-function Login() {
+function Login({setOpenForm}) {
     const {updateUserInfo} = useUserInfo()
     const {userList} = useUsers()
     const [formError, setFormError] = useState(false)
@@ -36,6 +36,9 @@ function Login() {
 
   return (
     <div className={style.loginForm}>
+        <div onClick={() =>{setOpenForm(false);console.log("clic")}} className={style.closeForm}>
+          <FontAwesomeIcon  icon="fa-solid fa-x" />
+        </div>
         <div className={style.logo}>
             <FontAwesomeIcon icon="fa-brands fa-x-twitter" />
         </div>

@@ -110,24 +110,22 @@
     color: #1d9bf0;
     font-weight: bold;
 }
-.background{
-    height: 100vh;
-    width: 100vh;
-    background-color: rgb(91, 112, 131, 0.4)
-}
+
 .form{
     position: absolute;
-    background-color: #000;
-    top: 1%;
-    left: 35%;
+    background-color:rgba(91, 112, 131,0.4);
     z-index: 999;
-    border-radius: 5%;
-    padding: 45px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .closeForm{
     position: absolute;
     top: 20px;
-    left: 15px;
+    left: 10px;
+    color: #fff;
     width: 40px;
     height: 40px;
     border-radius: 999px;
@@ -145,6 +143,9 @@
     background-color:#000 ;
     flex-direction: column;
     border-radius: 5%;
+    position: relative;
+    padding: 45px;
+    color: #fff;
 }
 .signupForm form {
     display: flex;
@@ -182,7 +183,10 @@
     background-color:#000 ;
     flex-direction: column;
     border-radius: 5%;
-    padding: 45px 60px; 
+    margin: auto; 
+    padding: 80px 100px;
+    color: #fff;
+    position: relative;
 }
 .loginBtnCntn{
     margin-bottom: 20px;
@@ -213,8 +217,8 @@
 .loginForm .logo{
     position: absolute;
     font-size: 35px;
-    top: -70px;
-    left: 262px;
+    top: 10px;
+    left: 250px;
 }
 .loginForm .inputBox span{
     position: absolute;
@@ -440,14 +444,12 @@
     font-weight: 700;
 }
 .postPart{
-    height: calc(100%-53);
-    margin-top: 10px;
+    margin-top: 4px;
 }
 .createPost{
-    width: 100%;
     min-height: 150px;
     border-bottom: 2px solid #3e3d3d;
-    padding-bottom: 10px;
+    padding: 12px 16px;
 }
 .createPost textarea{
     background-color: #000;
@@ -469,9 +471,7 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
    
 }
-.createPost .profileImgContainer{
-    margin-left: 10px;
-}
+
 
  .categories ul{
     list-style: none;
