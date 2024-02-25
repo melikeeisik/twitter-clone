@@ -9,15 +9,12 @@ import style from "../../style.module.css"
 import { useUserInfo } from '../../context/UserInfoContext';
 import { useUsers } from '../../context/UsersContext';
 import SendPost from '../Home/Posts/SendPost';
-function Messages({postContainer, setPostContainer}) {
+function Messages({ setPostContainer}) {
     const {userInfo} = useUserInfo()
     const [selectedUser, setSelectedUser] = useState({})
     const [messagesUser, setMessagesUser] = useState(false)
   return (
     <>
-    <div>
-        <SendPost postContainer={postContainer} setPostContainer={setPostContainer} />
-    </div>
     <div>
         <MessagesUsers messagesUser={messagesUser} setMessagesUser={setMessagesUser}  setSelectedUser={setSelectedUser} />
     </div>

@@ -71,7 +71,7 @@ function SendPost({postContainer, setPostContainer}) {
    <div style={{display:postContainer ? "flex": "none"}} className={style.sendPostContainer}>
     <div className={style.sendPostBox}>
          <div>
-            <IoCloseSharp style={{fontSize:22,color:"#fff"}} onClick={() => {setPostContainer(false);  setIsImage(false)}} />
+            <IoCloseSharp style={{fontSize:22,color:"#fff"}} onClick={() => {setPostContainer(false);  setIsImage(false);setSendPost("")}} />
         </div>
         <div style={{borderBottom:"1px solid  #3e3d3d"}}>
             <div style={{display:"flex", alignItems:"start", padding:"20px 0px", gap:"10px"}}>
@@ -79,11 +79,11 @@ function SendPost({postContainer, setPostContainer}) {
                 <textarea placeholder='Neler oluyor?' name='sendPost' value={sendPost}  onChange={(e) => {setSendPost(e.target.value); setBtnDisabled(false)}}  />
             </div>
             {
-            isImage &&  postContainer && 
-            <div style={{position:"relative"}}>
-                <FontAwesomeIcon onClick={() => {setImgUrl(""); setXDisable(true);setIsImage(false)}} style={{display: xDisable ? "none" : "block", padding:"8px 10px",backgroundColor:"#252525", borderRadius:"999px", position:"absolute",top:"5px",right:"5px"}} icon="fa-solid fa-xmark" />
-                <img style={{height:"300px", width:"100%", objectFit:"cover", display:"block", borderRadius:"10px", marginBottom:"10px"}} src={imgUrl} alt={`Profile Picture`}/>
-            </div>
+                isImage  && 
+                <div style={{position:"relative"}}>
+                    <FontAwesomeIcon onClick={() => {setImgUrl(""); setXDisable(true);setIsImage(false)}} style={{display: xDisable ? "none" : "block", padding:"8px 10px",backgroundColor:"#252525", borderRadius:"999px", position:"absolute",top:"5px",right:"5px",color:"#fff"}} icon="fa-solid fa-xmark" />
+                    <img style={{height:"300px", width:"100%", objectFit:"cover", display:"block", borderRadius:"10px", marginBottom:"10px"}} src={imgUrl} alt={`Post Picture`}/>
+                </div>
             }
         </div>
         <div style={{display:"flex", justifyContent:"space-between", padding:"10px 0px"}}>

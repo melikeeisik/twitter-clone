@@ -16,7 +16,7 @@ import SendPost from '../Home/Posts/SendPost';
 
 library.add(faArrowLeft)
 
-function Profile({postContainer, setPostContainer}) {
+function Profile({ setPostContainer}) {
   const userNickName = useParams()
   const [userInfo , setUserInfo] = useState({})
   const {userList} = useUsers()
@@ -33,9 +33,6 @@ function Profile({postContainer, setPostContainer}) {
 
   return (
     <>
-      <div>
-        <SendPost postContainer={postContainer} setPostContainer={setPostContainer} />
-      </div>
       <div >
         <Menu setPostContainer={setPostContainer}/>
           <div className={style.postAndAgendaPart}>

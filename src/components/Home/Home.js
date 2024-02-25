@@ -4,21 +4,16 @@ import Menu from './Menu/Menu'
 import Posts from './Posts/Posts'
 import Agenda from './Agenda/Agenda'
 import SendPost from './Posts/SendPost'
-function Home({postContainer, setPostContainer}) {
+function Home({ setPostContainer}) {
  
-  return (
-    <div>
-      <div style={{display:postContainer ? "block": "none"}} >
-          <SendPost postContainer={postContainer} setPostContainer={setPostContainer}  />
-      </div>
+  return ( 
       <div className={style.homePage}>
           <Menu  setPostContainer={setPostContainer}/>
           <div className={style.postAndAgendaPart}>
-            <Posts postContainer={postContainer} setPostContainer={setPostContainer}/>
+            <Posts/>
             <Agenda/>
           </div>
       </div>
-    </div>
   )
 }
 

@@ -7,10 +7,10 @@ import { faGear, faPhotoFilm, faListUl, faLocationDot,faXmark } from '@fortaweso
 import { faFaceSmile, faCalendarDays } from '@fortawesome/free-regular-svg-icons'
 import { useUserInfo } from '../../../context/UserInfoContext'
 import { usePosts } from '../../../context/PostsContext'
-import SendPost from './SendPost';
+
 library.add(faGear,faPhotoFilm,faListUl,faFaceSmile,faCalendarDays,faLocationDot, faXmark)
 
-function Posts({postContainer, setPostContainer}) {
+function Posts() {
   const {userInfo} = useUserInfo()
   const {allPosts, addPosts} = usePosts()
   const [sendPost, setSendPost] = useState("")
@@ -49,13 +49,9 @@ function Posts({postContainer, setPostContainer}) {
     setNewList(newData);
   }, [allPosts]);
 
-  useEffect(() =>{
-    postContainer 
-    ?   document.body.style.overflow = 'hidden'
-    :  document.body.style.overflow = ''
-  }, [postContainer])
 
   const handleClickInput = () =>{
+    console.log("clikc")
     setBtnDisabled(false)
     document.getElementById('fileInput').click();
   }
@@ -106,11 +102,8 @@ function Posts({postContainer, setPostContainer}) {
 
   return (
     <>
-      <div >
-        <SendPost postContainer={postContainer} setPostContainer={setPostContainer}  />
-      </div>
-      <div  className={style.posts}>
-          <div   className={style.postsHeader} >
+      <div className={style.posts}>
+          <div className={style.postsHeader} >
             <span>Sana özel</span>
             <span>Takip edilenler</span>
             <span><FontAwesomeIcon icon="fa-solid fa-gear" /></span>
@@ -124,10 +117,10 @@ function Posts({postContainer, setPostContainer}) {
                 <div style={{display:"flex", flexDirection:"column", flex:"1", paddingRight:"20px"}}>
                   <textarea  name='sendPost' value={sendPost} onChange={(e) => {setSendPost(e.target.value); setBtnDisabled(false)}} placeholder='Neler oluyor?'></textarea>
                   {
-                    isImage &&  !postContainer && 
+                    isImage && 
                     <div style={{position:"relative"}}>
                       <FontAwesomeIcon onClick={() => {setImgUrl(""); setXDisable(true)}} style={{display: xDisable ? "none" : "block", padding:"8px 10px",backgroundColor:"#252525", borderRadius:"999px", position:"absolute",top:"5px",right:"5px"}} icon="fa-solid fa-xmark" />
-                      <img style={{width:"100%" , objectFit:"cover", display:"block", borderRadius:"10px", marginBottom:"10px"}} src={imgUrl} alt={`Profile Picture`}/>
+                      <img style={{width:"100%" , objectFit:"cover", display:"block", borderRadius:"10px", marginBottom:"10px"}} src={imgUrl} alt={`Post Picture`}/>
                     </div>
                   }
                 </div>
