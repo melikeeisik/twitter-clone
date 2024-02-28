@@ -1,0 +1,65 @@
+.postInfoPage{
+    display: flex;
+    color: #fff;
+    position: relative;
+    height: 100vh;
+}
+.postInfo{
+    border-left: 1px solid #3e3d3d;
+    width: 30%;
+}
+.postInfo .userInfo{
+    display: flex;
+    gap: 10px;
+    padding: 12px 16px;
+}
+.postInfo .userImg{
+    width: 50px;
+}
+.postInfoPage .reactionOne{
+    height: 48px;
+    padding: 0px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    border-bottom: 1px solid #3e3d3d;
+    border-top: 1px solid #3e3d3d;
+}
+.postText{
+    padding:16px;
+}
+.postInfo input{
+    width: 100%;
+    background-color: #000;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    outline: none;
+    max-height:100px ;
+} 
+.postInfo button{
+    padding:0px 20px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #1d9bf0;
+    border: 1px solid #1d9bf0;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+.postInfo button:hover{
+    cursor: pointer;
+}
+.postImg{
+    background-color: rgba(24, 23, 23, 0.5);
+    position: relative;
+    width: 70%;
+}
+.postImg .reactionOnePost{
+    display: flex;
+    gap: 100px;
+    border: none;
+    margin-top: 10px;
+}

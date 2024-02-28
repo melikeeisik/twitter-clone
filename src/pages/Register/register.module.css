@@ -1,0 +1,123 @@
+.registerPage{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: #fff;
+    position: relative;
+    height: 100vh;
+}
+.logo{
+    font-size: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: self-start;
+    font-family: "TwitterChirpExtendedHeavy","Verdana",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+.title{
+    display: flex;
+    flex-direction: column;
+    font-size: 70px;
+    letter-spacing: -5px;
+    font-weight: bold;
+    font-family: "TwitterChirpExtendedHeavy","Verdana",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    margin-bottom: 40px;
+}
+.subtitle{
+    letter-spacing: -2px;
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.registerBtn{
+    width: 340px;
+    height: 40px;
+    border-radius: 30px;
+    margin-bottom: 8px;
+    background-color: #fff;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.registerBtn span{
+    font-size: 15px;
+    margin-left: 10px;
+}
+.registerSeperate{
+    margin : 15px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.seperateLine{
+    height: 0.2px;
+    width:140px;
+    background-color:#3e3d3d ;
+}
+.seperateText{
+    font-weight: 200;
+    padding: 0px 10px;
+}
+.createAccountBtn{
+    width: 340px;
+    height: 45px;
+    border-radius: 30px;
+    margin-bottom: 8px;
+    background-color: #1d9bf0 ;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: all 300ms ease-in-out;
+    margin-bottom: 50px;
+}
+.createAccountBtn span{
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+}
+.createAccountBtn:hover{
+    filter: brightness(85%);
+    cursor: pointer;
+}
+.loginBtn{
+    margin-top: 20px;
+    width: 340px;
+    height: 45px;
+    border-radius: 30px;
+    margin-bottom: 8px;
+    background-color: #000 ;
+    border: 1px solid rgb(83, 100, 113);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    transition: all 300ms ease-in-out;
+}
+.loginBtn:hover{
+    cursor: pointer;
+    background-color: rgb(18, 22, 26);
+}
+.loginBtn span{
+    font-size: 16px;
+    color: #1d9bf0;
+    font-weight: bold;
+}
+
+.form{
+    position: absolute;
+    background-color:rgba(91, 112, 131,0.4);
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

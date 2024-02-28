@@ -1,11 +1,12 @@
 import { createContext, useContext, useState} from "react";
-import { doc, setDoc,getDoc  } from "@firebase/firestore";
+import { doc, setDoc,getDoc,collection,getDocs  } from "@firebase/firestore";
 import { db } from "../firebase";
-
+import { useEffect } from "react";
 const PostCommentContext = createContext();
 
 export const PostCommentsProvider = ({ children }) => {
     const [comments, setComments] = useState({})
+
       const addComment = async (postId, comment, user, date, time) => {
           const commentRef = doc(db, "comments", `${postId}`);
           try {

@@ -1,0 +1,118 @@
+.loginForm{
+    display: flex;
+    background-color:#000 ;
+    flex-direction: column;
+    border-radius: 5%;
+    margin: auto; 
+    padding: 80px 100px;
+    color: #fff;
+    position: relative;
+}
+.loginBtnCntn{
+    margin-bottom: 20px;
+    height: 40px;
+}
+.loginForm .inputBox input{
+    background-color: #000;
+    border: 1px solid #3e3d3d;
+    border-radius: 5px;
+    width: 330px;
+    height: 50px;
+    padding:0px 10px;
+    margin: 15px 0px;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+}
+.loginForm  .loginBtn{
+    margin-top: 40px;
+    width: 350px;
+    height: 40px;
+    background-color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 700;
+}
+.loginForm .logo{
+    position: absolute;
+    font-size: 35px;
+    top: 10px;
+    left: 250px;
+}
+.loginForm .inputBox span{
+    position: absolute;
+    top: 23px;
+    left: 10px;
+    z-index: 1;
+    transition: 0.2s ease all;
+}
+.inputBox{
+    position: relative;
+    color:  #797777;
+    font-size: 17px;
+    z-index: 999;
+}
+.inputBox span{
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    padding-top: 6px;
+    z-index: 1;
+    transition: 0.2s ease all;
+}
+.inputBox div{
+    position: absolute;
+    bottom: -5px;
+    color: #f4212e;
+    font-weight: 200;
+    font-size: 13px;
+    left: 10px;
+}
+.inputBox input:focus+span{
+	top: 10px;
+    font-size: 15px;
+    color: #1d9bf0;
+}
+.inputBox  input:focus{
+    border: 1px solid #1d9bf0;
+}
+.closeForm{
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 300ms ease-in-out;
+}
+.closeForm:hover{
+    cursor: pointer;
+    background-color: rgb(91, 112, 131, 0.4) ;
+}
+.registerBtn{
+    width: 340px;
+    height: 40px;
+    border-radius: 30px;
+    margin-bottom: 8px;
+    background-color: #fff;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.registerBtn span{
+    font-size: 15px;
+    margin-left: 10px;
+}
+.registerSeperate{
+    margin : 15px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

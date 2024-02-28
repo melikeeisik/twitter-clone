@@ -1,13 +1,13 @@
 import './App.css';
-import Home from './components/Home/Home';
+import Home from './pages/Home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Profile from './components/Profile/Profile';
-import Register from './components/Register/Register';
-import PostInfo from './components/Home/Posts/PostInfo';
-import Messages from './components/Messages/Messages';
-import PostInfoPage from './components/Home/Posts/PostInfoPage';
+import Profile from './pages/Profile';
+import Register from './pages/Register';
+import PostInfo from './pages/PostInfo';
+import Messages from './pages/Messages';
+import PostInfoPage from './pages/PostInfoPage';
 import { useState,useEffect } from 'react';
-import SendPost from './components/Home/Posts/SendPost';
+import SendPost from './components/SendPost/SendPost';
 function App() {
   const [postContainer, setPostContainer]=useState(false)
 
@@ -19,10 +19,7 @@ function App() {
 
   return (
     <div style={{overflowY:postContainer ? "hidden" : ""}}>
-      <div>
         <SendPost postContainer={postContainer} setPostContainer={setPostContainer} />
-      </div>
-      <div>
         <Router>
             <Routes>
                 <Route path='/' element={<Register/>}/>
@@ -33,7 +30,6 @@ function App() {
                 <Route path='/messages' element={<Messages setPostContainer={setPostContainer}/>} />
             </Routes>
         </Router>
-    </div>
     </div>
   );
 }

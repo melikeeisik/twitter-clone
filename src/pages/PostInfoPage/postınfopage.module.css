@@ -1,0 +1,14 @@
+.postInfoContainer{
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: calc(100%-777);
+    margin-left: 401px;
+    margin-right: 376px;
+}
+.postInfoHeader{
+    position: sticky;
+    top: 0px;
+    padding: 16px;
+    background-color: #000;
+}
