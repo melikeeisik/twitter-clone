@@ -8,9 +8,11 @@ import Messages from './pages/Messages';
 import PostInfoPage from './pages/PostInfoPage';
 import { useState,useEffect } from 'react';
 import SendPost from './components/SendPost/SendPost';
+import { useUserInfo } from './context/UserInfoContext';
 function App() {
   const [postContainer, setPostContainer]=useState(false)
-
+  const {userInfo} = useUserInfo()
+  console.log(userInfo)
   useEffect(() =>{
     postContainer 
     ?   document.body.style.overflow = 'hidden'

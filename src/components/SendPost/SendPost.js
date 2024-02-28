@@ -69,41 +69,46 @@ function SendPost({postContainer, setPostContainer}) {
     
     
   return (
-   <div style={{display:postContainer ? "flex": "none"}} className={style.sendPostContainer}>
-    <div className={style.sendPostBox}>
-         <div>
-            <IoCloseSharp style={{fontSize:22,color:"#fff"}} onClick={() => {setPostContainer(false);  setIsImage(false);setSendPost("")}} />
-        </div>
-        <div style={{borderBottom:"1px solid  #3e3d3d"}}>
-            <div style={{display:"flex", alignItems:"start", padding:"20px 0px", gap:"10px"}}>
-                <img style={{ width: "50px", objectFit:"contain"}} src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt='Profile Picture'/>
-                <textarea placeholder='Neler oluyor?' name='sendPost' value={sendPost}  onChange={(e) => {setSendPost(e.target.value); setBtnDisabled(false)}}  />
-            </div>
-            {
-                isImage  && 
-                <div style={{position:"relative"}}>
-                    <FontAwesomeIcon onClick={() => {setImgUrl(""); setXDisable(true);setIsImage(false)}} style={{display: xDisable ? "none" : "block", padding:"8px 10px",backgroundColor:"#252525", borderRadius:"999px", position:"absolute",top:"5px",right:"5px",color:"#fff"}} icon="fa-solid fa-xmark" />
-                    <img style={{height:"300px", width:"100%", objectFit:"cover", display:"block", borderRadius:"10px", marginBottom:"10px"}} src={imgUrl} alt={`Post Picture`}/>
+    <>
+        {
+            userInfo && 
+            <div style={{display:postContainer ? "flex": "none"}} className={style.sendPostContainer}>
+                <div className={style.sendPostBox}>
+                    <div>
+                        <IoCloseSharp style={{fontSize:22,color:"#fff"}} onClick={() => {setPostContainer(false);  setIsImage(false);setSendPost("")}} />
+                    </div>
+                    <div style={{borderBottom:"1px solid  #3e3d3d"}}>
+                        <div style={{display:"flex", alignItems:"start", padding:"20px 0px", gap:"10px"}}>
+                            <img style={{ width: "50px", objectFit:"contain"}} src={`https://api.multiavatar.com/${userInfo.userNick}.png`} alt='Profile Picture'/>
+                            <textarea placeholder='Neler oluyor?' name='sendPost' value={sendPost}  onChange={(e) => {setSendPost(e.target.value); setBtnDisabled(false)}}  />
+                        </div>
+                        {
+                            isImage  && 
+                            <div style={{position:"relative"}}>
+                                <FontAwesomeIcon onClick={() => {setImgUrl(""); setXDisable(true);setIsImage(false)}} style={{display: xDisable ? "none" : "block", padding:"8px 10px",backgroundColor:"#252525", borderRadius:"999px", position:"absolute",top:"5px",right:"5px",color:"#fff"}} icon="fa-solid fa-xmark" />
+                                <img style={{height:"300px", width:"100%", objectFit:"cover", display:"block", borderRadius:"10px", marginBottom:"10px"}} src={imgUrl} alt={`Post Picture`}/>
+                            </div>
+                        }
+                    </div>
+                    <div style={{display:"flex", justifyContent:"space-between", padding:"10px 0px"}}>
+                        <div className={style.categories}>
+                            <ul>
+                            <li>
+                                <button onClick={handleClickInput}><FontAwesomeIcon icon="fa-solid fa-photo-film"/></button>
+                                <input type='file' id="fileInput" accept="image/*" onChange={handleFileChange} style={{display:"none"}} />
+                            </li>
+                            <li><FontAwesomeIcon icon="fa-solid fa-list-ul" /></li>
+                            <li><FontAwesomeIcon icon="fa-regular fa-face-smile" /></li>
+                            <li><FontAwesomeIcon icon="fa-regular fa-calendar-days" /></li>
+                            <li><FontAwesomeIcon icon="fa-solid fa-location-dot" /></li>
+                            </ul>
+                        </div>  
+                        <button style={{filter: btnDisabled ? "brightness(55%)" : ""}} disabled={btnDisabled} onClick={() => {handleSendPost(); setPostContainer(false)}} className={style.send}>Gönder</button>
+                    </div>
                 </div>
-            }
-        </div>
-        <div style={{display:"flex", justifyContent:"space-between", padding:"10px 0px"}}>
-            <div className={style.categories}>
-                <ul>
-                <li>
-                    <button onClick={handleClickInput}><FontAwesomeIcon icon="fa-solid fa-photo-film"/></button>
-                    <input type='file' id="fileInput" accept="image/*" onChange={handleFileChange} style={{display:"none"}} />
-                </li>
-                <li><FontAwesomeIcon icon="fa-solid fa-list-ul" /></li>
-                <li><FontAwesomeIcon icon="fa-regular fa-face-smile" /></li>
-                <li><FontAwesomeIcon icon="fa-regular fa-calendar-days" /></li>
-                <li><FontAwesomeIcon icon="fa-solid fa-location-dot" /></li>
-                </ul>
-            </div>  
-            <button style={{filter: btnDisabled ? "brightness(55%)" : ""}} disabled={btnDisabled} onClick={() => {handleSendPost(); setPostContainer(false)}} className={style.send}>Gönder</button>
-        </div>
-    </div>
-   </div>
+            </div>
+        }
+    </>
   )
 }
 
