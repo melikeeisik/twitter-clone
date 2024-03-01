@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import style from './posts.module.css';
-import Post from '../Post';
+import React, { useState } from 'react';
+import { IoCloseSharp } from 'react-icons/io5';
+import style from './sendpost.module.css';
+import { useUserInfo } from '../../context/UserInfoContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -14,7 +15,6 @@ import {
   faFaceSmile,
   faCalendarDays
 } from '@fortawesome/free-regular-svg-icons';
-import { useUserInfo } from '../../context/UserInfoContext';
 import { usePosts } from '../../context/PostsContext';
 library.add(
   faGear,
@@ -26,75 +26,20 @@ library.add(
   faXmark
 );
 
-function Posts() {
+function SendPost({ postContainer, setPostContainer }) {
   const { userInfo } = useUserInfo();
-  const { allPosts, addPosts } = usePosts();
   const [sendPost, setSendPost] = useState('');
-  const [btnDisabled, setBtnDisabled] = useState(true);
-  const [imgPost, setImgPost] = useState('');
-  const [isImage, setIsImage] = useState(false);
+  const { addPosts } = usePosts();
   const [imgUrl, setImgUrl] = useState('');
+  const [imgPost, setImgPost] = useState('');
+  const [btnDisabled, setBtnDisabled] = useState(true);
+  const [isImage, setIsImage] = useState(false);
   const [xDisable, setXDisable] = useState(true);
-  const [newList, setNewList] = useState([]);
-
-  useEffect(() => {
-    const newData = allPosts.sort((a, b) => {
-      const dayA = a.postDate.postDay.split(' ');
-      const dayB = b.postDate.postDay.split(' ');
-      const timeA = a.postDate.postTime.split(':');
-      const timeB = b.postDate.postTime.split(':');
-      const months = [
-        'Oca',
-        'Şub',
-        'Mar',
-        'Nis',
-        'May',
-        'Haz',
-        'Tem',
-        'Ağu',
-        'Eyl',
-        'Eki',
-        'Kas',
-        'Ara'
-      ];
-      const monthA = months.indexOf(dayA[1]);
-      const monthB = months.indexOf(dayB[1]);
-
-      if (dayA[2] !== dayB[2]) {
-        return dayB[2] - dayA[2];
-      } else if (monthA !== monthB) {
-        return monthB - monthA;
-      } else if (parseInt(dayA[0]) !== parseInt(dayB[0])) {
-        return parseInt(dayB[0]) - parseInt(dayA[0]);
-      } else if (parseInt(timeA[0]) !== parseInt(timeB[0])) {
-        return parseInt(timeB[0]) - parseInt(timeA[0]);
-      } else if (parseInt(timeA[1]) !== parseInt(timeB[1])) {
-        return parseInt(timeB[1]) - parseInt(timeA[1]);
-      } else {
-        return 0;
-      }
-    });
-
-    setNewList(newData);
-  }, [allPosts]);
 
   const handleClickInput = () => {
     setBtnDisabled(false);
-    document.getElementById('imageInput').click();
+    document.getElementById('fileInput').click();
   };
-
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setImgPost(file);
-    setIsImage(true);
-    setXDisable(false);
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setImgUrl(e.target.result);
-    };
-    reader.readAsDataURL(file);
-  };
-
   const handleSendPost = () => {
     const day = new Date();
     const dateDay = day.getDate();
@@ -140,50 +85,64 @@ function Posts() {
     setBtnDisabled(true);
   };
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setImgPost(file);
+    setIsImage(true);
+    setXDisable(false);
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setImgUrl(e.target.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <>
-      <div className={style.posts}>
-        <div className={style.postsHeader}>
-          <span>Sana özel</span>
-          <span>Takip edilenler</span>
-          <span>
-            <FontAwesomeIcon icon="fa-solid fa-gear" />
-          </span>
-        </div>
-        <div className={style.postPart}>
-          <div className={style.createPost}>
-            <div className={style.createPostBox}>
-              <div className={style.profileImgContainer}>
+      {userInfo && (
+        <div
+          style={{ display: postContainer ? 'flex' : 'none' }}
+          className={style.sendPostContainer}
+        >
+          <div className={style.sendPostBox}>
+            <IoCloseSharp
+              className={style.closeSendPost}
+              onClick={() => {
+                setPostContainer(false);
+                setIsImage(false);
+                setSendPost('');
+              }}
+            />
+            <div className={style.postText}>
+              <div className={style.postHeader}>
                 <img
                   src={`https://api.multiavatar.com/${userInfo.userNick}.png`}
                   alt="Profile Picture"
                 />
-              </div>
-              <div className={style.createPostText}>
                 <textarea
+                  placeholder="Neler oluyor?"
                   name="sendPost"
                   value={sendPost}
                   onChange={(e) => {
                     setSendPost(e.target.value);
                     setBtnDisabled(false);
                   }}
-                  placeholder="Neler oluyor?"
-                ></textarea>
-                {isImage && (
-                  <div className={style.isImage}>
-                    <FontAwesomeIcon
-                      onClick={() => {
-                        setImgUrl('');
-                        setXDisable(true);
-                        setIsImage(false);
-                      }}
-                      style={{ display: xDisable ? 'none' : 'block' }}
-                      icon="fa-solid fa-xmark"
-                    />
-                    <img src={imgUrl} alt={`Post Picture`} />
-                  </div>
-                )}
+                />
               </div>
+              {isImage && (
+                <div className={style.isImage}>
+                  <FontAwesomeIcon
+                    onClick={() => {
+                      setImgUrl('');
+                      setXDisable(true);
+                      setIsImage(false);
+                    }}
+                    style={{ display: xDisable ? 'none' : 'block' }}
+                    icon="fa-solid fa-xmark"
+                  />
+                  <img src={imgUrl} alt={`Post Picture`} />
+                </div>
+              )}
             </div>
             <div className={style.buttonsContainer}>
               <div className={style.categories}>
@@ -194,9 +153,9 @@ function Posts() {
                     </button>
                     <input
                       type="file"
-                      id="imageInput"
+                      id="fileInput"
                       accept="image/*"
-                      onInput={handleFileChange}
+                      onChange={handleFileChange}
                     />
                   </li>
                   <li>
@@ -216,22 +175,20 @@ function Posts() {
               <button
                 style={{ filter: btnDisabled ? 'brightness(55%)' : '' }}
                 disabled={btnDisabled}
-                onClick={handleSendPost}
+                onClick={() => {
+                  handleSendPost();
+                  setPostContainer(false);
+                }}
                 className={style.send}
               >
                 Gönder
               </button>
             </div>
           </div>
-          <div className={style.postsList}>
-            {newList.map((post, index) => {
-              return <Post key={index} post={post} />;
-            })}
-          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
 
-export default Posts;
+export default SendPost;

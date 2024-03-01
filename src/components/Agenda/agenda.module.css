@@ -1,137 +1,152 @@
-.agendaPage{
-    height: 100%;
-    padding: 10px 30px;
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    position: fixed;
-    right: 0px;
-    top: 0px;
-    background-color: #000;
-    border-left: 1px solid #3e3d3d;
+.agendaPage {
+  height: 100%;
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  background-color: #000;
+  border-left: 1px solid #3e3d3d;
 }
-.searchBox{
-    background-color: #000;
-    padding: 5px;
+.agendaTitle {
+  color: #fff;
 }
-.searchBox div{
-    position: absolute;
-    top: 27px;
-    left: 55px;
-    color:  #5c5b5b;
+.searchBox {
+  background-color: #000;
+  padding: 5px;
 }
-.searchBox input{
-    background-color: #23252a;
-    border: 1px solid #23252a;
-    outline: none;
-    border: none;
-    padding: 15px 5px ;
-    text-indent: 50px;
-    border-radius: 30px;
-    color: #fff;
-    width: 100%;
+.searchBox div {
+  position: absolute;
+  top: 27px;
+  left: 55px;
+  color: #5c5b5b;
 }
-.searchBox input:focus{
-    border: 1px solid #1d9bf0;
-    outline: none;
+.searchBox input {
+  background-color: #23252a;
+  border: 1px solid #23252a;
+  outline: none;
+  border: none;
+  padding: 15px 5px;
+  text-indent: 50px;
+  border-radius: 30px;
+  color: #fff;
+  width: 100%;
 }
-.searchBox input:focus+ div{
-    color: #1d9bf0;
+.searchBox input:focus {
+  border: 1px solid #1d9bf0;
+  outline: none;
 }
-.searchBox input::placeholder{
-    font-size: 15px;
+.searchBox input:focus + div {
+  color: #1d9bf0;
 }
-.agendaContainer{
-    margin-top: 12px;
-    background-color: #1a1b1e;
-    padding: 12px 0px;
-    border-radius: 20px;
+.searchBox input::placeholder {
+  font-size: 15px;
 }
-.agendaContainer span{
-    font-size: 20px;
-    font-weight: 700;
-    padding: 0px 16px;
+.agendaContainer {
+  margin-top: 12px;
+  background-color: #1a1b1e;
+  padding: 12px 0px;
+  border-radius: 20px;
 }
-.agendaList ul{
-    list-style: none;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
-    padding-inline-start: 0px;
-    margin-top: 20px;
+.agendaContainer span {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 0px 16px;
+}
+.agendaList ul {
+  list-style: none;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  padding-inline-start: 0px;
+  margin-top: 20px;
 }
 .agendaList ul li {
-    padding: 12px 0px;
-    display: flex;
-    flex-direction: column;
-    transition: all 300ms ease-in-out;
+  padding: 12px 0px;
+  display: flex;
+  flex-direction: column;
+  transition: all 300ms ease-in-out;
 }
-.agendaList ul li:hover{
-    background-color:  #252525;
-    border-radius: 5px;
+.agendaList ul li:hover {
+  background-color: #252525;
+  border-radius: 5px;
 }
-.agendaCategory{
-    font-size: 13px !important;;
-    color:  #666565;
+.agendaCategory {
+  font-size: 13px !important;
+  color: #666565;
 }
-.agendaName{
-    font-size: 16px !important;
-    color: #fff;
+.agendaName {
+  font-size: 16px !important;
+  color: #fff;
 }
-.followPeople{
-    background-color: #1a1b1e;
-    padding: 10px 0px;
-    border-radius: 20px;
-    margin-top: 16px;
+.followPeople {
+  background-color: #1a1b1e;
+  padding: 10px 0px;
+  border-radius: 20px;
+  margin-top: 16px;
 }
-.followPeople span{
-    font-size: 20px;
-    font-weight: 700;
-    padding: 0px 16px;
+.followPeople span {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 0px 16px;
 }
-.peopleList ul{
-    list-style: none;
-    margin-block-start: 0px;
-    margin-block-end: 0px;
-    padding-inline-start: 0px;
-    padding-top: 12px;
+.peopleList ul {
+  list-style: none;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  padding-inline-start: 0px;
+  padding-top: 12px;
 }
-.peopleList ul li{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 16px;
-    transition: all 300ms ease-in-out;
+.peopleList ul li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  transition: all 300ms ease-in-out;
 }
-.peopleList ul li:hover{
-    cursor: pointer;
-    background-color:  #252525;
-    border-radius: 5px;
+.peopleList ul li:hover {
+  cursor: pointer;
+  background-color: #252525;
+  border-radius: 5px;
 }
-.peopleInfo{
-    display: flex;
-    flex-direction: row;
+.peopleInfo {
+  display: flex;
+  flex-direction: row;
 }
-.peopleLi:hover{
-    cursor: pointer;
-    background-color: #2b2a2a;
+.peopleLi:hover {
+  cursor: pointer;
+  background-color: #2b2a2a;
 }
-.peopleimg{
-    width: 40px;
-    height: 40px;
+.peopleimg {
+  width: 40px;
+  height: 40px;
 }
-.peopleimg img{
-    height: 100%;
-    object-fit: contain;
+.peopleimg img {
+  height: 100%;
+  object-fit: contain;
 }
-.peopleName{
-    display: flex;
-    flex-direction: column;
+.peopleName {
+  display: flex;
+  flex-direction: column;
 }
-.peopleFollowBtn{
-    padding: 8px 25px;
-    background-color: #fff;
-    border: 1px solid #fff;
-    border-radius: 30px;
-    font-weight: 700
+.peopleName span:first-child {
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 700;
+}
+.peopleName span:last-child {
+  font-weight: 400;
+  font-size: 14px;
+  color: #666565;
+}
+
+.peopleFollowBtn {
+  padding: 8px 25px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  font-weight: 700;
 }

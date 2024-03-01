@@ -25,6 +25,23 @@
     font-size: 17px;
     border-bottom: 1px solid #3e3d3d;
     border-top: 1px solid #3e3d3d;
+    color:#5c5b5b
+}
+.postInfoPage .reactionOne div{
+    display:flex;
+    align-items:center;
+}
+.postInfoPage .reactionOne div span{
+    font-size:15px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.commentInput{
+    display:flex;
+    padding:12px 16px;
+    gap:10px;
+    border-bottom:1px solid #3e3d3d;
+    align-items:center;
 }
 .postText{
     padding:16px;
@@ -56,6 +73,58 @@
     background-color: rgba(24, 23, 23, 0.5);
     position: relative;
     width: 70%;
+}
+.closePostInfo{
+    padding:8px 10px;
+    border-radius:999px;
+    position:fixed;
+    top:15px;
+    left:10px;
+    z-index:999px;
+    font-size: 20px;
+}
+.buttonsContainer{
+    position: "sticky";
+    top:0px;
+    margin:auto;
+    width:50%;
+}
+.buttonsContainer img{
+    min-height:94vh;
+    max-width:95vh;
+    object-fit:contain;
+    z-index:999px; 
+}
+.commentBox{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+.commentBox span{
+    font-size:15px;
+    font-weight:700;
+}
+.userBox{
+    display:flex;
+    flex-direction:column;
+}
+.userName{
+    font-weight:700;
+}
+.userNick{
+    color:#5c5b5b
+}
+.isPostText{
+    display:flex;
+    flex-direction:column;
+}
+.postDate{
+    color:#5c5b5b;
+    font-weight:400;
+    margin-top:16px;
+    margin-bottom:16px;
+    padding-left:16px;
+    padding-right:16px;
 }
 .postImg .reactionOnePost{
     display: flex;

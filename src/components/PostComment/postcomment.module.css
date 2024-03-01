@@ -1,8 +1,47 @@
-.commentReaction{
-    display: flex;
-    margin-top: 12px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    color:rgb(92, 91, 91);
+.commentList {
+  list-style: none;
+  margin: 0;
+  padding: 0px;
+}
+.comments {
+  list-style: none;
+  margin: 0;
+  padding: 0px;
+}
+.comments li {
+  padding: 12px 0px;
+  border-bottom: 1px solid #3e3d3d;
+}
+.commentContainer {
+  display: flex;
+  padding: 0px 16px;
+  gap: 8px;
+}
+.commentContainer img {
+  width: 50px;
+  object-fit: contain;
+}
+.commentBox {
+  width: 100%;
+}
+.userBox {
+  margin-top: 5px;
+  margin-bottom: 2px;
+}
+.userName {
+  font-weight: 700;
+}
+.userNick {
+  color: rgb(92, 91, 91);
+}
+.commentText {
+  word-break: break-word;
+}
+.commentReaction {
+  display: flex;
+  margin-top: 12px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(92, 91, 91);
 }

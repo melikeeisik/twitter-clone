@@ -1,72 +1,100 @@
-.messageUsersContainer{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(91, 112, 131,0.4);
-    z-index: 9999;
+.messageUsersContainer {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(91, 112, 131, 0.4);
+  z-index: 9999;
 }
-.messageUsers{
-    width: 550px;
-    height: 500px;
-    max-height: 500px;
-    color: #fff;
-    border-radius: 10px;
-    padding:15px;
-    background-color:#000;
+.messageUsers {
+  width: 550px;
+  height: 500px;
+  max-height: 500px;
+  color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #000;
 }
-.messagesUserBox{
-    background-color: #000;
+.messageUsersHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.searchMessageUser{
-    padding:5px 0px;
-    border-bottom:1px solid #3e3d3d;
-    position: relative;
+.messageUsersHeaderTitle {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
-.searchMessageUser input{
-    width:100%;
-    padding:10px 0px;
-    background-color:#000;
-    outline:none;
-    border:none;
-    color:#fff ;
-    text-indent: 25px;
-    font-size: 15px;
+.messageUsersHeaderTitle span {
+  font-weight: 700;
+  font-size: 20px;
 }
-.searchMessageUser svg{
-    font-size: 20px;
-    position: absolute;
-    left: 0px;
-    bottom: 15px;
+.messagesUserBox {
+  background-color: #000;
 }
-.searchMessageUser input:focus+svg{
-    color: #1d9bf0;
+.searchMessageUser {
+  padding: 5px 0px;
+  border-bottom: 1px solid #3e3d3d;
+  position: relative;
 }
-.searchUserList ul{
-    margin:0;
-    padding:0;
-    list-style:none
+.searchMessageUser input {
+  width: 100%;
+  padding: 10px 0px;
+  background-color: #000;
+  outline: none;
+  border: none;
+  color: #fff;
+  text-indent: 25px;
+  font-size: 15px;
 }
-.searchUserList ul li{
-    display:flex;
-    gap:10px;
-    padding:10px 0px;
-    border-radius: 5px;
+.searchMessageUser svg {
+  font-size: 20px;
+  position: absolute;
+  left: 0px;
+  bottom: 15px;
 }
-.searchUserList ul li:hover{
-    cursor: pointer;
-    background-color: #252525;
+.searchMessageUser input:focus + svg {
+  color: #1d9bf0;
 }
-.selectUserBtn{
-    padding:7px 20px;
-    border-radius:20px;
-    background-color:#fff;
-    border:1px solid #fff;
-    font-weight:700;
-    font-size:14px
+.searchUserList ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.selectUserBtn:hover{
-    cursor: pointer;
+.searchUserList ul li {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0px;
+  border-radius: 5px;
+}
+.searchUserList ul li:hover {
+  cursor: pointer;
+  background-color: #252525;
+}
+.searchUserList ul li img {
+  width: 40px;
+  object-fit: contain;
+}
+.profileNameContainer {
+  display: flex;
+  flex-direction: column;
+}
+.userName {
+  font-weight: 700;
+}
+.userNick {
+  color: rgb(92, 91, 91);
+}
+.selectUserBtn {
+  padding: 7px 20px;
+  border-radius: 20px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  font-weight: 700;
+  font-size: 14px;
+}
+.selectUserBtn:hover {
+  cursor: pointer;
 }

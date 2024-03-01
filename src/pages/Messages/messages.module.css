@@ -1,68 +1,77 @@
-.messagesPages{
-    display:grid;
-    grid-template-columns:2fr 3fr;
-    margin-left: 400.8px;
-    color: #fff;
-    border-right: 1px solid #fff;
+.messagesPages {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  margin-left: 400.8px;
+  color: #fff;
+  border-right: 1px solid #fff;
 }
-.messagesHeader{
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    position: sticky;
-    background-color: #000;
-    top: 0px;
-    padding: 10px 15px;
-    z-index: 1;
+.messagesHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  position: sticky;
+  background-color: #000;
+  top: 0px;
+  padding: 10px 15px;
+  z-index: 1;
 }
-.messagesHeader span{
-    font-weight: 700;
+.messagesHeader span {
+  font-weight: 700;
 }
-.messagesHeader svg{
-    padding-right: 15px;
+.messagesHeader svg {
+  padding-right: 15px;
 }
-.messageInput{
-    position: relative;
-    padding: 0px 15px;
+.messageInput {
+  position: relative;
+  padding: 0px 15px;
 }
-.messageInput input{
-    background-color: #000;
-    border: 1px solid #3e3d3d;
-    outline: none;
-    width: 100%;
-    padding: 13px 0px;
-    border-radius: 25px;
-    margin-top: 25px;
-    font-size: 15px;
-    text-indent: 40px;
-    color: #fff;
-    margin-bottom: 10px;
-    
+.messageInput input {
+  background-color: #000;
+  border: 1px solid #3e3d3d;
+  outline: none;
+  width: 100%;
+  padding: 13px 0px;
+  border-radius: 25px;
+  margin-top: 25px;
+  font-size: 15px;
+  text-indent: 40px;
+  color: #fff;
+  margin-bottom: 10px;
 }
-.messageInput input:focus{
-    border: 1px solid #1d9bf0;
+.messageInput input:focus {
+  border: 1px solid #1d9bf0;
 }
-.messageInput svg{
-    position: absolute;
-    top: 37px;
-    left: 25px;
-    font-size: 20px;
-    color: #5c5b5b;
+.messageInput svg {
+  position: absolute;
+  top: 37px;
+  left: 25px;
+  font-size: 20px;
+  color: #5c5b5b;
 }
-.messageInput input:focus+svg{
-    color:#1d9bf0 ;
+.messageInput input:focus + svg {
+  color: #1d9bf0;
 }
-.messagesPages ul {
-    list-style:none;
-    margin:0px;
-    padding:0px
+.messagesBox ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
 }
-.messagesPages ul li{
-   display:flex; 
-   gap:10px;
-   padding:15px ;
-   transition: all 300ms ease-in-out;
+.messagesBox ul li {
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+  transition: all 300ms ease-in-out;
 }
-.messagesPages ul li:hover{
-    background-color: #252525;
+.messagesBox ul li:hover {
+  background-color: #252525;
+}
+.messagesBox ul li img {
+  width: 40px;
+  object-fit: contain;
+}
+.userName {
+  font-weight: 700;
+}
+.userNick {
+  color: rgb(92, 91, 91);
 }
