@@ -63,6 +63,7 @@ function Post({ post }) {
   const goProfile = () => {
     navigate(`/profile/${post.userNick}`);
   };
+  
   useEffect(() => {
     const fetchImageURL = async () => {
       if (post.userPost.postImg) {

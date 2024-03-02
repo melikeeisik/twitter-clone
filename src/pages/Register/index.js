@@ -13,7 +13,12 @@ function Register() {
   const [formName, setFormName] = useState('');
   const [date, setDate] = useState('');
 
-  const handleDate = () => {
+  const handleLogin = () => {
+    setOpenForm(true);
+    setFormName('login');
+  };
+
+  const handleSignup = () => {
     setOpenForm(true);
     setFormName('signup');
     const day = new Date();
@@ -72,18 +77,12 @@ function Register() {
             <div className={style.seperateText}>veya</div>
             <div className={style.seperateLine}></div>
           </div>
-          <button onClick={handleDate} className={style.createAccountBtn}>
+          <button onClick={handleSignup} className={style.createAccountBtn}>
             <span>Hesap oluştur</span>
           </button>
           <div>
             <span>Zaten bir hesabın var mı?</span>
-            <button
-              onClick={() => {
-                setOpenForm(true);
-                setFormName('login');
-              }}
-              className={style.loginBtn}
-            >
+            <button onClick={handleLogin} className={style.loginBtn}>
               <span>Giriş yap</span>
             </button>
           </div>

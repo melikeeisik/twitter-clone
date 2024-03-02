@@ -83,6 +83,17 @@ function Posts() {
     document.getElementById('imageInput').click();
   };
 
+  const handleTextArea = (e) => {
+    setSendPost(e.target.value);
+    setBtnDisabled(false);
+  };
+
+  const handleIsImage = () => {
+    setImgUrl('');
+    setXDisable(true);
+    setIsImage(false);
+  };
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setImgPost(file);
@@ -164,19 +175,14 @@ function Posts() {
                   name="sendPost"
                   value={sendPost}
                   onChange={(e) => {
-                    setSendPost(e.target.value);
-                    setBtnDisabled(false);
+                    handleTextArea(e);
                   }}
                   placeholder="Neler oluyor?"
                 ></textarea>
                 {isImage && (
                   <div className={style.isImage}>
                     <FontAwesomeIcon
-                      onClick={() => {
-                        setImgUrl('');
-                        setXDisable(true);
-                        setIsImage(false);
-                      }}
+                      onClick={handleIsImage}
                       style={{ display: xDisable ? 'none' : 'block' }}
                       icon="fa-solid fa-xmark"
                     />

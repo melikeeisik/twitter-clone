@@ -40,6 +40,24 @@ function SendPost({ postContainer, setPostContainer }) {
     setBtnDisabled(false);
     document.getElementById('fileInput').click();
   };
+
+  const handleIsImage = () => {
+    setImgUrl('');
+    setXDisable(true);
+    setIsImage(false);
+  };
+
+  const handleClose = () => {
+    setPostContainer(false);
+    setIsImage(false);
+    setSendPost('');
+  };
+
+  const handleTextArea = (e) => {
+    setSendPost(e.target.value);
+    setBtnDisabled(false);
+  };
+
   const handleSendPost = () => {
     const day = new Date();
     const dateDay = day.getDate();
@@ -83,6 +101,7 @@ function SendPost({ postContainer, setPostContainer }) {
     setSendPost('');
     setIsImage(false);
     setBtnDisabled(true);
+    setPostContainer(false);
   };
 
   const handleFileChange = (event) => {
@@ -107,11 +126,7 @@ function SendPost({ postContainer, setPostContainer }) {
           <div className={style.sendPostBox}>
             <IoCloseSharp
               className={style.closeSendPost}
-              onClick={() => {
-                setPostContainer(false);
-                setIsImage(false);
-                setSendPost('');
-              }}
+              onClick={handleClose}
             />
             <div className={style.postText}>
               <div className={style.postHeader}>
@@ -124,19 +139,14 @@ function SendPost({ postContainer, setPostContainer }) {
                   name="sendPost"
                   value={sendPost}
                   onChange={(e) => {
-                    setSendPost(e.target.value);
-                    setBtnDisabled(false);
+                    handleTextArea(e);
                   }}
                 />
               </div>
               {isImage && (
                 <div className={style.isImage}>
                   <FontAwesomeIcon
-                    onClick={() => {
-                      setImgUrl('');
-                      setXDisable(true);
-                      setIsImage(false);
-                    }}
+                    onClick={handleIsImage}
                     style={{ display: xDisable ? 'none' : 'block' }}
                     icon="fa-solid fa-xmark"
                   />
@@ -175,10 +185,7 @@ function SendPost({ postContainer, setPostContainer }) {
               <button
                 style={{ filter: btnDisabled ? 'brightness(55%)' : '' }}
                 disabled={btnDisabled}
-                onClick={() => {
-                  handleSendPost();
-                  setPostContainer(false);
-                }}
+                onClick={handleSendPost}
                 className={style.send}
               >
                 Gönder
