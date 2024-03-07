@@ -1,7 +1,6 @@
 .agendaPage {
   height: 100%;
   padding: 10px 30px;
-  display: flex;
   flex-direction: column;
   align-self: center;
   position: fixed;
@@ -9,6 +8,12 @@
   top: 0px;
   background-color: #000;
   border-left: 1px solid #3e3d3d;
+  @media screen and (max-width : 800px) {
+    display: none;
+  }
+  @media screen and (min-width : 800px) {
+    display: flex;
+  }
 }
 .agendaTitle {
   color: #fff;
