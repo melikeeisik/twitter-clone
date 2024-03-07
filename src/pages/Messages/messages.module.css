@@ -1,9 +1,14 @@
 .messagesPages {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  margin-left: 400.8px;
   color: #fff;
   border-right: 1px solid #fff;
+  @media screen and (min-width:800px) {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    margin-left: 400.8px;
+  }
+  @media screen and (max-width:800px) {
+    margin-left: 78px;
+  }
 }
 .messagesHeader {
   display: flex;
