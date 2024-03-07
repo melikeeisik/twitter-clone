@@ -54,8 +54,13 @@
 .reaction {
   margin-top: 12px;
   display: grid;
-  grid-template-columns: 5fr 1fr;
   color: #5c5b5b;
+  @media screen and (min-height:800px) {
+    grid-template-columns: 5fr 1fr;
+  }
+  @media screen and (max-height:800px) {
+    grid-template-columns: 3fr 2fr;
+  }
 }
 .reactionOne {
   display: flex;
