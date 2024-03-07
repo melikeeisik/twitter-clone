@@ -154,12 +154,20 @@ function Posts() {
   return (
     <>
       <div className={style.posts}>
-        <div className={style.postsHeader}>
-          <span>Sana özel</span>
-          <span>Takip edilenler</span>
-          <span>
-            <FontAwesomeIcon icon="fa-solid fa-gear" />
-          </span>
+        <div className={style.postPageHeader}>
+          <div className={style.header}>
+            <span>Anasayfa</span>
+            <span >
+              <FontAwesomeIcon icon="fa-solid fa-gear" />
+            </span>
+          </div>
+          <div className={style.postsHeader}>
+            <span>Sana özel</span>
+            <span>Takip edilenler</span>
+            <span className={style.settings}>
+              <FontAwesomeIcon icon="fa-solid fa-gear" />
+            </span>
+          </div>
         </div>
         <div className={style.postPart}>
           <div className={style.createPost}>

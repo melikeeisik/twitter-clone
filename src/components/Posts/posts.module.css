@@ -1,6 +1,11 @@
 .posts {
-  margin-left: 400px;
-  margin-right: 370px;
+  @media screen and (max-width:800px) {
+    margin-left: 76px;
+  }
+  @media screen and (min-width:800px) {
+    margin-left: 400px;
+    margin-right: 370px;
+  }
   border-left: 1px solid #3e3d3d;
   position: relative;
 }
@@ -33,20 +38,51 @@
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
 }
-.postsHeader {
+.postPageHeader{
   width: 100%;
   position: sticky;
   z-index: 999;
   top: 0px;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr 0.1fr;
-  border-bottom: 1px solid #3e3d3d;
   background-color: #000;
+}
+.header{
+  @media screen and (max-width:800px){
+    display: flex;
+  }
+  @media screen and (min-width:800px){
+    display: none;
+  }
+  padding: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  width: calc(100%-50px);
+  justify-content: space-between;
+}
+.header svg{
+  font-size: 15px;
+}
+.postsHeader {
+  display: grid;
+  border-bottom: 1px solid #3e3d3d;
+  @media screen and (max-width:800px){
+    grid-template-columns: 1fr 1fr;
+   }
+   @media screen and (min-width:800px){
+    grid-template-columns: 1fr 1.2fr 0.1fr;
+   }
 }
 .postsHeader span {
   padding: 12px;
   text-align: center;
   font-weight: 700;
+}
+.postsHeader .settings{
+ @media screen and (max-width:800px){
+  display: none;
+ }
+ @media screen and (min-width:800px){
+  display: block;
+ }
 }
 .postPart {
   margin-top: 4px;
