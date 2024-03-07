@@ -8,13 +8,20 @@ import { useUserInfo } from '../../context/UserInfoContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faXTwitter, faApple } from '@fortawesome/free-brands-svg-icons';
+import { LuEye,LuEyeOff } from "react-icons/lu";
+
 library.add(faXTwitter, faApple);
 
 function Login({ setOpenForm }) {
   const { updateUserInfo } = useUserInfo();
   const { userList } = useUsers();
   const [formError, setFormError] = useState(false);
+  const [seePassword, setSeePassword] = useState(false)
   const navigate = useNavigate();
+  
+  const handleSeePassword = () =>{
+    setSeePassword(prev => !prev)
+  }
   const { handleChange, handleSubmit, values, handleBlur, errors, touched } =
     useFormik({
       initialValues: {
@@ -94,7 +101,7 @@ function Login({ setOpenForm }) {
                   ? '1px solid #f4212e'
                   : ''
             }}
-            type="password"
+            type={seePassword ? "text" : "password"}
             name="userPassword"
             onBlur={handleBlur}
             value={values.userPassword}
@@ -111,6 +118,11 @@ function Login({ setOpenForm }) {
           {touched.userPassword && errors.userPassword && (
             <div>{errors.userPassword}</div>
           )}
+          <div onClick={handleSeePassword} className={style.seePassword}>
+            {
+              seePassword ?  <LuEyeOff /> : <LuEye /> 
+            }
+          </div>
           {formError && <div>Kullanıcı adınız veya şifreniz hatalı</div>}
         </div>
         <button

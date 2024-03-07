@@ -45,6 +45,7 @@
   color: #fff;
   font-size: 15px;
   outline: none;
+  position: relative;
 }
 .loginForm .loginBtn {
   @media screen and (max-width:800px) {
@@ -101,13 +102,27 @@
   z-index: 1;
   transition: 0.2s ease all;
 }
+.seePassword{
+  position: absolute;
+  right: 10px;
+  @media screen and (max-width:800px) {
+    top: 35px;
+  }
+  @media screen and (min-width:800px) {
+    top: 30px;
+  }
+
+}
+.seePassword svg{
+  color: #fff;
+  font-size:22px;
+}
 .inputBox div {
   position: absolute;
   bottom: -5px;
   color: #f4212e;
   font-weight: 200;
   font-size: 13px;
-  left: 10px;
 }
 .inputBox input:focus + span {
   color: #1d9bf0;
