@@ -50,7 +50,7 @@ function SignUp({ date, setOpenForm }) {
       >
         <FontAwesomeIcon icon="fa-solid fa-x" />
       </div>
-      <h1>Hesabını oluştur</h1>
+      <span className={style.pageTitle}>Hesabını oluştur</span>
       <form onSubmit={handleSubmit}>
         <div className={style.inputBox}>
           <input

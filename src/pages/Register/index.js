@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './register.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -17,7 +17,7 @@ function Register() {
     setOpenForm(true);
     setFormName('login');
   };
-
+  
   const handleSignup = () => {
     setOpenForm(true);
     setFormName('signup');
