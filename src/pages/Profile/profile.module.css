@@ -1,9 +1,15 @@
 .profilePageContainer {
   display: flex;
   flex-direction: column;
-  width: calc(100%-777);
-  margin-left: 401px;
-  margin-right: 363px;
+  @media screen and (min-width:800px) {
+    width: calc(100%-777px);
+    margin-left: 401px;
+    margin-right: 363px;
+  }
+  @media screen and (max-width:800px) {
+    width: calc(100%-68px);
+    margin-left: 80px;
+  }
 }
 .profileHeader {
   color: #fff;
@@ -22,10 +28,15 @@
 }
 .userCoverImg {
   width: 100%;
-  height: 200px;
   background-image: url('https://picsum.photos/seed/picsum/200/300');
   background-repeat: no-repeat;
   background-size: cover;
+  @media screen and (min-width:800px) {
+    height: 200px;
+  }
+  @media screen and (max-width:800px) {
+    height: 150px;
+  }
 }
 .userInfoContainer {
   width: 100%;
@@ -49,19 +60,31 @@
 }
 .userInfoContainer .profilePicture {
   position: absolute;
-  width: 140px;
-  height: 140px;
-  top: -75px;
-  left: 15px;
   background-color: #000;
   border-radius: 999px;
   display: flex;
   justify-content: center;
   align-items: center;
+  left: 15px;
+  @media screen and (min-width:800px) {
+    width: 140px;
+    height: 140px;
+    top: -75px;
+  }
+  @media screen and (max-width:800px) {
+    width: 100px;
+    height: 100px;
+    top: -45px;
+  }
 }
 .userInfoContainer .profilePicture img {
-  width: 130px;
   object-fit: contain;
+  @media screen and (min-width:800px) {
+    width: 130px;
+  }
+  @media screen and (max-width:800px) {
+    width: 90px;
+  }
 }
 .userName {
   font-weight: 700;

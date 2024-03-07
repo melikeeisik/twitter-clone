@@ -26,8 +26,14 @@
   bottom: -1px;
   position: relative;
   list-style: none;
-  padding: 6px 12px;
   cursor: pointer;
+  @media screen and (min-width:800px ) {
+    padding: 6px 12px;
+  }
+  @media screen and (max-width:800px ) {
+    padding: 10px 0px;
+    font-size:15px ;
+  }
 }
 .react-tabs__tab:focus:after {
   content: '';
