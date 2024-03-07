@@ -52,7 +52,7 @@ function Login({ setOpenForm }) {
       <div className={style.logo}>
         <FontAwesomeIcon icon="fa-brands fa-x-twitter" />
       </div>
-      <h1>X'e giriş yap</h1>
+      <span className={style.pageTitle}>X'e giriş yap</span>
       <button className={`${style.registerBtn} ${style.loginBtnCntn}`}>
         <img className={style.googleImg} src="assets/images/google.png" />
         <span>Google ile giriş yap</span>

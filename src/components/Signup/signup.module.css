@@ -2,7 +2,6 @@
   display: flex;
   background-color: #000;
   flex-direction: column;
-  border-radius: 5%;
   position: relative;
   color: #fff;
   @media screen and (max-width : 800px){
@@ -10,6 +9,7 @@
   }
   @media screen and (min-width : 800px){
     padding:45px ;
+    border-radius: 5%;
   }
 }
 .pageTitle{

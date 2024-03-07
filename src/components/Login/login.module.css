@@ -2,32 +2,61 @@
   display: flex;
   background-color: #000;
   flex-direction: column;
-  border-radius: 5%;
   margin: auto;
-  padding: 80px 100px;
   color: #fff;
   position: relative;
+  @media screen and (max-width:800px) {
+    padding: 0px;
+  }
+  @media screen and (min-width:800px) {
+    padding: 80px 100px;
+    border-radius: 5%;
+  }
+}
+.pageTitle{
+  font-weight: 700;
+  @media screen and (max-width : 800px){
+    font-size: 24px;
+    margin: 20px 0px;
+  }
+  @media screen and (min-width : 800px){
+    font-size: 32px;
+  }
 }
 .loginBtnCntn {
   margin-bottom: 20px;
   height: 40px;
 }
 .loginForm .inputBox input {
+  @media screen and (max-width:800px) {
+    width: 280px;
+    height: 50px;
+    margin: 20px 0px;
+  }
+  @media screen and (min-width:800px) {
+    width: 330px;
+    height: 50px;
+    margin: 15px 0px;
+  }
   background-color: #000;
   border: 1px solid #3e3d3d;
   border-radius: 5px;
-  width: 330px;
-  height: 50px;
   padding: 0px 10px;
-  margin: 15px 0px;
   color: #fff;
   font-size: 15px;
   outline: none;
 }
 .loginForm .loginBtn {
-  margin-top: 40px;
-  width: 350px;
-  height: 40px;
+  @media screen and (max-width:800px) {
+    width: 300px;
+    height: 40px;
+    margin-top: 12px;
+  }
+  @media screen and (min-width:800px) {
+    margin-top: 40px;
+    width: 350px;
+    height: 45px;
+  }
   background-color: #fff;
   border: none;
   border-radius: 30px;
@@ -37,15 +66,26 @@
 .loginForm .logo {
   position: absolute;
   font-size: 35px;
-  top: 10px;
-  left: 250px;
+  @media screen and (max-width:800px) {
+    top: -100px;
+    left: 150px;
+  }
+  @media screen and (min-width:800px) {
+    top: 10px;
+    left: 250px;
+  }
 }
 .loginForm .inputBox span {
   position: absolute;
-  top: 23px;
   left: 10px;
   z-index: 1;
   transition: 0.2s ease all;
+  @media screen and (min-width:800px) {
+    top: 23px;
+  }
+  @media screen and (max-width:800px) {
+    top: 27px;
+  }
 }
 .inputBox {
   position: relative;
@@ -70,17 +110,29 @@
   left: 10px;
 }
 .inputBox input:focus + span {
-  top: 10px;
-  font-size: 15px;
   color: #1d9bf0;
+  @media screen and (max-width:800px) {
+    top: 15px;
+    font-size: 12px;
+  }
+  @media screen and (min-width:800px) {
+    top: 10px;
+    font-size: 15px;;
+  }
 }
 .inputBox input:focus {
   border: 1px solid #1d9bf0;
 }
 .closeForm {
+  @media screen and (max-width:800px) {
+    top: -90px;
+    left: -60px;
+  }
+  @media screen and (min-width:800px) {
+    top: 20px;
+    left: 10px;
+  }
   position: absolute;
-  top: 20px;
-  left: 10px;
   color: #fff;
   width: 40px;
   height: 40px;
@@ -95,10 +147,17 @@
   background-color: rgb(91, 112, 131, 0.4);
 }
 .registerBtn {
-  width: 340px;
-  height: 40px;
+  @media screen and (max-width:800px) {
+    width: 300px;
+    height: 40px;
+    margin: 12px 0px;
+  }
+  @media screen and (min-width:800px) {
+    width: 340px;
+    height: 45px;
+    margin-bottom: 8px;
+  }
   border-radius: 30px;
-  margin-bottom: 8px;
   background-color: #fff;
   border: none;
   display: flex;
