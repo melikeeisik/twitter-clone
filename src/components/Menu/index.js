@@ -37,6 +37,10 @@ function Menu({ setPostContainer }) {
     setPageUrl(window.location.pathname);
   }, [pageUrl]);
 
+  const handleSend = () =>{
+    setPostContainer(true)
+  }
+
   const handleLogOutContainer = () => {
     if (logoutDisable) {
       setLogoutDisable(false);
@@ -103,12 +107,12 @@ function Menu({ setPostContainer }) {
               </Link>
             </li>
             <li className={style.sendContainer}>
-              <div className={style.mobileSend}>
+              <div onClick={handleSend} className={style.mobileSend}>
                 <FontAwesomeIcon icon="fa-solid fa-plus" />
               </div>
               <div>
                 <button
-                  onClick={() => setPostContainer(true)}
+                  onClick={handleSend}
                   className={style.webSend}
                 >
                   Gönder

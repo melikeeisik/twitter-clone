@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { FaArrowLeft } from "react-icons/fa6";
 import { IoCloseSharp } from 'react-icons/io5';
 import style from './sendpost.module.css';
 import { useUserInfo } from '../../context/UserInfoContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import { useNavigate } from 'react-router-dom';
 import {
   faGear,
   faPhotoFilm,
@@ -35,6 +37,19 @@ function SendPost({ postContainer, setPostContainer }) {
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [isImage, setIsImage] = useState(false);
   const [xDisable, setXDisable] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [window.innerWidth]);
 
   const handleClickInput = () => {
     setBtnDisabled(false);
@@ -124,10 +139,20 @@ function SendPost({ postContainer, setPostContainer }) {
           className={style.sendPostContainer}
         >
           <div className={style.sendPostBox}>
-            <IoCloseSharp
-              className={style.closeSendPost}
-              onClick={handleClose}
-            />
+            {
+              windowWidth >800 &&  
+              <IoCloseSharp
+                className={style.closeSendPost}
+                onClick={handleClose}
+              />
+            }
+            {
+              windowWidth <=800 &&  
+              <div onClick={handleClose} className={style.webSendContainer}>
+                <FaArrowLeft className={style.closeSendPost} />
+                <button disabled={btnDisabled}>Gönder</button>
+              </div>
+            }
             <div className={style.postText}>
               <div className={style.postHeader}>
                 <img

@@ -16,10 +16,11 @@ function ChatContainer({
   const { getMessages, sendMessages } = useMessages();
   const [inputMessage, setInputMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  /*
   const socket = io('http://localhost:8090', {
     path: '/ws'
   });
-
+  
   useEffect(() => {
     const fetchData = async () => {
       const data = await getMessages(selectedUser.id, userInfo.id);
@@ -37,7 +38,7 @@ function ChatContainer({
       console.log(message);
       // Gelen mesajları işleyin
     };
-    /*
+    
         console.log("useeffect")
         socket.on('/messages/topic', message => {
             console.log("chat response")
@@ -45,9 +46,9 @@ function ChatContainer({
         });
         return () => {
             socket.disconnect();
-        };*/
+        };
   }, [messages]);
-
+  */
   const handleSendMessage = () => {
     const messageInfo = {
       senderId: selectedUser.id,
@@ -55,11 +56,11 @@ function ChatContainer({
       message: inputMessage
     };
     sendMessages(messageInfo);
-    socket.emit('chatsend', messageInfo);
+    //socket.emit('chatsend', messageInfo);
     setInputMessage('');
     setMessages((prev) => [...prev, messageInfo]);
   };
-
+  
   return (
     <div className={style.chatContainerPage}>
       {Object.keys(selectedUser).length === 0 && (
