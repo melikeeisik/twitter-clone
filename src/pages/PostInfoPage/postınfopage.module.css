@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     width: calc(100%-777);
-    margin-left: 401px;
+    margin-left: 301px;
     margin-right: 376px;
 }
 .postInfoHeader{
