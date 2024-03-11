@@ -1,30 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import style from './menu.module.css';
 import { Link } from 'react-router-dom';
+import { GoHome,GoHomeFill } from "react-icons/go";
+import { IoIosSearch } from "react-icons/io";
+import { FaRegBell,FaEnvelope,FaRegEnvelope  } from "react-icons/fa";
+import { BsPerson,BsPersonFill } from "react-icons/bs";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
-import {
-  faHouse,
-  faMagnifyingGlass,
-  faPlus
-} from '@fortawesome/free-solid-svg-icons';
-import {
-  faBell,
-  faEnvelope,
-  faUser
-} from '@fortawesome/free-regular-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useUserInfo } from '../../context/UserInfoContext';
 
 library.add(
   faXTwitter,
-  faHouse,
-  faMagnifyingGlass,
-  faBell,
-  faEnvelope,
-  faUser,
-  faPlus
 );
 
 function Menu({ setPostContainer }) {
@@ -69,23 +57,27 @@ function Menu({ setPostContainer }) {
             </li>
             <li>
               <Link to="/home">
-                <FontAwesomeIcon icon="fa-solid fa-house" />
+                {
+                  pageUrl == '/home' ? <GoHomeFill/> : <GoHome/>
+                }
                 <span style={{ fontWeight: pageUrl == '/home' ? 'bold' : '' }}>
                   Anasayfa
                 </span>
               </Link>
             </li>
             <li>
-              <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
+              <IoIosSearch/>
               <span>Keşfet</span>
             </li>
             <li>
-              <FontAwesomeIcon icon="fa-regular fa-bell" />
+              <FaRegBell/>
               <span>Bildirimler</span>
             </li>
             <li>
               <Link to="/messages">
-                <FontAwesomeIcon icon="fa-regular fa-envelope" />
+                {
+                  pageUrl == '/messages' ? <FaEnvelope /> : <FaRegEnvelope />
+                }
                 <span
                   style={{ fontWeight: pageUrl == '/messages' ? 'bold' : '' }}
                 >
@@ -95,7 +87,9 @@ function Menu({ setPostContainer }) {
             </li>
             <li>
               <Link to={`/profile/${userInfo.userNick}`}>
-                <FontAwesomeIcon icon="fa-regular fa-user" />
+                {
+                  pageUrl == `/profile/${userInfo.userNick}` ? <BsPersonFill/> : <BsPerson/>
+                }
                 <span
                   style={{
                     fontWeight:
