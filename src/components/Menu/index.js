@@ -10,6 +10,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useUserInfo } from '../../context/UserInfoContext';
+import { FaPlus } from "react-icons/fa6";
 
 library.add(
   faXTwitter,
@@ -102,7 +103,7 @@ function Menu({ setPostContainer }) {
             </li>
             <li className={style.sendContainer}>
               <div onClick={handleSend} className={style.mobileSend}>
-                <FontAwesomeIcon icon="fa-solid fa-plus" />
+                <FaPlus/>
               </div>
               <div>
                 <button

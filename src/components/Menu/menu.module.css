@@ -86,6 +86,9 @@
     align-items: center;
   }
 }
+.mobileSend svg {
+  width: 20px;
+}
 .sendContainer:hover {
   background-color: black !important;
 }
