@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Menu from '../../components/Menu';
 import ChatContainer from '../../components/ChatContainer';
 import MessagesUsers from '../../components/MessagesUsers';
@@ -12,6 +12,9 @@ function Messages({ setPostContainer }) {
   const { userInfo } = useUserInfo();
   const [selectedUser, setSelectedUser] = useState({});
   const [messagesUser, setMessagesUser] = useState(false);
+
+  console.log(selectedUser,Object.keys(selectedUser).length)
+
   return (
     <>
       <div>

@@ -1,17 +1,22 @@
 .chatContainerPage {
-  @media screen and (max-width:800px) {
-    display: none;
-  }
-  @media screen and (min-width:800px) {
     display: flex; 
-  }
 }
 .chatContainer {
-  border-left: 1px solid #3e3d3d;
   display: flex;
   flex-direction: column;
   height: 100vh;
   justify-content: space-between;
+  width: 100%;
+  @media screen and (min-width:800px) {
+    border-left: 1px solid #3e3d3d;
+  }
+  @media screen and (max-width:800px) {
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #000;
+  }
 }
 .emptyChatContainer {
   display: flex;
@@ -52,6 +57,14 @@
 }
 .chatHeader span {
   font-weight: 700;
+}
+.chatHeader svg {
+  @media screen and (max-width:800px) {
+    display: block;
+  }
+  @media screen and (min-width:800px) {
+    display: none;
+  }
 }
 .chatBox {
   display: flex;
@@ -108,7 +121,6 @@
 }
 .chatInput input {
   padding: 13px 0px;
-  width: 95vh;
   border-radius: 15px;
   background-color: rgb(32, 35, 39);
   outline: none;
@@ -116,6 +128,7 @@
   text-indent: 20px;
   color: #fff;
   font-size: 17px;
+  width: 95%;
 }
 .chatInput input::placeholder {
   font-size: 15px;

@@ -3,6 +3,7 @@ import style from './chatcontainer.module.css';
 import { useUserInfo } from '../../context/UserInfoContext';
 import { VscSend } from 'react-icons/vsc';
 import { useMessages } from '../../context/MessagesContext';
+import { FaArrowLeft } from "react-icons/fa6";
 import { io } from 'socket.io-client';
 import MessagesUsers from '../MessagesUsers';
 
@@ -10,12 +11,25 @@ function ChatContainer({
   selectedUser,
   setSelectedUser,
   messagesUser,
-  setMessagesUser
+  setMessagesUser,
 }) {
   const { userInfo } = useUserInfo();
   const { getMessages, sendMessages } = useMessages();
   const [inputMessage, setInputMessage] = useState('');
   const [messages, setMessages] = useState([]);
+  const [mobileChatVisible, setMobileChatVisible] = useState(false)
+
+  useEffect(() =>{
+    (window.innerWidth>=800) || (Object.keys(selectedUser).length===0)
+      ?setMobileChatVisible(false)
+      :setMobileChatVisible(true)
+  },[window.innerWidth,selectedUser])
+
+  const handleBack = () =>{
+    setMobileChatVisible(false)
+    setSelectedUser({})
+  }
+
   /*
   const socket = io('http://localhost:8090', {
     path: '/ws'
@@ -62,7 +76,7 @@ function ChatContainer({
   };
   
   return (
-    <div className={style.chatContainerPage}>
+    <div  className={style.chatContainerPage}>
       {Object.keys(selectedUser).length === 0 && (
         <div className={style.emptyChatContainer}>
           <h1>Mesaj seç</h1>
@@ -71,8 +85,9 @@ function ChatContainer({
         </div>
       )}
       {Object.keys(selectedUser).length > 0 && (
-        <div className={style.chatContainer}>
+        <div style={{display:mobileChatVisible ? "flex":"none"}} className={style.chatContainer}>
           <div className={style.chatHeader}>
+            <FaArrowLeft onClick={handleBack}/>
             <img
               src={`https://api.multiavatar.com/${selectedUser.userNick}.png`}
               alt="Profile Picture"

@@ -10,7 +10,7 @@ function MessagesUsers({ messagesUser, setMessagesUser, setSelectedUser }) {
   const [click, setClick] = useState({});
   const { userInfo } = useUserInfo();
   const { userList } = useUsers();
-  
+
   useEffect(() => {
     const searchNameLower = searchName.toLocaleLowerCase();
     const newUsers = userList.filter(
