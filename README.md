@@ -25,5 +25,6 @@ https://sparkling-brioche-f38c68.netlify.app/
 <img width="1277" alt="Ekran Resmi 2024-03-18 10 26 19" src="https://github.com/melikeeisik/twitter-clone/assets/80756998/2eb0b106-5b8a-49d2-b40c-1652d58e5975">
 <img width="1277" alt="Ekran Resmi 2024-03-18 10 26 27" src="https://github.com/melikeeisik/twitter-clone/assets/80756998/253c9b65-09bd-43fe-bca2-f99ed47cc047">
 <img width="482" alt="Ekran Resmi 2024-03-18 10 26 54" src="https://github.com/melikeeisik/twitter-clone/assets/80756998/170ec0fa-afa5-43b5-af74-bf4b9e8d95d0">
+<img width="482" alt="Ekran Resmi 2024-03-18 10 29 55" src="https://github.com/melikeeisik/twitter-clone/assets/80756998/9f7ecdf2-5f4a-43a0-8988-011990b403f3">
 
 
