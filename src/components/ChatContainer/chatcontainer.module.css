@@ -19,13 +19,18 @@
   }
 }
 .emptyChatContainer {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
   height: 100vh;
   padding-left: 200px;
   border-left: 1px solid #3e3d3d;
+  @media screen and (max-width:800px) {
+    display: none;
+  }
+  @media screen and (min-width:800px) {
+    display: flex;
+  }
 }
 .emptyChatContainer span {
   color: rgb(92, 91, 91);
