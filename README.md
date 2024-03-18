@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# Twitter-Clone
+- React ve Java teknolojileri kullanılarak geliştirilmiş bir clone projedir.
+- React teknolojisi, backend ve firebase bağlatısı, ön yüz tasarımı için kullanılmıştır.
+- Java teknolojisi, mesajlaşma özelliği için backend tarafında kullanılmıştır.
+- Mesajlaşma verileri PostgreSql üzerinde tutulmaktadır.
+- Kullanıcı hesapları, post ve yorum verileri için "Firebase" teknolojisi kullanılmıştır.
+- Sayfa tasarımları için "Twitter" web sitesi baz alınmıştır.
+- Oluşturulan tüm sayfaların responsive özelliği geliştirilmiştir.
+  
+## Web Sayfasının İçeriği
+- Kullanıcılar hesap oluşturabilir.
+- Hesabı olan kullanıcılar kendi hesaplarına giriş yapabilir.
+- Kullanıcılar post atabilir.
+- Kullanıcılar mevcut postlara yorum atabilir.
+- Kullanıcılar başka kullanıcılarla mesajlaşabilir.
+- Kullanıcılar, başka kullanıcı hesaplarını inceleyebilir.
+- Kullanıcılar post olarak resim gönderebilir.
+- Kullanıcılar postları ayrıntılı olarak inceleyebilir.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Test Ortamı 
+https://sparkling-brioche-f38c68.netlify.app/
 
-## Available Scripts
+## Ekran Görüntüleri
+<img width="1277" alt="Ekran Resmi 2024-03-18 10 25 56" src="https://github.com/melikeeisik/twitter-clone/assets/80756998/847c2051-4d10-41e0-8d1a-66dd44a2b65b">
+<img width="1277" alt="Ekran Resmi 2024-03-18 10 26 19" src="https://github.com/melikeeisik/twitter-clone/assets/80756998/2eb0b106-5b8a-49d2-b40c-1652d58e5975">
+<img width="1277" alt="Ekran Resmi 2024-03-18 10 26 27" src="https://github.com/melikeeisik/twitter-clone/assets/80756998/253c9b65-09bd-43fe-bca2-f99ed47cc047">
+<img width="482" alt="Ekran Resmi 2024-03-18 10 26 54" src="https://github.com/melikeeisik/twitter-clone/assets/80756998/35adf845-46dc-4c6a![Uploading Ekran Resmi 2024-03-18 10.25.56.png…]()
+-82c4-560bc50522c6">
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
