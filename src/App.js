@@ -8,6 +8,7 @@ import Messages from './pages/Messages';
 import PostInfoPage from './pages/PostInfoPage';
 import { useState, useEffect } from 'react';
 import SendPost from './components/SendPost';
+import LogOut from './pages/LogOut';
 function App() {
   const [postContainer, setPostContainer] = useState(false);
 
@@ -40,6 +41,7 @@ function App() {
             path="/messages"
             element={<Messages setPostContainer={setPostContainer} />}
           />
+          <Route path="/logout" element={<LogOut />} />
         </Routes>
       </Router>
     </div>

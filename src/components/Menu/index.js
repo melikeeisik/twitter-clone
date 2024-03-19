@@ -17,7 +17,7 @@ library.add(
 );
 
 function Menu({ setPostContainer }) {
-  const { userInfo, removeUserInfo } = useUserInfo();
+  const { userInfo } = useUserInfo();
   const [logoutDisable, setLogoutDisable] = useState(false);
   const navigate = useNavigate();
   const [pageUrl, setPageUrl] = useState('');
@@ -39,8 +39,7 @@ function Menu({ setPostContainer }) {
   };
 
   const handleLogOut = () => {
-    removeUserInfo(userInfo);
-    navigate('/');
+    navigate("/logout")
   };
 
   return (
