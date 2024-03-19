@@ -2,12 +2,12 @@
     display: flex; 
 }
 .chatContainer {
-  display: flex;
   flex-direction: column;
   height: 100vh;
   justify-content: space-between;
   width: 100%;
   @media screen and (min-width:800px) {
+    display: flex;
     border-left: 1px solid #3e3d3d;
   }
   @media screen and (max-width:800px) {

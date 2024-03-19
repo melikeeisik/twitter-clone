@@ -20,9 +20,15 @@ function ChatContainer({
   const [mobileChatVisible, setMobileChatVisible] = useState(false)
 
   useEffect(() =>{
-    (window.innerWidth>=800) || (Object.keys(selectedUser).length===0)
+    if(window.innerWidth>=800) 
+    {
+      Object.keys(selectedUser).length===0
       ?setMobileChatVisible(false)
       :setMobileChatVisible(true)
+    }
+    else{
+      setMobileChatVisible(true)
+    }
   },[window.innerWidth,selectedUser])
 
   const handleBack = () =>{
